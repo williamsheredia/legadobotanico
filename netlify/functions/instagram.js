@@ -4,18 +4,14 @@ exports.handler = async function (event, context) {
   if (!INSTAGRAM_TOKEN) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Token de Instagram no configurado." }),
+      body: JSON.stringify({ error: "Token no configurado en Netlify." }),
     };
   }
 
   const cleanToken = INSTAGRAM_TOKEN.trim();
 
-  // Si el token es de Meta Graph (empieza con EA) usa Facebook API, si no, usa Instagram Basic API
-  const baseUrl = cleanToken.startsWith("EA")
-    ? "https://graph.facebook.com/v19.0/me/media"
-    : "https://graph.instagram.com/me/media";
-
-  const url = `${baseUrl}?fields=id,caption,media_type,media_url,permalink,timestamp,thumbnail_url&limit=4&access_token=${cleanToken}`;
+  // URL directa de Instagram API
+  const url = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,timestamp,thumbnail_url&limit=4&access_token=${cleanToken}`;
 
   try {
     const response = await fetch(url);
