@@ -9,8 +9,9 @@ exports.handler = async function (event, context) {
     };
   }
 
-  const url = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,timestamp,thumbnail_url&limit=4&access_token=${INSTAGRAM_TOKEN}`;
-
+  const response = await fetch(
+  `https://graph.facebook.com/v19.0/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`
+);
   try {
     const response = await fetch(url);
     const data = await response.json();
