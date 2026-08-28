@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("/.netlify/functions/instagram")
     .then((res) => res.json())
     .then((data) => {
-      if (!data.data || data.data.length === 0) {
+      const posts = data.data || data.media?.data || [];
+
+      if (posts.length === 0) {
         container.innerHTML = "<p class='insta-loading'>No se encontraron publicaciones recientes.</p>";
         return;
       }
@@ -16,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       container.innerHTML = "";
 
       // Procesar únicamente las primeras 4 publicaciones
-      data.data.slice(0, 4).forEach((post) => {
+      posts.slice(0, 4).forEach((post) => {
         const imageUrl = post.media_type === "VIDEO" ? post.thumbnail_url : post.media_url;
         const date = new Date(post.timestamp).toLocaleDateString("es-PE", {
           day: "numeric",
