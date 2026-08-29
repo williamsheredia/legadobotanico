@@ -8,10 +8,10 @@ exports.handler = async function (event, context) {
     };
   }
 
-  // Limpiar espacios en blanco, comillas dobles/simples y comas invisibles
-  token = token.trim().replace(/^["']|["']$/g, '');
+  // Limpiar espacios, saltos de línea y comillas al inicio o final
+  const cleanToken = token.trim().replace(/^["']|["']$/g, "");
 
-  const url = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,timestamp,thumbnail_url&limit=4&access_token=${encodeURIComponent(token)}`;
+  const url = `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,timestamp,thumbnail_url&limit=4&access_token=${cleanToken}`;
 
   try {
     const response = await fetch(url);
