@@ -551,3 +551,43 @@ footer{padding:35px 0;background:#08160f;color:#fff}
 .social-card:hover .social-name {
   color: var(--ochre);
 }
+
+
+
+/* --- GECKO DECORATIVO EN CONTACTO --- */
+.section-contacto {
+  position: relative;
+  overflow: hidden; /* Evita que el gecko sobresalga y genere scroll horizontal */
+}
+
+.section-contacto .container {
+  position: relative;
+  z-index: 2; /* Mantiene los textos e íconos por encima de la silueta */
+}
+
+/* Silueta en verde lima con transparencia */
+.gecko-bg {
+  position: absolute;
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%) rotate(-15deg);
+  width: 280px;
+  height: 280px;
+  color: #32cd32; /* Tono Verde Lima */
+  opacity: 0.08;  /* Transparencia sutil elegante */
+  pointer-events: none; /* No interfiere con clics o toques */
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+/* Ajustes dinámicos para pantallas móviles */
+@media (max-width: 768px) {
+  .gecko-bg {
+    width: 200px;
+    height: 200px;
+    right: 50%;
+    top: 55%;
+    transform: translate(50%, -50%) rotate(0deg); /* Centrado suave al fondo en móviles */
+    opacity: 0.06; /* Un toque más tenue en pantallas pequeñas para legibilidad */
+  }
+}
