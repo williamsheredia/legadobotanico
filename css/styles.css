@@ -459,3 +459,95 @@ footer{padding:35px 0;background:#08160f;color:#fff}
   background: #9c732b; /* Tono ocre un poco más profundo al pasar el cursor */
   transform: translateY(-2px);
 }
+
+
+/* --- SECCIÓN CONTACTO Y REDES SOCIALES --- */
+.section-contacto {
+  background-color: var(--forest); /* Mismo tono verde profundo del footer */
+  color: var(--white);
+  padding: 80px 20px;
+}
+
+.eyebrow-light {
+  color: var(--ochre);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.title-light {
+  color: #ffffff;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+.title-light span {
+  color: var(--ochre);
+}
+
+.lead-light {
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Grilla de redes sociales */
+.social-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.social-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+/* Íconos grandes color ocre con transparencia */
+.social-icon {
+  width: 56px;
+  height: 56px;
+  fill: var(--ochre);
+  opacity: 0.75; /* Transparencia inicial */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin-bottom: 12px;
+}
+
+/* Nombres de usuario y plataformas */
+.social-name {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.social-platform {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Efectos al pasar el cursor (Hover) */
+.social-card:hover {
+  transform: translateY(-5px);
+}
+
+.social-card:hover .social-icon {
+  opacity: 1; /* Retira la transparencia */
+  transform: scale(1.1);
+}
+
+.social-card:hover .social-name {
+  color: var(--ochre);
+}
