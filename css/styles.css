@@ -559,38 +559,40 @@ footer{padding:35px 0;background:#08160f;color:#fff}
 /* --- GECKO DECORATIVO EN CONTACTO --- */
 .section-contacto {
   position: relative;
-  overflow: hidden; /* Evita scroll horizontal */
+  overflow: hidden;
 }
 
 .section-contacto .container {
   position: relative;
-  z-index: 2; /* Mantiene textos y botones sobre el gecko */
+  z-index: 2;
 }
 
-/* Posición por defecto (Pantallas de PC / Escritorio) */
+/* Posición y proporción en PC */
 .gecko-bg {
   position: absolute;
   top: 50%;
-  right: -20px;
-  transform: translateY(-50%) rotate(-15deg);
-  width: 280px;
-  height: 280px;
-  color: #32cd32; /* Verde Lima */
-  opacity: 0.12;  /* Transparencia sutil en PC */
-  pointer-events: none; /* No interfiere con clics */
+  right: 20px;
+  transform: translateY(-50%) rotate(-10deg);
+  width: 260px;
+  height: auto;
+  aspect-ratio: 1 / 1; /* Garantiza que la imagen NUNCA se aplaste */
+  color: #76ea00; /* Tono Verde Lima vivo */
+  opacity: 0.12;
+  pointer-events: none;
   z-index: 0;
   transition: all 0.3s ease;
 }
 
-/* Posición ajustada exclusivamente para Celulares / Móviles */
+/* Posición y proporción en Celular (Móvil) */
 @media (max-width: 768px) {
   .gecko-bg {
-    top: 68%;                 /* Lo ubica verticalmente a la altura de las redes */
-    left: 50%;                /* Centrado horizontal */
+    top: 65%;
+    left: 50%;
     right: auto;
-    transform: translate(-50%, -50%) rotate(0deg); /* Centra exactamente en el ícono del medio */
-    width: 230px;             /* Tamaña proporcional para móvil */
-    height: 230px;
-    opacity: 0.08;            /* Un toque más tenue para mantener legibilidad total */
+    transform: translate(-50%, -50%) rotate(0deg);
+    width: 200px;
+    height: auto;
+    aspect-ratio: 1 / 1; /* Mantiene la proporción perfecta en celular */
+    opacity: 0.08;
   }
 }
