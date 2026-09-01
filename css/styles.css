@@ -554,7 +554,6 @@ footer{padding:35px 0;background:#08160f;color:#fff}
 
 
 
-
 /* --- GECKO DECORATIVO EN CONTACTO --- */
 .section-contacto {
   position: relative;
@@ -566,7 +565,7 @@ footer{padding:35px 0;background:#08160f;color:#fff}
   z-index: 2;
 }
 
-/* Silueta en PC */
+/* Silueta en Escritorio (PC) */
 .gecko-bg {
   position: absolute;
   top: 50%;
@@ -574,13 +573,15 @@ footer{padding:35px 0;background:#08160f;color:#fff}
   transform: translateY(-50%) rotate(-15deg);
   width: 240px;
   height: 240px;
-  opacity: 0.12; /* Transparencia verde lima sobre el fondo verde */
+  color: #32cd32;       /* Verde Lima */
+  fill: #32cd32;        /* Relleno verde lima */
+  opacity: 0.12;        /* Transparencia sutil sobre el fondo */
   pointer-events: none;
   z-index: 0;
   transition: all 0.3s ease;
 }
 
-/* Silueta en Móvil (Celular) */
+/* Silueta en Celulares (Móvil) */
 @media (max-width: 768px) {
   .gecko-bg {
     top: 68%;
