@@ -1,10 +1,20 @@
-const header=document.querySelector('.site-header');
-const toggle=document.querySelector('.menu-toggle');
-const menu=document.querySelector('.nav-links');
-window.addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>30));
-toggle.addEventListener('click',()=>{const open=menu.classList.toggle('open');toggle.setAttribute('aria-expanded',open)});
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');toggle.setAttribute('aria-expanded','false')}));
-document.querySelector('#year').textContent=new Date().getFullYear();
+const header = document.querySelector('.site-header');
+const toggle = document.querySelector('.menu-toggle');
+const menu = document.querySelector('.nav-links');
+
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 30));
+
+toggle.addEventListener('click', () => {
+  const open = menu.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', open);
+});
+
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+  menu.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+}));
+
+document.querySelector('#year').textContent = new Date().getFullYear();
 
 // Carga dinámica de Instagram
 document.addEventListener("DOMContentLoaded", () => {
@@ -23,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       container.innerHTML = "";
 
-      // Procesar únicamente las primeras 4 publicaciones
       posts.slice(0, 4).forEach((post) => {
         const imageUrl = post.media_type === "VIDEO" ? post.thumbnail_url : post.media_url;
         const date = new Date(post.timestamp).toLocaleDateString("es-PE", {
@@ -51,128 +60,100 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Manejo del formulario de donaciones con AJAX para evitar el 404 de Netlify
+// Lógica de Modales (Donaciones y Voluntariado)
 document.addEventListener('DOMContentLoaded', () => {
-  const btnAbrirAporte = document.getElementById('btn-abrir-aporte');
-  const btnCerrarAporte = document.getElementById('btn-cerrar-aporte');
-  const modalAporte = document.getElementById('modal-aporte');
-  const formDonaciones = document.querySelector('form[name="donaciones"]');
 
-  if (btnAbrirAporte && modalAporte) {
-    // Abrir modal
-    btnAbrirAporte.addEventListener('click', () => {
-      modalAporte.classList.add('active');
-      modalAporte.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    });
+  // Auxiliar para manejar modales de forma segura
+  const setupModal = (btnAbrirId, btnCerrarId, modalId, formName, exitoTitulo, exitoTexto) => {
+    const btnAbrir = document.getElementById(btnAbrirId);
+    const btnCerrar = document.getElementById(btnCerrarId);
+    const modal = document.getElementById(modalId);
+    const form = document.querySelector(`form[name="${formName}"]`);
 
-    // Cerrar modal
+    if (!btnAbrir || !modal || !form) return;
+
+    // Crear contenedor para mensaje de éxito si no existe
+    let exitoContainer = modal.querySelector('.modal-exito-mensaje');
+    if (!exitoContainer) {
+      exitoContainer = document.createElement('div');
+      exitoContainer.className = 'modal-exito-mensaje';
+      exitoContainer.style.display = 'none';
+      exitoContainer.style.textAlign = 'center';
+      exitoContainer.style.padding = '30px 10px';
+      modal.querySelector('.modal-content').appendChild(exitoContainer);
+    }
+
     const cerrarModal = () => {
-      modalAporte.classList.remove('active');
-      modalAporte.setAttribute('aria-hidden', 'true');
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      
+      // Restablecer formulario y vista al cerrar
+      setTimeout(() => {
+        form.reset();
+        form.style.display = 'block';
+        const header = modal.querySelector('.form-header');
+        if (header) header.style.display = 'block';
+        exitoContainer.style.display = 'none';
+      }, 300);
     };
 
-    if (btnCerrarAporte) btnCerrarAporte.addEventListener('click', cerrarModal);
-
-    modalAporte.addEventListener('click', (e) => {
-      if (e.target === modalAporte) cerrarModal();
-    });
-
-    // Envío del formulario sin recarga de página
-    if (formDonaciones) {
-      formDonaciones.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const formData = new FormData(formDonaciones);
-
-        fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData).toString()
-        })
-        .then(() => {
-          // Reemplaza el contenido del modal por mensaje de éxito
-          const modalContent = modalAporte.querySelector('.modal-content');
-          modalContent.innerHTML = `
-            <button type="button" class="modal-close" id="btn-cerrar-exito">&times;</button>
-            <div style="text-align: center; padding: 30px 10px;">
-              <span style="font-size: 3rem;">🌱</span>
-              <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 15px 0 10px; color: var(--ink);">¡Gracias por tu propuesta!</h3>
-              <p style="color: var(--muted); line-height: 1.5;">Hemos recibido tu información correctamente. Nos pondremos en contacto contigo muy pronto para coordinar.</p>
-            </div>
-          `;
-          
-          // Al dar clic en X, recarga la página manteniéndose en la sección
-          document.getElementById('btn-cerrar-exito').addEventListener('click', () => {
-            window.location.hash = 'aporta';
-            window.location.reload();
-          });
-        })
-        .catch((error) => console.error('Error al enviar el formulario:', error));
-      });
-    }
-  }
-});
-
-// Lógica para el Modal Pop-up de Voluntariado
-document.addEventListener('DOMContentLoaded', () => {
-  const btnAbrirVoluntario = document.getElementById('btn-abrir-voluntario');
-  const btnCerrarVoluntario = document.getElementById('btn-cerrar-voluntario');
-  const modalVoluntario = document.getElementById('modal-voluntario');
-  const formVoluntarios = document.querySelector('form[name="voluntarios"]');
-
-  if (btnAbrirVoluntario && modalVoluntario) {
-    // Abrir modal
-    btnAbrirVoluntario.addEventListener('click', () => {
-      modalVoluntario.classList.add('active');
-      modalVoluntario.setAttribute('aria-hidden', 'false');
+    btnAbrir.addEventListener('click', () => {
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
     });
 
-    // Cerrar modal
-    const cerrarModalVol = () => {
-      modalVoluntario.classList.remove('active');
-      modalVoluntario.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    };
+    if (btnCerrar) btnCerrar.addEventListener('click', cerrarModal);
 
-    if (btnCerrarVoluntario) btnCerrarVoluntario.addEventListener('click', cerrarModalVol);
-
-    modalVoluntario.addEventListener('click', (e) => {
-      if (e.target === modalVoluntario) cerrarModalVol();
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) cerrarModal();
     });
 
-    // Envío del formulario sin recarga
-    if (formVoluntarios) {
-      formVoluntarios.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const formData = new FormData(formVoluntarios);
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
 
-        fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData).toString()
-        })
-        .then(() => {
-          const modalContent = modalVoluntario.querySelector('.modal-content');
-          modalContent.innerHTML = `
-            <button type="button" class="modal-close" id="btn-cerrar-exito-vol">&times;</button>
-            <div style="text-align: center; padding: 30px 10px;">
-              <span style="font-size: 3rem;">🌿</span>
-              <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 15px 0 10px; color: var(--ink);">¡Bienvenido a la comunidad!</h3>
-              <p style="color: var(--muted); line-height: 1.5;">Tu registro de voluntariado ha sido enviado con éxito. Te contactaremos pronto para coordinar tu participación.</p>
-            </div>
-          `;
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(() => {
+        // Ocultar formulario y mostrar mensaje de éxito
+        form.style.display = 'none';
+        const header = modal.querySelector('.form-header');
+        if (header) header.style.display = 'none';
 
-          // Al dar clic en X, recarga la página manteniéndose en la sección
-          document.getElementById('btn-cerrar-exito-vol').addEventListener('click', () => {
-            window.location.hash = 'voluntariado';
-            window.location.reload();
-          });
-        })
-        .catch((error) => console.error('Error al enviar el registro:', error));
-      });
-    }
-  }
+        exitoContainer.innerHTML = `
+          <span style="font-size: 3rem;">🌱</span>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 15px 0 10px; color: var(--ink);">${exitoTitulo}</h3>
+          <p style="color: var(--muted); line-height: 1.5;">${exitoTexto}</p>
+        `;
+        exitoContainer.style.display = 'block';
+      })
+      .catch((error) => console.error('Error al enviar el formulario:', error));
+    });
+  };
+
+  // Inicializar Modal Donaciones
+  setupModal(
+    'btn-abrir-aporte',
+    'btn-cerrar-aporte',
+    'modal-aporte',
+    'donaciones',
+    '¡Gracias por tu propuesta!',
+    'Hemos recibido tu información correctamente. Nos pondremos en contacto contigo muy pronto para coordinar.'
+  );
+
+  // Inicializar Modal Voluntariado
+  setupModal(
+    'btn-abrir-voluntario',
+    'btn-cerrar-voluntario',
+    'modal-voluntario',
+    'voluntarios',
+    '¡Bienvenido a la comunidad!',
+    'Tu registro de voluntariado ha sido enviado con éxito. Te contactaremos pronto para coordinar tu participación.'
+  );
+
 });
