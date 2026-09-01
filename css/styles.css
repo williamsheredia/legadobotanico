@@ -554,40 +554,43 @@ footer{padding:35px 0;background:#08160f;color:#fff}
 
 
 
+
+
 /* --- GECKO DECORATIVO EN CONTACTO --- */
 .section-contacto {
   position: relative;
-  overflow: hidden; /* Evita que el gecko sobresalga y genere scroll horizontal */
+  overflow: hidden; /* Evita scroll horizontal */
 }
 
 .section-contacto .container {
   position: relative;
-  z-index: 2; /* Mantiene los textos e íconos por encima de la silueta */
+  z-index: 2; /* Mantiene textos y botones sobre el gecko */
 }
 
-/* Silueta en verde lima con transparencia */
+/* Posición por defecto (Pantallas de PC / Escritorio) */
 .gecko-bg {
   position: absolute;
   top: 50%;
-  right: -30px;
+  right: -20px;
   transform: translateY(-50%) rotate(-15deg);
   width: 280px;
   height: 280px;
-  color: #32cd32; /* Tono Verde Lima */
-  opacity: 0.08;  /* Transparencia sutil elegante */
-  pointer-events: none; /* No interfiere con clics o toques */
-  z-index: 1;
+  color: #32cd32; /* Verde Lima */
+  opacity: 0.12;  /* Transparencia sutil en PC */
+  pointer-events: none; /* No interfiere con clics */
+  z-index: 0;
   transition: all 0.3s ease;
 }
 
-/* Ajustes dinámicos para pantallas móviles */
+/* Posición ajustada exclusivamente para Celulares / Móviles */
 @media (max-width: 768px) {
   .gecko-bg {
-    width: 200px;
-    height: 200px;
-    right: 50%;
-    top: 55%;
-    transform: translate(50%, -50%) rotate(0deg); /* Centrado suave al fondo en móviles */
-    opacity: 0.06; /* Un toque más tenue en pantallas pequeñas para legibilidad */
+    top: 68%;                 /* Lo ubica verticalmente a la altura de las redes */
+    left: 50%;                /* Centrado horizontal */
+    right: auto;
+    transform: translate(-50%, -50%) rotate(0deg); /* Centra exactamente en el ícono del medio */
+    width: 230px;             /* Tamaña proporcional para móvil */
+    height: 230px;
+    opacity: 0.08;            /* Un toque más tenue para mantener legibilidad total */
   }
 }
