@@ -567,32 +567,30 @@ footer{padding:35px 0;background:#08160f;color:#fff}
   z-index: 2;
 }
 
-/* Posición y proporción en PC */
+/* En PC: Silueta a la derecha en verde lima */
 .gecko-bg {
   position: absolute;
   top: 50%;
-  right: 20px;
-  transform: translateY(-50%) rotate(-10deg);
-  width: 260px;
-  height: auto;
-  aspect-ratio: 1 / 1; /* Garantiza que la imagen NUNCA se aplaste */
-  color: #76ea00; /* Tono Verde Lima vivo */
-  opacity: 0.12;
+  right: 15px;
+  transform: translateY(-50%) rotate(-15deg);
+  width: 250px;
+  height: 250px;
+  color: #32cd32; /* Verde Lima */
+  opacity: 0.12;  /* Transparencia sutil */
   pointer-events: none;
   z-index: 0;
   transition: all 0.3s ease;
 }
 
-/* Posición y proporción en Celular (Móvil) */
+/* En Móvil: Centrado detrás del ícono de Instagram */
 @media (max-width: 768px) {
   .gecko-bg {
-    top: 65%;
+    top: 68%;
     left: 50%;
     right: auto;
     transform: translate(-50%, -50%) rotate(0deg);
-    width: 200px;
-    height: auto;
-    aspect-ratio: 1 / 1; /* Mantiene la proporción perfecta en celular */
+    width: 210px;
+    height: 210px;
     opacity: 0.08;
   }
 }
