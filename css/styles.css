@@ -51,7 +51,7 @@
   overflow:hidden;
   background:linear-gradient(135deg, rgba(47, 79, 79, 0.82), rgba(255, 193, 7, 0.45)), url("../assets/hero-desktop3.jpg") center/cover no-repeat, var(--dark-slate);
 }
-.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg, var(--dark-slate), transparent 70%);z-index:0}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg, var(--dark-slate), transparent 30%);z-index:0}
 .hero-content{position:relative;z-index:1;padding-top:80px}
 .eyebrow{margin:0 0 12px;font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);text-shadow: 0 2px 4px rgba(0,0,0,0.3);}
 .hero h1{margin:0;font:700 clamp(4rem,10vw,8.5rem)/.85 "Playfair Display",serif;letter-spacing:-.045em;color:var(--gold);}
