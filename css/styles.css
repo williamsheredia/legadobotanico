@@ -24,7 +24,7 @@
   overflow:hidden;
   /* Reducimos la opacidad del degradado sobre la imagen (de 0.82 y 0.45 a 0.25 y 0.15) */
   background: linear-gradient(135deg, rgba(47, 79, 79, 0.25), rgba(255, 193, 7, 0.15)), 
-              url("../assets/hero-desktop.jpg") center/cover no-repeat, 
+              url("../assets/hero-desktop3.jpg") center/cover no-repeat, 
               var(--dark-slate);
 }
 
