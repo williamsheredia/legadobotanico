@@ -13,7 +13,7 @@
 
 
 .hero{min-height:100svh;position:relative;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden;background:linear-gradient(120deg,#16342511,#16342505),url("../assets/hero-desktop3.jpg") center/cover no-repeat,var(--forest)}
-.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#05120cb0,#05120c10 65%);z-index:0}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#05120cb0,#05120c10 5%);z-index:0}
 
 
 .hero-content{position:relative;z-index:1;padding-top:80px}
