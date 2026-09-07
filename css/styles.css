@@ -679,7 +679,7 @@ footer{padding:35px 0;background:#08160f;color:#fff}
 
 @media(max-width: 600px) {
   .brand-logo {
-    height: 30px; /* Reduce la altura en móviles (ajusta este valor a tu gusto) */
+    height: 60px; /* Reduce la altura en móviles (ajusta este valor a tu gusto) */
   }
 }
 
