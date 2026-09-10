@@ -67,9 +67,8 @@
 .hero-text{
 	max-width:600px;
 	margin:28px auto;
-	font-size:clamp(0.8rem,2.3vw,1.6rem);
+	font-size:clamp(0.7rem,2.3vw,1.5rem);
 	color:#76d577;
-	text-transform:uppercase;
 	}
 
 
