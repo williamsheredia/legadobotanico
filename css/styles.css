@@ -51,16 +51,26 @@
 
 
 .hero-content{position:relative;z-index:1;padding-top:80px}
-.eyebrow{margin:0 0 12px;font-size:.76rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.78}
+.eyebrow{
+	margin:0 0 12px;
+	font-size:.76rem;
+	font-weight:800;
+	letter-spacing:.16em;
+	text-transform:uppercase;
+	opacity:.78
+	}
+
 .hero h1{margin:0;font:700 clamp(4rem,10vw,8.5rem)/.85 "Playfair Display",serif;letter-spacing:-.045em}
 
 .hero h1 em{font-style:italic}
 
-.hero-text{max-width:600px;
-margin:28px auto;
-font-size:clamp(0.8rem,2.3vw,1.6rem);
-color:#76d577;
-}
+.hero-text{
+	max-width:600px;
+	margin:28px auto;
+	font-size:clamp(0.8rem,2.3vw,1.6rem);
+	color:#76d577;
+	text-transform:uppercase;
+	}
 
 
 .hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
