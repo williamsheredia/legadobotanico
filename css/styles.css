@@ -58,7 +58,7 @@
 
 .hero-text{max-width:600px;
 margin:28px auto;
-font-size:clamp(1.05rem,2.3vw,1.6rem);
+font-size:clamp(1rem,2.3vw,1.6rem);
 color:#76d577;
 }
 
