@@ -1650,6 +1650,246 @@ background:#0002}
 
 
 
+/* Franja superior verde claro */
+.footer-social-bar {
+  background-color: #2b4c30; /* Ajusta a tu verde claro exacto */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 15px 20px;
+  flex-wrap: wrap;
+}
+
+.social-item {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Footer Principal */
+.footer {
+  background-color: #0b1a10; /* Verde muy oscuro / fondo actual */
+  color: #ffffff;
+  padding-top: 40px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 40px 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr; /* 3 columnas balanceadas */
+  gap: 40px;
+}
+
+.footer-col h3, .footer-col h4 {
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+  color: #d0d0d0;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: #6bb074;
+}
+
+/* Botones dentro del Footer */
+.footer-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background-color: #937536; /* Color dorado actual */
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-secondary {
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+/* Formulario de suscripción */
+.newsletter-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.newsletter-form input {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  outline: none;
+  flex: 1;
+}
+
+.newsletter-form button {
+  background-color: #2b4c30;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Copyright al pie */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85rem;
+  color: #a0a0a0;
+}
+
+
+
+/* 1. Cursor de manito para todos los botones del footer */
+.footer-buttons button,
+.newsletter-form button {
+  cursor: pointer;
+}
+
+/* 2. Estilo del botón verde "Quiero ser voluntario" */
+.footer-buttons .btn-secondary {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el cursor (Hover) */
+.footer-buttons .btn-secondary:hover {
+  background-color: #2e6f40; /* Verde matching con la marca */
+  border-color: #2e6f40;
+  color: #ffffff;
+}
+
+/* Estilo del botón principal "Quiero APORTAR" por coherencia */
+.footer-buttons .btn-primary {
+  background-color: #8b7336;
+  color: #ffffff;
+  border: 1px solid #8b7336;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.footer-buttons .btn-primary:hover {
+  background-color: #a48943;
+  border-color: #a48943;
+}
+
+
+
+
+
+
+/* Responsive para pantallas chicas */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+
+
+
+/* ==========================================
+   AJUSTES RESPONSIVOS PARA MÓVILES (<= 768px)
+   ========================================== */
+@media (max-width: 768px) {
+  
+  /* 1. Barrita de Redes Sociales */
+  .footer-social-bar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px 15px;
+    text-align: center;
+  }
+  
+  .social-item {
+    font-size: 0.95rem;
+    justify-content: center;
+  }
+
+  /* 2. Contenedor Principal en 1 Sola Columna */
+  .footer-container {
+    grid-template-columns: 1fr; /* Pasa de 3 columnas a 1 */
+    gap: 32px;
+    padding: 30px 20px;
+    text-align: left; /* Cambia a 'center' si prefieres todo alineado al medio */
+  }
+
+  /* 3. Botones de Acción (Quiero APORTAR / Voluntario) */
+  .footer-buttons {
+    flex-direction: column; /* Botones uno debajo del otro */
+    width: 100%;
+  }
+
+  .btn-primary, 
+  .btn-secondary {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px 16px; /* Área táctil más amplia para dedos */
+    box-sizing: border-box;
+  }
+
+  /* 4. Formulario de Boletín Informativo */
+  .newsletter-form {
+    flex-direction: column; /* Input y Botón apilados */
+    width: 100%;
+  }
+
+  .newsletter-form input,
+  .newsletter-form button {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  /* 5. Copyright y Texto Legal */
+  .footer-bottom {
+    padding: 25px 15px;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+}
+
+
 
 
 

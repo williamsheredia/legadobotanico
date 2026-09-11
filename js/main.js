@@ -14,7 +14,13 @@ document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click
   toggle.setAttribute('aria-expanded', 'false');
 }));
 
-document.querySelector('#year').textContent = new Date().getFullYear();
+
+
+const yearEl = document.querySelector('#year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+
+
 
 // Carga dinámica de Instagram
 document.addEventListener("DOMContentLoaded", () => {
@@ -59,6 +65,9 @@ document.addEventListener("DOMContentLoaded", () => {
       container.innerHTML = "<p class='insta-loading'>Sigue nuestras novedades en Instagram.</p>";
     });
 });
+
+
+
 
 // Lógica de Modales (Donaciones y Voluntariado)
 document.addEventListener('DOMContentLoaded', () => {
@@ -156,4 +165,16 @@ document.addEventListener('DOMContentLoaded', () => {
     'Tu registro de voluntariado ha sido enviado con éxito. Te contactaremos pronto para coordinar tu participación.'
   );
 
+
+});
+
+
+
+
+document.getElementById('btn-abrir-aporte-footer')?.addEventListener('click', () => {
+  document.getElementById('btn-abrir-aporte')?.click();
+});
+
+document.getElementById('btn-abrir-voluntario-footer')?.addEventListener('click', () => {
+  document.getElementById('btn-abrir-voluntario')?.click();
 });
