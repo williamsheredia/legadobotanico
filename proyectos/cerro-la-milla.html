@@ -196,5 +196,223 @@
 
 
 </main>
+
+
+
+<!-- MODAL EMERGENTE DE VOLUNTARIADO -->
+
+<div class="modal-overlay" id="modal-voluntario" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="modal-voluntario-titulo">
+    <button type="button" class="modal-close" id="btn-cerrar-voluntario" aria-label="Cerrar ventana">&times;</button>
+    
+    <div class="form-header">
+      <h3 id="modal-voluntario-titulo">Únete como Voluntario 🌱</h3>
+      <p>Completa la encuesta para conocer tus disponibilidades y asignar las labores más adecuadas para ti.</p>
+    </div>
+
+    <form name="voluntarios" method="POST" data-netlify="true" class="legado-form">
+      <input type="hidden" name="form-name" value="voluntarios" />
+
+      <div class="form-grid">
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="vol-nombre">Nombre y Apellido *</label>
+            <input type="text" id="vol-nombre" name="nombre" required placeholder="Tu nombre completo">
+          </div>
+          <div class="form-group">
+            <label for="vol-distrito">Distrito de residencia *</label>
+            <input type="text" id="vol-distrito" name="distrito" required placeholder="Ej: San Martín de Porres, Los Olivos...">
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="vol-email">Correo electrónico *</label>
+            <input type="email" id="vol-email" name="email" required placeholder="tu@email.com">
+          </div>
+          <div class="form-group">
+            <label for="vol-telefono">Teléfono / WhatsApp *</label>
+            <input type="tel" id="vol-telefono" name="telefono" required placeholder="+51 999 999 999">
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="vol-edad">Edad *</label>
+            <input type="number" id="vol-edad" name="edad" required placeholder="Ej: 25" min="12" max="99">
+          </div>
+          <div class="form-group">
+            <label for="vol-profesion">Profesión u ocupación</label>
+            <input type="text" id="vol-profesion" name="profesion" placeholder="Ej: Estudiante, Ingeniero, Esteticista...">
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="vol-movilidad">¿Cuentas con movilidad propia? *</label>
+            <select id="vol-movilidad" name="movilidad_propia" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="No">No</option>
+              <option value="Sí (Auto)">Sí (Auto)</option>
+              <option value="Sí (Moto/Bicicleta)">Sí (Moto / Bicicleta)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="vol-disponibilidad">Días y horario disponibles *</label>
+            <input type="text" id="vol-disponibilidad" name="disponibilidad" required placeholder="Ej: Sábados por la mañana / Domingos todo el día">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="vol-capacidad-fisica">¿Con qué tipo de labor te sientes más cómodo/a apoyando en campo? *</label>
+          <select id="vol-capacidad-fisica" name="tipo_labor_preferida" required>
+            <option value="" disabled selected>Selecciona la capacidad de esfuerzo</option>
+            <option value="Poca fuerza: Limpieza, recolección de sustrato y epífitas">Labores livianas (Juntar basura en sacos, recoger polvillo/sustrato, recolección)</option>
+            <option value="Mediana fuerza: Cargar pedregal y nivelar andenes">Labores de mediana fuerza (Nivelar andenes, trasladar material liviano)</option>
+            <option value="Gran fuerza: Picar rocas, pircados, mover rocas grandes y sacos">Labores de fuerza e intensas (Picar rocas, mover rocas grandes, cargar sacos o madera)</option>
+            <option value="Redes sociales y difusión comunitaria">Difusión en redes sociales e incentivar a que más personas se sumen</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="vol-mensaje">Comentario adicional / Habilidades especiales</label>
+          <textarea id="vol-mensaje" name="comentario" rows="3" placeholder="Cuéntanos cualquier detalle adicional que consideres relevante..."></textarea>
+        </div>
+
+        <button type="submit" class="button primary btn-submit-form" style="background: var(--ochre);">Enviar registro de voluntario</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- FIN DEL MODAL EMERGENTE DE VOLUNTARIADO -->
+
+
+
+
+<!-- MODAL EMERGENTE DE APORTES -->
+<div class="modal-overlay" id="modal-aporte" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="modal-aporte-titulo">
+    <button type="button" class="modal-close" id="btn-cerrar-aporte" aria-label="Cerrar ventana">&times;</button>
+    
+    <div class="form-header">
+      <h3 id="modal-aporte-titulo">Formulario de Aporte 💚</h3>
+      <p>Cuéntanos cómo te gustaría colaborar y nos pondremos en contacto contigo para coordinarlo.</p>
+    </div>
+
+    <form name="donaciones" method="POST" data-netlify="true" class="legado-form">
+      <input type="hidden" name="form-name" value="donaciones" />
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="don-nombre">Nombre o Entidad *</label>
+          <input type="text" id="don-nombre" name="nombre" required placeholder="Tu nombre o el de tu empresa">
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="don-email">Correo electrónico *</label>
+            <input type="email" id="don-email" name="email" required placeholder="tu@email.com">
+          </div>
+          <div class="form-group">
+            <label for="don-telefono">Teléfono / WhatsApp *</label>
+            <input type="tel" id="don-telefono" name="telefono" required placeholder="+51 999 999 999">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="label-title">¿Qué tipo de aporte deseas realizar? (Puedes marcar varios)</label>
+          <div class="checkbox-options">
+            <label class="checkbox-card">
+              <input type="checkbox" name="tipo_aporte" value="Aporte economico">
+              <span>💚 <b>Aporte económico:</b> Para sostener y ampliar los proyectos.</span>
+            </label>
+
+            <label class="checkbox-card">
+              <input type="checkbox" name="tipo_aporte" value="Plantas y semillas">
+              <span>🌱 <b>Plantas y semillas:</b> Material vegetal destinado a los proyectos.</span>
+            </label>
+
+            <label class="checkbox-card">
+              <input type="checkbox" name="tipo_aporte" value="Compost y materia organica">
+              <span>♻️ <b>Compost y materia orgánica:</b> Hojas, compost y otros aportes aprovechables.</span>
+            </label>
+
+            <label class="checkbox-card">
+              <input type="checkbox" name="tipo_aporte" value="Materiales y herramientas">
+              <span>🛠️ <b>Materiales y herramientas:</b> Recursos para las jornadas de trabajo.</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="don-detalle">Detalles del aporte / Mensaje</label>
+          <textarea id="don-detalle" name="detalle" rows="3" placeholder="Ej: Tengo 5 sacos de compost / Deseo realizar un depósito Yape o transferencia..."></textarea>
+        </div>
+
+        <button type="submit" class="button primary btn-submit-form">Enviar propuesta de aporte</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- FIN MODAL EMERGENTE DE APORTES -->
+
+
+
+<footer class="footer">
+
+  <!-- Contenido Principal en Columnas -->
+  <div class="footer-container">
+    <!-- Columna 1: Info & CTAs -->
+    <div class="footer-col brand-col">
+      <h3>🌿 LEGADO BOTÁNICO</h3>
+      <p>Restauración ecológica · Comunidad · Futuro</p>
+      <p class="location">San Martín de Porres · Lima, Perú</p>
+
+      <div class="footer-buttons">
+  		<button type="button" class="btn-primary" id="btn-abrir-aporte-footer">Quiero APORTAR</button>
+  		<button type="button" class="btn-secondary" id="btn-abrir-voluntario-footer">Quiero ser voluntario</button>
+	</div>
+    </div>
+
+    <!-- Columna 2: Navegación -->
+    <div class="footer-col nav-col">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="../index.html#proyectos">Proyectos</a></li>
+        <li><a href="../quienes-somos.html">Quiénes Somos</a></li>
+        <li><a href="../alianzas.html">Alianzas</a></li>
+        <li><a href="../prensa.html">Prensa</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 3: Boletín -->
+    <div class="footer-col newsletter-col">
+      <h4>Boletín Informativo</h4>
+      <p>Recibe novedades de nuestras jornadas de restauración.</p>
+
+
+      <form name="boletin" method="POST" data-netlify="true" class="newsletter-form">
+  	<input type="hidden" name="form-name" value="boletin" />
+  	<input type="email" name="email" placeholder="Tu correo electrónico" required />
+      <button type="submit">Unirse</button>
+     </form>
+
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="footer-bottom">
+    <p>Asociación Legado Botánico.</p>
+    <p>© <span id="year"></span> ALEBO. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+
+<script src="../js/main.js"></script>
+
+
+
 </body>
 </html>

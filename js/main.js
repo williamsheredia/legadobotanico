@@ -1,18 +1,23 @@
+
 const header = document.querySelector('.site-header');
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.querySelector('.nav-links');
 
-window.addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 30));
+if (header) {
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 30));
+}
 
-toggle.addEventListener('click', () => {
-  const open = menu.classList.toggle('open');
-  toggle.setAttribute('aria-expanded', open);
-});
+if (toggle && menu) {
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
 
-document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
-  menu.classList.remove('open');
-  toggle.setAttribute('aria-expanded', 'false');
-}));
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+}
 
 
 
