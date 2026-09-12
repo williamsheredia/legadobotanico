@@ -713,7 +713,7 @@ background:#0002}
 
 @media(max-width: 600px) {
   .brand-logo {
-    height: 75px; /* Reduce la altura en móviles (ajusta este valor a tu gusto) */
+    height: 80px; /* Reduce la altura en móviles (ajusta este valor a tu gusto) */
   }
 }
 
