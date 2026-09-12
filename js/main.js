@@ -72,14 +72,14 @@ document.addEventListener("DOMContentLoaded", () => {
 // Lógica de Modales (Donaciones y Voluntariado)
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Auxiliar para manejar modales de forma segura
-  const setupModal = (btnAbrirId, btnCerrarId, modalId, formName, exitoTitulo, exitoTexto) => {
-    const btnAbrir = document.getElementById(btnAbrirId);
-    const btnCerrar = document.getElementById(btnCerrarId);
+  const setupModal = (btnAbrirId, btnCerrarId, modalId, formName, exitoTitulo, exitoTexto, btnFooterId) => {
     const modal = document.getElementById(modalId);
     const form = document.querySelector(`form[name="${formName}"]`);
+    const btnCerrar = document.getElementById(btnCerrarId);
+    const btnAbrir = document.getElementById(btnAbrirId);
+    const btnFooter = document.getElementById(btnFooterId);
 
-    if (!btnAbrir || !modal || !form) return;
+    if (!modal || !form) return;
 
     // Crear contenedor para mensaje de éxito si no existe
     let exitoContainer = modal.querySelector('.modal-exito-mensaje');
@@ -92,12 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
       modal.querySelector('.modal-content').appendChild(exitoContainer);
     }
 
+    const abrir = () => {
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden'; // Bloquea el scroll de fondo
+    };
+
     const cerrarModal = () => {
       modal.classList.remove('active');
       modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
+      document.body.style.overflow = ''; // Restaura el scroll
       
-      // Restablecer formulario y vista al cerrar
       setTimeout(() => {
         form.reset();
         form.style.display = 'block';
@@ -107,18 +112,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 300);
     };
 
-    btnAbrir.addEventListener('click', () => {
-      modal.classList.add('active');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    });
+    // Eventos de Apertura (Página o Footer)
+    if (btnAbrir) btnAbrir.addEventListener('click', abrir);
+    if (btnFooter) btnFooter.addEventListener('click', abrir);
 
+    // Eventos de Cierre (Botón X y Fondo Oscuro)
     if (btnCerrar) btnCerrar.addEventListener('click', cerrarModal);
 
     modal.addEventListener('click', (e) => {
       if (e.target === modal) cerrarModal();
     });
 
+    // Envío de Formulario
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const formData = new FormData(form);
@@ -129,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
         body: new URLSearchParams(formData).toString()
       })
       .then(() => {
-        // Ocultar formulario y mostrar mensaje de éxito
         form.style.display = 'none';
         const header = modal.querySelector('.form-header');
         if (header) header.style.display = 'none';
@@ -152,7 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'modal-aporte',
     'donaciones',
     '¡Gracias por tu propuesta!',
-    'Hemos recibido tu información correctamente. Nos pondremos en contacto contigo muy pronto para coordinar.'
+    'Hemos recibido tu información correctamente. Nos pondremos en contacto contigo muy pronto para coordinar.',
+    'btn-abrir-aporte-footer'
   );
 
   // Inicializar Modal Voluntariado
@@ -162,19 +167,51 @@ document.addEventListener('DOMContentLoaded', () => {
     'modal-voluntario',
     'voluntarios',
     '¡Bienvenido a la comunidad!',
-    'Tu registro de voluntariado ha sido enviado con éxito. Te contactaremos pronto para coordinar tu participación.'
+    'Tu registro de voluntariado ha sido enviado con éxito. Te contactaremos pronto para coordinar tu participación.',
+    'btn-abrir-voluntario-footer'
   );
 
+  // --- CIERRE DE MODALES CON LA TECLA ESCAPE ---
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' || e.key === 'Esc') {
+      const modalAporte = document.getElementById('modal-aporte');
+      const modalVoluntario = document.getElementById('modal-voluntario');
+
+      // Si el modal de aporte está abierto, simular clic en su botón de cierre
+      if (modalAporte?.classList.contains('active')) {
+        document.getElementById('btn-cerrar-aporte')?.click();
+      }
+
+      // Si el modal de voluntario está abierto, simular clic en su botón de cierre
+      if (modalVoluntario?.classList.contains('active')) {
+        document.getElementById('btn-cerrar-voluntario')?.click();
+      }
+    }
+  });
 
 });
 
 
 
 
-document.getElementById('btn-abrir-aporte-footer')?.addEventListener('click', () => {
-  document.getElementById('btn-abrir-aporte')?.click();
-});
+// Manejo AJAX para el Boletín Informativo (evita recargar la página)
+document.addEventListener('DOMContentLoaded', () => {
+  const newsletterForm = document.querySelector('form[name="boletin"]');
 
-document.getElementById('btn-abrir-voluntario-footer')?.addEventListener('click', () => {
-  document.getElementById('btn-abrir-voluntario')?.click();
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(newsletterForm);
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(() => {
+        newsletterForm.innerHTML = '<p style="color: var(--gold); font-weight: bold; margin-top: 10px;">¡Gracias por unirte! 🌱</p>';
+      })
+      .catch((error) => console.error('Error al enviar suscripción:', error));
+    });
+  }
 });
