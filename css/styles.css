@@ -178,9 +178,9 @@ background:#0002}
 .project-grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr;gap:35px}
 .impact-grid{grid-template-columns:1fr 1fr}.impact-grid>div:nth-child(2){border-right:0}
 .impact-grid>div:nth-child(-n+2){border-bottom:1px solid #ffffff2e}
-.contribute-grid{grid-template-columns:1fr 1fr}}
+.contribute-grid{grid-template-columns:1fr 1fr}
 
-
+}
 
 
 
@@ -197,8 +197,18 @@ background:#0002}
 .section{padding:78px 0}
 .project-image{height:250px}
 .impact{padding:78px 0}
-.contribute-grid{grid-template-columns:1fr}.footer-inner{flex-direction:column;align-items:flex-start}
-.whatsapp{right:16px;bottom:16px}}
+.contribute-grid{grid-template-columns:1fr}
+.footer-inner{flex-direction:column;align-items:flex-start}
+.whatsapp{right:16px;bottom:16px}
+
+}
+
+
+
+
+
+
+
 
 /* --- SECCIÓN INSTAGRAM --- */
 .insta-grid {
@@ -1586,7 +1596,7 @@ background:#0002}
 
 /* Indicador visual (flecha) junto al texto principal */
 .dropdown-trigger .arrow {
-  font-size: 0.8em;
+  font-size: 1.1em;
   margin-left: 4px;
   transition: transform 0.3s ease;
 }
@@ -1893,6 +1903,318 @@ background:#0002}
 
 
 
+/* ===================================================================
+   ESTILOS PARA PÁGINA DE EQUIPO (equipo.html) - SIN BORDES DUROS
+   =================================================================== */
 
+/* Tarjeta Destacada Presidente (Horizontal en PC, Apilada en Móvil) */
+.team-leader-card {
+  background: var(--white);
+  border: none;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 15px 45px rgba(22, 56, 42, 0.07);
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 35px;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.team-leader-img-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.team-leader-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+.team-leader-info h3 {
+  font: 700 2rem "Playfair Display", serif;
+  color: var(--forest-deep);
+  margin: 0 0 6px 0;
+}
+
+.team-role-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ochre);
+  margin-bottom: 16px;
+}
+
+.team-leader-info p {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.team-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-chip {
+  background: var(--cream);
+  color: var(--forest);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+/* Grilla de 2 Columnas para los demás miembros */
+.team-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.team-member-card {
+  background: var(--white);
+  border: none;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(13, 33, 26, 0.05);
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(13, 33, 26, 0.09);
+}
+
+.team-member-avatar {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--cream);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.team-member-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-member-body {
+  flex: 1;
+}
+
+.team-member-body .team-role-tag {
+  margin-bottom: 4px;
+  font-size: 0.73rem;
+}
+
+.team-member-body h4 {
+  font: 700 1.25rem "Playfair Display", serif;
+  color: var(--forest-deep);
+  margin: 0 0 6px;
+}
+
+.team-member-body p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+/* Adaptabilidad Móvil */
+@media (max-width: 850px) {
+  .team-leader-card {
+    grid-template-columns: 1fr;
+    padding: 28px;
+    gap: 24px;
+  }
+  .team-leader-img-wrap {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .team-member-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-member-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+
+/* ===================================================================
+   ESTILOS PÁGINA DE POLÍTICAS (politicas.html) - ESTRUCTURA MODERNA
+   =================================================================== */
+
+/* Grilla de 2 columnas para Políticas Principales */
+.policies-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.policy-card {
+  background: var(--white);
+  border: none;
+  border-radius: 22px;
+  padding: 35px;
+  box-shadow: 0 12px 35px rgba(13, 33, 26, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.policy-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 45px rgba(13, 33, 26, 0.09);
+}
+
+.policy-icon-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.policy-icon-badge {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: var(--cream);
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.policy-card h3 {
+  font: 700 1.4rem "Playfair Display", serif;
+  color: var(--forest-deep);
+  margin: 0;
+}
+
+.policy-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+.policy-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.policy-list li {
+  position: relative;
+  padding-left: 24px;
+  color: var(--ink);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.policy-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--leaf);
+  font-weight: 800;
+}
+
+.policy-tag {
+  margin-top: auto;
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ochre);
+  background: var(--paper);
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+/* Tarjeta Ancha de Compromiso Ético */
+.policy-banner {
+  background: var(--forest-deep);
+  color: var(--white);
+  border-radius: 24px;
+  padding: 45px;
+  box-shadow: 0 15px 40px rgba(22, 56, 42, 0.15);
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 40px;
+  align-items: center;
+}
+
+.policy-banner h3 {
+  font: 700 1.8rem "Playfair Display", serif;
+  color: var(--white);
+  margin: 0 0 12px;
+}
+
+.policy-banner p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.policy-download-box {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  padding: 25px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.policy-download-box span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--sand);
+  margin-bottom: 12px;
+}
+
+/* Adaptación Móvil */
+@media (max-width: 850px) {
+  .policies-grid {
+    grid-template-columns: 1fr;
+  }
+  .policy-banner {
+    grid-template-columns: 1fr;
+    padding: 30px;
+    gap: 25px;
+  }
+}
 
 
