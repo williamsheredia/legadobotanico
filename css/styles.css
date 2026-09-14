@@ -2236,3 +2236,24 @@ transition: width 0.2s ease;
 }
 
 
+/* --- ENCUADRE RESPONSIVE DE IMÁGENES DE HERO --- */
+
+/* 1. Imagen por defecto para Pantallas Grandes / PC */
+.page-hero-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), url('../assets/cerro-la-milla-sunset.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 2. Adaptación para Pantallas Móviles (<= 600px) */
+@media (max-width: 600px) {
+  .page-hero-bg {
+    /* Puedes cambiar 'cerro-la-milla-sunset.png' por una versión vertical como 'hero-mobile.jpg' si la tienes */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('../assets/cerro-la-milla-sunset-mobile.png');
+    background-position: center 30%; /* Reencuadra el punto focal de la foto en móviles */
+    min-height: 380px;
+  }
+}
+
+
