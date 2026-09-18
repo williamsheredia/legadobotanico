@@ -169,10 +169,9 @@ border-radius:18px}
 
 
 /* ==========================================
-   MENU HAMBURGUESA DINÁMICO (PUNTAS ASIMÉTRICAS)
+   MENU HAMBURGUESA DINÁMICO (HOJAS FLUIDAS)
    ========================================== */
 
-/* Botón contenedor del menú */
 .menu-toggle {
   display: flex;
   width: 36px;
@@ -180,84 +179,133 @@ border-radius:18px}
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 7px;
+  gap: 5px;
   border: none;
   background: transparent;
   cursor: pointer;
   padding: 0;
+  position: relative;
 }
 
-/* Estilos base para las 3 líneas */
+/* Base de las 3 líneas (Modo Hamburguesa) */
 .menu-toggle i {
   display: block;
-  height: 2px;
+  height: 2.5px;
   background: #fff;
-  /* Mantiene los bordes redondeados por defecto en modo hamburguesa */
   border-radius: 2px;
-  transition: transform 0.4s ease, width 0.4s ease, background 0.4s ease, border-radius 0.4s ease;
-  transform-origin: left center;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+  transform-origin: center;
 }
 
-/* Líneas superior e inferior */
 .menu-toggle i:nth-child(1),
 .menu-toggle i:nth-child(3) {
-  width: 16px;
+  width: 14px;
 }
 
-/* Línea del medio */
 .menu-toggle i:nth-child(2) {
-  width: 22px;
+  width: 20px;
 }
 
 /* ==========================================
-   TRANSICIÓN A FLECHA (.arrow)
+   TRANSICIÓN A HOJAS BOTÁNICAS (.arrow)
    ========================================== */
 
 .menu-toggle.arrow i {
-  background: #76d577;
+  background: transparent !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 12'%3E%3Cpath fill='%2376d577' d='M0,6 C6,0 24,0 30,6 C24,12 6,12 0,6 Z'/%3E%3C/svg%3E") !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
 }
 
-/* Ala superior: punta izquierda RECTA/AFILADA (0) y extremo derecho REDONDO (3px) */
+/* Hoja 1 (Superior) - Velocidad ecualizada */
 .menu-toggle.arrow i:nth-child(1) {
-  width: 9px;
-  /* border-radius: [arriba-izq] [arriba-der] [abajo-der] [abajo-izq] */
-  border-radius: 0 2px 2px 0; 
-  transform-origin: 0% 50%;
-  transform: translateX(-4.7px) translateY(9px) rotate(-45deg);
+  width: 18px;
+  height: 8px;
+  animation: planeoOndulado1 5.0s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite -1.0s;
 }
 
-/* Línea central mantiene su forma */
+/* Hoja 2 (Central) */
 .menu-toggle.arrow i:nth-child(2) {
-  width: 20px;
-  border-radius: 2px;
+  width: 22px;
+  height: 9px;
+  animation: planeoOndulado2 5.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite -2.6s;
 }
 
-/* Ala inferior: punta izquierda RECTA/AFILADA (0) y extremo derecho REDONDO (3px) */
+/* Hoja 3 (Inferior) */
 .menu-toggle.arrow i:nth-child(3) {
-  width: 9px;
-  border-radius: 0 2px 2px 0; 
-  transform-origin: 0% 50%;
-  transform: translateX(-4.7px) translateY(-9px) rotate(45deg);
+  width: 17px;
+  height: 7.5px;
+  animation: planeoOndulado3 5.4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite -0.5s;
+}
+
+/* ==========================================
+   FÍSICA DE PLANEO PENDULAR (SIN TROPEZONES)
+   ========================================== */
+
+@keyframes planeoOndulado1 {
+  0% {
+    transform: translate3d(0px, -10px, 0) rotate(-10deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(-7px, 10px, 0) rotate(-22deg);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0px, 30px, 0) rotate(-10deg);
+    opacity: 0;
+  }
+}
+
+@keyframes planeoOndulado2 {
+  0% {
+    transform: translate3d(0px, -8px, 0) rotate(8deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(7px, 12px, 0) rotate(20deg);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0px, 32px, 0) rotate(8deg);
+    opacity: 0;
+  }
+}
+
+@keyframes planeoOndulado3 {
+  0% {
+    transform: translate3d(0px, -12px, 0) rotate(-12deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(-6px, 8px, 0) rotate(-24deg);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0px, 28px, 0) rotate(-12deg);
+    opacity: 0;
+  }
 }
 
 
-.project-grid{grid-template-columns:1fr}
-.two-col{grid-template-columns:1fr;gap:35px}
-.impact-grid{grid-template-columns:1fr 1fr}
-.impact-grid>div:nth-child(2){border-right:0}
-.impact-grid>div:nth-child(-n+2){border-bottom:1px solid #ffffff2e}
-.contribute-grid{grid-template-columns:1fr 1fr}
-
-}
 
 
-
-@media(max-width:600px){.container{width:min(calc(100% - 28px),var(--max))}
-.hero{background-image:
-	linear-gradient(180deg,#091c1211,#091c1205),url("../assets/hero-mobile.jpg"),
-	linear-gradient(135deg,var(--leaf),var(--forest-deep));
-	background-position:center
-	}
 
 .hero h1{font-size:clamp(3.8rem,19vw,5.8rem)}
 .hero-actions{display:grid}
