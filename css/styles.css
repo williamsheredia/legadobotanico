@@ -169,7 +169,7 @@ border-radius:18px}
 
 
 /* ==========================================
-   MENU HAMBURGUESA DINAMICO
+   MENU HAMBURGUESA DINÁMICO (PUNTAS ASIMÉTRICAS)
    ========================================== */
 
 /* Botón contenedor del menú */
@@ -190,48 +190,54 @@ border-radius:18px}
 /* Estilos base para las 3 líneas */
 .menu-toggle i {
   display: block;
-  height: 3px;
+  height: 2px;
   background: #fff;
-  border-radius: 3px;
-  transition: transform 0.4s ease, width 0.4s ease, background 0.4s ease;
-  transform-origin: left center; /* Anclaje de rotación a la izquierda */
+  /* Mantiene los bordes redondeados por defecto en modo hamburguesa */
+  border-radius: 2px;
+  transition: transform 0.4s ease, width 0.4s ease, background 0.4s ease, border-radius 0.4s ease;
+  transform-origin: left center;
 }
 
-/* Líneas superior e inferior (más cortas) */
+/* Líneas superior e inferior */
 .menu-toggle i:nth-child(1),
 .menu-toggle i:nth-child(3) {
   width: 14px;
 }
 
-/* Línea del medio (más ancha) */
+/* Línea del medio */
 .menu-toggle i:nth-child(2) {
   width: 20px;
 }
 
 /* ==========================================
-   TRANSICIÓN A FLECHA HACIA LA IZQUIERDA (.arrow)
+   TRANSICIÓN A FLECHA (.arrow)
    ========================================== */
 
 .menu-toggle.arrow i {
   background: #76d577;
 }
 
-/* Baja la línea superior hasta la punta de la línea central */
+/* Ala superior: punta izquierda RECTA/AFILADA (0) y extremo derecho REDONDO (3px) */
 .menu-toggle.arrow i:nth-child(1) {
-  width: 9px;
-  transform-origin: 0% 50%; /* Fija el eje en el extremo izquierdo */
-  transform: translateX(-4.4px) translateY(7px) rotate(-45deg);
+  width: 8px;
+  /* border-radius: [arriba-izq] [arriba-der] [abajo-der] [abajo-izq] */
+  border-radius: 0 2px 2px 0; 
+  transform-origin: 0% 50%;
+  transform: translateX(-4.6px) translateY(7px) rotate(-45deg);
 }
 
+/* Línea central mantiene su forma */
 .menu-toggle.arrow i:nth-child(2) {
   width: 20px;
+  border-radius: 2px;
 }
 
-/* Sube la línea inferior hasta la punta de la línea central */
+/* Ala inferior: punta izquierda RECTA/AFILADA (0) y extremo derecho REDONDO (3px) */
 .menu-toggle.arrow i:nth-child(3) {
-  width: 9px;
-  transform-origin: 0% 50%; /* Fija el eje en el extremo izquierdo */
-  transform: translateX(-4.4px) translateY(-7px) rotate(45deg);
+  width: 8px;
+  border-radius: 0 2px 2px 0; 
+  transform-origin: 0% 50%;
+  transform: translateX(-4.6px) translateY(-7px) rotate(45deg);
 }
 
 
