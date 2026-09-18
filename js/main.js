@@ -238,10 +238,12 @@ if (toggleBtn) {
     if (!toggleBtn.classList.contains('open')) {
       toggleBtn.classList.toggle('arrow');
     }
-  }, 3000);
+  }, 3500);
 
   // Al hacer clic para abrir/cerrar el menú, remueve la flecha para mostrar el menú desplegable
   toggleBtn.addEventListener('click', () => {
     toggleBtn.classList.remove('arrow');
   });
 }
+
+
