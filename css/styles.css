@@ -220,7 +220,7 @@ border-radius:18px}
 .menu-toggle.arrow i:nth-child(1) {
   width: 8px;
   transform-origin: 0% 50%; /* Fija el eje en el extremo izquierdo */
-  transform: translateX(-4.5px) translateY(6px) rotate(-45deg);
+  transform: translateX(-4.6px) translateY(6.5px) rotate(-45deg);
 }
 
 .menu-toggle.arrow i:nth-child(2) {
@@ -231,7 +231,7 @@ border-radius:18px}
 .menu-toggle.arrow i:nth-child(3) {
   width: 8px;
   transform-origin: 0% 50%; /* Fija el eje en el extremo izquierdo */
-  transform: translateX(-4.5px) translateY(-6px) rotate(45deg);
+  transform: translateX(-4.6px) translateY(-6.5px) rotate(45deg);
 }
 
 /* ==========================================
