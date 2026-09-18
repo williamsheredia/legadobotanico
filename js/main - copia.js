@@ -220,26 +220,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
-
-
-
-
-
-// temporizador de 3 segundos MENU HABURGUESA
-const toggleBtn = document.querySelector('.menu-toggle');
-
-if (toggleBtn) {
-  // Cambia entre hamburguesa y flecha cada 3 segundos
-  setInterval(() => {
-    // Solo anima si el menú desplegable no está abierto
-    if (!toggleBtn.classList.contains('open')) {
-      toggleBtn.classList.toggle('arrow');
-    }
-  }, 3000);
-
-  // Al hacer clic para abrir/cerrar el menú, remueve la flecha para mostrar el menú desplegable
-  toggleBtn.addEventListener('click', () => {
-    toggleBtn.classList.remove('arrow');
-  });
-}

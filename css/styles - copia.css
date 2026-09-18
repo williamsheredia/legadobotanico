@@ -165,82 +165,6 @@ border-radius:18px}
 .nav-links.open{display:flex}
 .nav-action{text-align:center}
 
-
-
-
-/* ==========================================
-   MENU HAMBURGUESA DINAMICO
-   ========================================== */
-
-/* Botón contenedor del menú */
-.menu-toggle {
-  display: flex;
-  width: 36px;
-  height: 36px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
-}
-
-/* Estilos base para las 3 líneas */
-.menu-toggle i {
-  display: block;
-  height: 3px;
-  background: #fff;
-  border-radius: 3px;
-  transition: transform 0.4s ease, width 0.4s ease, background 0.4s ease;
-  transform-origin: left center; /* Anclaje de rotación a la izquierda */
-}
-
-/* Líneas superior e inferior (más cortas) */
-.menu-toggle i:nth-child(1),
-.menu-toggle i:nth-child(3) {
-  width: 14px;
-}
-
-/* Línea del medio (más ancha) */
-.menu-toggle i:nth-child(2) {
-  width: 20px;
-}
-
-/* ==========================================
-   TRANSICIÓN A FLECHA HACIA LA IZQUIERDA (.arrow)
-   ========================================== */
-
-.menu-toggle.arrow i {
-  background: #76d577;
-}
-
-/* Baja la línea superior hasta la punta de la línea central */
-.menu-toggle.arrow i:nth-child(1) {
-  width: 8px;
-  transform-origin: 0% 50%; /* Fija el eje en el extremo izquierdo */
-  transform: translateX(-4.5px) translateY(6px) rotate(-45deg);
-}
-
-.menu-toggle.arrow i:nth-child(2) {
-  width: 20px;
-}
-
-/* Sube la línea inferior hasta la punta de la línea central */
-.menu-toggle.arrow i:nth-child(3) {
-  width: 8px;
-  transform-origin: 0% 50%; /* Fija el eje en el extremo izquierdo */
-  transform: translateX(-4.5px) translateY(-6px) rotate(45deg);
-}
-
-/* ==========================================
-   FIN DE MENU HAMBURGUESA DINAMICO
-   ========================================== */
-
-
-/*
-
 .menu-toggle{
 display:flex;
 width:36px; /* 44px;  */
@@ -266,10 +190,6 @@ background:#fff;
 border-radius: 2px;     /* Redondeado sutil en los extremos */
 transition: width 0.2s ease;
 }
-
-*/
-
-
 
 .project-grid{grid-template-columns:1fr}
 .two-col{grid-template-columns:1fr;gap:35px}
