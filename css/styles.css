@@ -180,7 +180,7 @@ border-radius:18px}
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 7px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -201,12 +201,12 @@ border-radius:18px}
 /* Líneas superior e inferior */
 .menu-toggle i:nth-child(1),
 .menu-toggle i:nth-child(3) {
-  width: 14px;
+  width: 16px;
 }
 
 /* Línea del medio */
 .menu-toggle i:nth-child(2) {
-  width: 20px;
+  width: 22px;
 }
 
 /* ==========================================
