@@ -304,7 +304,22 @@ border-radius:18px}
 }
 
 
+/* ==========================================
+   SUAVIZADO DE REINICIO (SALIDA SIN BRUSQUEDAD)
+   ========================================== */
 
+/* Transición fluida para el regreso al estado base */
+.menu-toggle i {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+              width 0.4s ease, 
+              background-color 0.4s ease, 
+              opacity 0.4s ease !important;
+}
+
+/* Transición de opacidad al desactivar la clase .arrow */
+.menu-toggle:not(.arrow) i {
+  animation: ningunMovimiento 0s;
+}
 
 
 .hero h1{font-size:clamp(3.8rem,19vw,5.8rem)}

@@ -227,19 +227,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // temporizador de 3 segundos MENU HABURGUESA
-const toggleBtn = document.querySelector('.menu-toggle');
 
-if (toggleBtn) {
-  // Cambia entre hamburguesa y flecha cada 3 segundos
-  setInterval(() => {
-    // Solo anima si el menú desplegable no está abierto
-    if (!toggleBtn.classList.contains('open')) {
-      toggleBtn.classList.toggle('arrow');
-    }
-  }, 3000);
 
-  // Al hacer clic para abrir/cerrar el menú, remueve la flecha para mostrar el menú desplegable
-  toggleBtn.addEventListener('click', () => {
-    toggleBtn.classList.remove('arrow');
-  });
-}
+const menuToggle = document.querySelector('.menu-toggle');
+
+menuToggle.addEventListener('click', () => {
+  if (menuToggle.classList.contains('arrow')) {
+    // Suaviza la salida desvaneciendo las hojas antes de restablecer las barras
+    menuToggle.style.opacity = '0.4';
+    setTimeout(() => {
+      menuToggle.classList.remove('arrow');
+      menuToggle.style.opacity = '1';
+    }, 150);
+  } else {
+    menuToggle.classList.add('arrow');
+  }
+});
