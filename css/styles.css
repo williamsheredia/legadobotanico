@@ -301,7 +301,6 @@ border-radius:18px}
     transform: translate3d(0px, 28px, 0) rotate(-12deg);
     opacity: 0;
   }
-}
 
 
 /* ==========================================
@@ -320,6 +319,12 @@ border-radius:18px}
 .menu-toggle:not(.arrow) i {
   animation: ningunMovimiento 0s;
 }
+
+
+}
+
+
+
 
 
 .hero h1{font-size:clamp(3.8rem,19vw,5.8rem)}
