@@ -218,9 +218,9 @@ border-radius:18px}
 
 /* Baja la línea superior hasta la punta de la línea central */
 .menu-toggle.arrow i:nth-child(1) {
-  width: 8px;
+  width: 9px;
   transform-origin: 0% 50%; /* Fija el eje en el extremo izquierdo */
-  transform: translateX(-4.6px) translateY(6.5px) rotate(-45deg);
+  transform: translateX(-4.4px) translateY(7px) rotate(-45deg);
 }
 
 .menu-toggle.arrow i:nth-child(2) {
@@ -229,14 +229,11 @@ border-radius:18px}
 
 /* Sube la línea inferior hasta la punta de la línea central */
 .menu-toggle.arrow i:nth-child(3) {
-  width: 8px;
+  width: 9px;
   transform-origin: 0% 50%; /* Fija el eje en el extremo izquierdo */
-  transform: translateX(-4.6px) translateY(-6.5px) rotate(45deg);
+  transform: translateX(-4.4px) translateY(-7px) rotate(45deg);
 }
 
-/* ==========================================
-   FIN DE MENU HAMBURGUESA DINAMICO
-   ========================================== */
 
 .project-grid{grid-template-columns:1fr}
 .two-col{grid-template-columns:1fr;gap:35px}
