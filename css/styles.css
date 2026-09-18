@@ -179,7 +179,7 @@ border-radius:18px}
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 7px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -190,20 +190,20 @@ border-radius:18px}
 /* Base de las 3 líneas (Modo Hamburguesa) */
 .menu-toggle i {
   display: block;
-  height: 2.5px;
+  height: 2px;
   background: #fff;
   border-radius: 2px;
-  transition: transform 0.4s ease, opacity 0.3s ease;
-  transform-origin: center;
+  transition: transform 0.4s ease, width 0.4s ease, background 0.4s ease, border-radius 0.4s ease;
+  transform-origin: left center;
 }
 
 .menu-toggle i:nth-child(1),
 .menu-toggle i:nth-child(3) {
-  width: 14px;
+  width: 16px;
 }
 
 .menu-toggle i:nth-child(2) {
-  width: 20px;
+  width: 22px;
 }
 
 /* ==========================================
