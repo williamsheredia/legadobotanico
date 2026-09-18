@@ -219,11 +219,11 @@ border-radius:18px}
 
 /* Ala superior: punta izquierda RECTA/AFILADA (0) y extremo derecho REDONDO (3px) */
 .menu-toggle.arrow i:nth-child(1) {
-  width: 8px;
+  width: 9px;
   /* border-radius: [arriba-izq] [arriba-der] [abajo-der] [abajo-izq] */
   border-radius: 0 2px 2px 0; 
   transform-origin: 0% 50%;
-  transform: translateX(-5px) translateY(8px) rotate(-45deg);
+  transform: translateX(-6px) translateY(9px) rotate(-45deg);
 }
 
 /* Línea central mantiene su forma */
@@ -234,10 +234,10 @@ border-radius:18px}
 
 /* Ala inferior: punta izquierda RECTA/AFILADA (0) y extremo derecho REDONDO (3px) */
 .menu-toggle.arrow i:nth-child(3) {
-  width: 8px;
+  width: 9px;
   border-radius: 0 2px 2px 0; 
   transform-origin: 0% 50%;
-  transform: translateX(-4.6px) translateY(-7px) rotate(45deg);
+  transform: translateX(-6px) translateY(-9px) rotate(45deg);
 }
 
 
