@@ -1968,18 +1968,17 @@ a {
 
 
 /* ==========================================================================
-   CAROUSEL DE INSTAGRAM (FORMATO 3:4 Y DESPLAZAMIENTO LATERAL)
+   CARRUSEL DE INSTAGRAM (TARJETAS MÁS GRANDES Y PROPORCIÓN 3:4)
    ========================================================================== */
 .insta-grid {
   display: flex !important;
   overflow-x: auto !important;
   scroll-snap-type: x mandatory;
-  gap: 20px;
-  padding: 10px 5px 25px 5px;
+  gap: 24px;
+  padding: 15px 5px 30px 5px;
   -webkit-overflow-scrolling: touch;
 }
 
-/* Ocultar barra de desplazamiento manteniendo la función de scroll */
 .insta-grid::-webkit-scrollbar {
   height: 6px;
 }
@@ -1991,29 +1990,28 @@ a {
   background: var(--paper);
 }
 
-/* Tarjeta individual en proporción 3:4 */
+/* Tarjetas más amplias */
 .insta-card {
-  flex: 0 0 calc(25% - 15px); /* En escritorio muestra las 4 publicaciones en pantalla */
-  min-width: 260px;
-  aspect-ratio: 3 / 4; /* Fuerza estrictamente la proporción 3:4 */
+  flex: 0 0 320px; /* Aumentado de 260px a 320px en PC para mayor visibilidad */
+  min-width: 320px;
+  aspect-ratio: 3 / 4;
   position: relative;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid var(--line);
   background: var(--white);
   scroll-snap-align: start;
-  box-shadow: 0 8px 20px rgba(13, 33, 26, 0.06);
+  box-shadow: 0 10px 25px rgba(13, 33, 26, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
 }
 
 .insta-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(13, 33, 26, 0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 35px rgba(13, 33, 26, 0.15);
 }
 
-/* Imagen o miniatura del video */
 .insta-media {
   width: 100%;
   height: 100%;
@@ -2021,12 +2019,11 @@ a {
   display: block;
 }
 
-/* Capa de información inferior sobre la imagen */
 .insta-body {
   position: absolute;
   inset: auto 0 0 0;
-  padding: 40px 16px 16px;
-  background: linear-gradient(180deg, transparent 0%, rgba(13, 33, 26, 0.9) 100%);
+  padding: 45px 18px 18px;
+  background: linear-gradient(180deg, transparent 0%, rgba(13, 33, 26, 0.92) 100%);
   color: var(--white);
   display: flex;
   flex-direction: column;
@@ -2034,7 +2031,7 @@ a {
 }
 
 .insta-date {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -2042,17 +2039,17 @@ a {
 }
 
 .insta-caption {
-  font-size: 0.85rem;
-  line-height: 1.35;
+  font-size: 0.9rem;
+  line-height: 1.4;
   margin: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Trunca el texto a 2 líneas para no deformar la tarjeta */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
 .insta-link {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--white);
   margin-top: 4px;
@@ -2063,10 +2060,97 @@ a {
   margin-top: 30px;
 }
 
-/* Ajuste para pantallas móviles y tablets */
-@media (max-width: 950px) {
+@media (max-width: 768px) {
   .insta-card {
-    flex: 0 0 75%; /* En móvil muestra 1 tarjeta completa y asoma la siguiente para invitar al deslizar */
-    min-width: 240px;
+    flex: 0 0 85%; /* En móvil ocupa casi todo el ancho para destacar la publicación */
+    min-width: 280px;
+  }
+}
+
+/* ==========================================================================
+   VISOR / LIGHTBOX PARA AMPLIAR IMÁGENES DE LA GALERÍA
+   ========================================================================== */
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(10, 24, 18, 0.92);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.gallery-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 92vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.92);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gallery-lightbox.active .lightbox-content {
+  transform: scale(1);
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.lightbox-caption {
+  margin-top: 15px;
+  color: var(--paper);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  max-width: 600px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -45px;
+  right: -5px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  line-height: 1;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+  .lightbox-close {
+    top: -50px;
+    right: 0px;
   }
 }

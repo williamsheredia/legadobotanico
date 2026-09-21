@@ -295,3 +295,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+// ==========================================
+  // 6. VISOR AMPLIADO (LIGHTBOX) PARA LA GALERÍA
+  // ==========================================
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  if (galleryItems.length > 0) {
+    // Crear la estructura modal dinámicamente si no existe
+    let lightbox = document.querySelector('.gallery-lightbox');
+    if (!lightbox) {
+      lightbox = document.createElement('div');
+      lightbox.className = 'gallery-lightbox';
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightbox.innerHTML = `
+        <div class="lightbox-content">
+          <button type="button" class="lightbox-close" aria-label="Cerrar imagen">&times;</button>
+          <img src="" alt="" class="lightbox-img">
+          <div class="lightbox-caption"></div>
+        </div>
+      `;
+      document.body.appendChild(lightbox);
+    }
+
+    const lbImg = lightbox.querySelector('.lightbox-img');
+    const lbCaption = lightbox.querySelector('.lightbox-caption');
+    const lbClose = lightbox.querySelector('.lightbox-close');
+
+    const openLightbox = (imgSrc, imgAlt, captionText) => {
+      lbImg.src = imgSrc;
+      lbImg.alt = imgAlt;
+      lbCaption.textContent = captionText || '';
+      lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden'; // Evita scroll de fondo
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        lbImg.src = '';
+      }, 300);
+    };
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        const caption = item.querySelector('.gallery-caption');
+        if (img) {
+          openLightbox(img.src, img.alt, caption ? caption.textContent : '');
+        }
+      });
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.key === 'Escape' || e.key === 'Esc') && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+  }
