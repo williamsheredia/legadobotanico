@@ -1967,4 +1967,106 @@ a {
 
 
 
+/* ==========================================================================
+   CAROUSEL DE INSTAGRAM (FORMATO 3:4 Y DESPLAZAMIENTO LATERAL)
+   ========================================================================== */
+.insta-grid {
+  display: flex !important;
+  overflow-x: auto !important;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  padding: 10px 5px 25px 5px;
+  -webkit-overflow-scrolling: touch;
+}
 
+/* Ocultar barra de desplazamiento manteniendo la función de scroll */
+.insta-grid::-webkit-scrollbar {
+  height: 6px;
+}
+.insta-grid::-webkit-scrollbar-thumb {
+  background: var(--sage);
+  border-radius: 10px;
+}
+.insta-grid::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+/* Tarjeta individual en proporción 3:4 */
+.insta-card {
+  flex: 0 0 calc(25% - 15px); /* En escritorio muestra las 4 publicaciones en pantalla */
+  min-width: 260px;
+  aspect-ratio: 3 / 4; /* Fuerza estrictamente la proporción 3:4 */
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--white);
+  scroll-snap-align: start;
+  box-shadow: 0 8px 20px rgba(13, 33, 26, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.insta-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(13, 33, 26, 0.12);
+}
+
+/* Imagen o miniatura del video */
+.insta-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Capa de información inferior sobre la imagen */
+.insta-body {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 40px 16px 16px;
+  background: linear-gradient(180deg, transparent 0%, rgba(13, 33, 26, 0.9) 100%);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.insta-date {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #76d577;
+}
+
+.insta-caption {
+  font-size: 0.85rem;
+  line-height: 1.35;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Trunca el texto a 2 líneas para no deformar la tarjeta */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.insta-link {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-top: 4px;
+}
+
+.insta-action {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Ajuste para pantallas móviles y tablets */
+@media (max-width: 950px) {
+  .insta-card {
+    flex: 0 0 75%; /* En móvil muestra 1 tarjeta completa y asoma la siguiente para invitar al deslizar */
+    min-width: 240px;
+  }
+}
