@@ -31,7 +31,7 @@
         <div class="dropdown-menu">
           <a href="quienes-somos.html">Esencia</a>
           <a href="equipo.html" aria-current="page">Equipo</a>
-   	  <a href="politicas.html">Políticas</a>
+          <a href="politicas.html">Políticas</a>
         </div>
       </div>
 
@@ -48,9 +48,14 @@
 
 <main>
 
-  <!-- HERO CON FOTO CERRO LA MILLA SUNSET -->
-  <section class="page-hero page-hero-bg">
-    <div class="container text-center">
+  <!-- HERO RESPONSIVO CON IMAGEN ADAPTADA PARA MÓVIL Y DESKTOP -->
+  <section class="page-hero-picture">
+    <picture>
+      <source media="(max-width: 600px)" srcset="assets/cerro-la-milla-sunset-mobile.png">
+      <img src="assets/cerro-la-milla-sunset.png" alt="Fondo Legado Botánico" class="hero-bg-img">
+    </picture>
+    <div class="hero-overlay"></div>
+    <div class="container text-center hero-picture-content">
       <p class="eyebrow light">Asociación Legado Botánico</p>
       <h1 class="text-white">Nuestro <span>Equipo</span></h1>
       <p class="page-hero-text light">El talento multidisciplinario que impulsa la restauración ambiental y la gobernanza comunitaria.</p>
@@ -81,7 +86,7 @@
         </div>
       </div>
 
-      <!-- GRILLA DE 2 COLUMNAS (RESTO DEL EQUIPO - 9 MIEMBROS) -->
+      <!-- GRILLA DE 2 COLUMNAS (RESTO DEL EQUIPO) -->
       <div class="team-grid-2">
 
         <!-- Integrante 2 -->
@@ -335,7 +340,7 @@
   </div>
 </div>
 
-<!-- FOOTER DINÁMICO -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-col brand-col">
