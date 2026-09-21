@@ -2154,3 +2154,115 @@ a {
     right: 0px;
   }
 }
+
+
+
+
+
+
+
+/* ==========================================================================
+   ALIANZAS Y COLABORACIONES (CORRECCIÓN DE SIMETRÍA Y ALTURA EN MÓVIL)
+   ========================================================================== */
+.partners-group {
+  margin-bottom: 45px;
+}
+
+.partners-subtitle {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  color: var(--forest-deep);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.partners-grid {
+  display: grid;
+  gap: 16px;
+  align-items: stretch; /* Fuerza a que todas las tarjetas de una misma fila midan exactamente lo mismo de alto */
+}
+
+.partners-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.partners-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.partner-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Alinea los elementos desde arriba para mantener simetría */
+  text-align: center;
+  height: 100%; /* Ocupa todo el alto de la grilla */
+  box-sizing: border-box;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  color: inherit;
+}
+
+.partner-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(13, 33, 26, 0.08);
+}
+
+.partner-logo {
+  max-width: 100%;
+  height: 52px; /* Altura fija para el contenedor del logo para uniformizar el inicio del texto */
+  object-fit: contain;
+  margin-bottom: 12px;
+  filter: grayscale(20%);
+  opacity: 0.95;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.partner-card:hover .partner-logo {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.partner-card span {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  line-height: 1.35;
+  margin-top: auto; /* Empuja el texto hacia abajo suavemente manteniendo la base uniforme */
+}
+
+/* Ajuste específico para pantallas móviles */
+@media (max-width: 768px) {
+  .partners-2,
+  .partners-3 {
+    grid-template-columns: repeat(2, 1fr); /* Mantiene 2 columnas pero de tamaño idéntico */
+    gap: 12px;
+  }
+
+  .partner-card {
+    padding: 16px 10px;
+  }
+
+  .partner-logo {
+    height: 44px; /* Ajuste proporcional del logo en móvil */
+  }
+
+  .partner-card span {
+    font-size: 0.78rem;
+  }
+}
+
+
+
+
+
+
+
+
