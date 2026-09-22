@@ -2264,5 +2264,50 @@ a {
 
 
 
+/* ==========================================================================
+   AJUSTES PARA LA SECCIÓN DE IMPACTO
+   ========================================================================== */
+.impact-year-tag {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--ochre);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
 
+.impact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.impact-item strong {
+  display: block;
+  font: 700 3.2rem "Playfair Display", serif;
+  color: var(--white);
+  line-height: 1;
+}
+
+.impact-label {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #76d577;
+  margin-bottom: 4px;
+}
+
+.impact-desc {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.impact .note {
+  margin-top: 35px;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
 
