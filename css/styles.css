@@ -2265,49 +2265,82 @@ a {
 
 
 /* ==========================================================================
-   AJUSTES PARA LA SECCIÓN DE IMPACTO
+   GRILLA DE IMPACTO COMPLETA (6 INDICADORES CORREGIDA)
    ========================================================================== */
-.impact-year-tag {
-  display: inline-block;
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: var(--ochre);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-top: 8px;
+.impact {
+  padding: 100px 0;
+  background: var(--deep);
+  color: var(--white);
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 45px;
+  margin-bottom: 25px;
+  border-block: none !important; /* Elimina las líneas horizontales pegadas arriba y abajo */
+  border-top: none !important;
+  border-bottom: none !important;
 }
 
 .impact-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 28px 22px;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.impact-item:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .impact-item strong {
   display: block;
-  font: 700 3.2rem "Playfair Display", serif;
+  font: 700 clamp(2.2rem, 3.8vw, 3rem) "Playfair Display", serif;
   color: var(--white);
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .impact-label {
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   font-weight: 700;
   color: #76d577;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .impact-desc {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.45;
   margin: 0;
 }
 
 .impact .note {
-  margin-top: 35px;
+  margin-top: 40px;
   font-size: 0.82rem;
   color: rgba(255, 255, 255, 0.5);
   text-align: center;
 }
 
+/* Adaptación responsive */
+@media (max-width: 950px) {
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .impact-grid {
+    grid-template-columns: 1fr;
+  }
+  .impact-item {
+    padding: 22px 18px;
+  }
+}
