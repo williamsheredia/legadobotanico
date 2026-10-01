@@ -186,6 +186,15 @@ document.addEventListener('DOMContentLoaded', () => {
     'btn-abrir-voluntario-footer'
   );
 
+  setupModal(
+    'btn-abrir-aliado',
+    'btn-cerrar-aliado',
+    'modal-aliado',
+    'alianzas',
+    '¡Gracias por postular como aliado!',
+    'Hemos recibido la propuesta de tu organización correctamente. Nos pondremos en contacto contigo muy pronto para iniciar el diálogo institucional.'
+  );
+
   // Cierre con la tecla ESC
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' || e.key === 'Esc') {

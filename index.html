@@ -40,7 +40,8 @@
       </div>
 
       <a href="#proyectos">Proyectos</a>
-      <a href="alianzas.html">Alianzas</a>
+      <a href="#lista-alianzas">Alianzas</a>
+      <a href="programas.html">Programas</a>
       <a href="prensa.html">Prensa</a>
       <a href="#galeria">Galería</a>
       <a class="nav-action" href="#voluntariado">Voluntariado</a>
@@ -169,7 +170,107 @@
     </div>
   </section>
 
-  <!-- ALIANZAS -->
+
+
+ <!-- SECCIÓN 1: DETALLE DE ORGANIZACIONES Y CONVENIOS -->
+  <section class="section cream" id="lista-alianzas">
+    <div class="container">
+      
+      <!-- Categoría: Alianzas Estratégicas -->
+      <div class="alliance-category">
+        <h2 class="alliance-category-title">Alianzas Estratégicas</h2>
+        <div class="alliance-detail-grid">
+          
+          <!-- Ficha: Fundación América Sostenible -->
+          <article class="alliance-card">
+            <div class="alliance-card-logo">
+              <img src="assets/fas_h.png" alt="Logo Fundación América Sostenible">
+            </div>
+            <div class="alliance-card-content">
+              <h3>Fundación América Sostenible</h3>
+              <span class="alliance-type">Alianza Estratégica</span>
+              <p>Trabajo coordinado para el fortalecimiento de iniciativas de sostenibilidad, educación ambiental y desarrollo comunitario a nivel regional.</p>
+              <a href="https://americasostenible.org/" target="_blank" rel="noopener noreferrer" class="alliance-link">Visitar sitio web oficial →</a>
+            </div>
+          </article>
+
+          <!-- Ficha: HUB 2030 -->
+          <article class="alliance-card">
+            <div class="alliance-card-logo">
+              <img src="assets/hub_2030.png" alt="Logo HUB 2030">
+            </div>
+            <div class="alliance-card-content">
+              <h3>HUB 2030</h3>
+              <span class="alliance-type">Alianza Estratégica</span>
+              <p>Espacio de articulación y aceleración de proyectos alineados a los Objetivos de Desarrollo Sostenible (ODS) de las Naciones Unidas.</p>
+              <a href="#postular" class="alliance-link">Consultar convenio →</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Categoría: Colaboraciones -->
+      <div class="alliance-category">
+        <h2 class="alliance-category-title">Colaboraciones</h2>
+        <div class="alliance-detail-grid">
+          
+          <!-- Ficha: ONG ARBIO -->
+          <article class="alliance-card">
+            <div class="alliance-card-logo">
+              <img src="assets/arbio.png" alt="Logo ONG ARBIO">
+            </div>
+            <div class="alliance-card-content">
+              <h3>ONG ARBIO</h3>
+              <span class="alliance-type">Colaborador Institucional</span>
+              <p>Intercambio de experiencias y articulación técnica para la conservación del bosque amazónico y la protección de la biodiversidad.</p>
+              <a href="https://arbioperu.org/" target="_blank" rel="noopener noreferrer" class="alliance-link">Visitar sitio web oficial →</a>
+            </div>
+          </article>
+
+          <!-- Ficha: AIESEC -->
+          <article class="alliance-card">
+            <div class="alliance-card-logo">
+              <img src="assets/aiesec.png" alt="Logo AIESEC">
+            </div>
+            <div class="alliance-card-content">
+              <h3>AIESEC</h3>
+              <span class="alliance-type">Colaborador Institucional</span>
+              <p>Promoción del liderazgo juvenil mediante la participación de voluntarios globales en proyectos de impacto ambiental local.</p>
+              <a href="https://aiesec.pe/" target="_blank" rel="noopener noreferrer" class="alliance-link">Visitar sitio web oficial →</a>
+            </div>
+          </article>
+
+          <!-- Ficha: SERPAR -->
+          <article class="alliance-card">
+            <div class="alliance-card-logo">
+              <img src="assets/serpar.png" alt="Logo SERPAR">
+            </div>
+            <div class="alliance-card-content">
+              <h3>SERPAR — Servicio de Parques de Lima</h3>
+              <span class="alliance-type">Colaborador Institucional</span>
+              <p>Coordinación técnica para la arborización urbana y gestión sostenible de áreas verdes en la provincia de Lima.</p>
+              <a href="https://serpar.gob.pe/" target="_blank" rel="noopener noreferrer" class="alliance-link">Visitar sitio web oficial →</a>
+            </div>
+          </article>
+
+        </div>
+
+
+      <div style="text-align: center; margin-top: 40px;">
+        <button type="button" class="button primary" id="btn-abrir-aliado">Postular como aliado estratégico →</button>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+<!-- 
+
+
+ALIANZAS 
   <section class="section cream" id="alianzas-y-colaboraciones">
     <div class="container">
       <div class="section-heading text-center">
@@ -211,12 +312,12 @@
       </div>
 
       <div style="text-align: center; margin-top: 40px;">
-        <a href="alianzas.html" class="button primary">Ver convenios y postular como aliado →</a>
+        <a href="programas.html" class="button primary">Ver: Alianzas, Programas y postular como aliado →</a>
       </div>
     </div>
   </section>
 
-
+-->
 
 
 
@@ -529,6 +630,77 @@
   </div>
 </div>
 
+
+
+
+<!-- MODAL EMERGENTE DE POSTULACIÓN DE ALIADOS -->
+<div class="modal-overlay" id="modal-aliado" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="modal-aliado-titulo">
+    <button type="button" class="modal-close" id="btn-cerrar-aliado" aria-label="Cerrar ventana">&times;</button>
+    
+    <div class="form-header">
+      <h3 id="modal-aliado-titulo">Postula como Aliado Estratégico 🤝</h3>
+      <p>¿Representas a una ONG, institución educativa, empresa u organización pública? Completa este formulario para iniciar un diálogo institucional.</p>
+    </div>
+
+    <form name="alianzas" method="POST" data-netlify="true" class="legado-form">
+      <input type="hidden" name="form-name" value="alianzas" />
+
+      <div class="form-grid">
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="aliado-org">Nombre de la Organización / Institución *</label>
+            <input type="text" id="aliado-org" name="organizacion" required placeholder="Ej: Fundación / Empresa / ONG">
+          </div>
+          <div class="form-group">
+            <label for="aliado-tipo">Tipo de Organización *</label>
+            <select id="aliado-tipo" name="tipo_organizacion" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="ONG / Asociación Sin Fines de Lucro">ONG / Asociación Sin Fines de Lucro</option>
+              <option value="Empresa Privada / RSE">Empresa Privada / RSE</option>
+              <option value="Institución Educativa / Universidad">Institución Educativa / Universidad</option>
+              <option value="Entidad Pública / Municipalidad">Entidad Pública / Municipalidad</option>
+              <option value="Colectivo Ciudadano">Colectivo Ciudadano</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="aliado-contacto">Nombre del Representante *</label>
+            <input type="text" id="aliado-contacto" name="representante" required placeholder="Nombre y cargo">
+          </div>
+          <div class="form-group">
+            <label for="aliado-email">Correo Electrónico Institucional *</label>
+            <input type="email" id="aliado-email" name="email" required placeholder="contacto@organizacion.org">
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="aliado-telefono">Teléfono / WhatsApp *</label>
+            <input type="tel" id="aliado-telefono" name="telefono" required placeholder="+51 999 999 999">
+          </div>
+          <div class="form-group">
+  <label for="aliado-web">Sitio Web / Redes Sociales</label>
+  <input type="text" id="aliado-web" name="sitio_web" placeholder="https://miorganizacion.org o nombre de red social">
+</div>
+        </div>
+
+        <div class="form-group">
+          <label for="aliado-propuesta">Propuesta de Colaboración / Interés *</label>
+          <textarea id="aliado-propuesta" name="propuesta" rows="4" required placeholder="Describa brevemente cómo le gustaría colaborar con Legado Botánico (ej. proyectos de RSE, convenio académico, donación de recursos, etc.)"></textarea>
+        </div>
+
+        <button type="submit" class="button primary btn-submit-form">Enviar propuesta de alianza</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- FIN MODAL EMERGENTE DE ALIADOS -->
+
+
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-container">
@@ -567,5 +739,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+
 </body>
 </html>

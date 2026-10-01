@@ -168,8 +168,8 @@ a {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 20px;
-  font-size: .9rem;
+  gap: 15px; /* Reducido de 20px a 15px para ganar espacio */
+  font-size: 0.88rem; /* Ligeramente más compacto para albergar todos los ítems */
 }
 
 .nav-links a {
@@ -837,6 +837,70 @@ a {
 /* ==========================================================================
    7. MEDIA QUERIES (BREAKPOINTS RESPONSIVOS BALANCEADOS)
    ========================================================================== */
+
+
+
+/* Breakpoint ajustado a 1024px para evitar desbordes con el nuevo menú */
+@media (max-width: 1024px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 14px;
+    right: 14px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+    background: #0d211af8;
+    border-radius: 18px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-action {
+    text-align: center;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .impact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .impact-grid > div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .impact-grid > div:nth-child(-n+2) {
+    border-bottom: 1px solid #ffffff2e;
+  }
+
+  .contribute-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .insta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+
+
+
 
 /* Breakpoint 1: Laptops y Tablets Horizontales (<= 950px) */
 @media (max-width: 950px) {
