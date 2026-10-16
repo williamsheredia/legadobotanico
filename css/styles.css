@@ -158,18 +158,29 @@ a {
 }
 
 .brand-logo {
-  height: 100px;
+  height: 85px;
   width: auto;
-  max-width: 80%;
+  max-width: 90%;
   object-fit: contain;
   display: block;
 }
 
+
+.brand-logo-footer {
+  height: 100px;
+  width: auto;
+  max-width: 40%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 15px; /* Reducido de 20px a 15px para ganar espacio */
-  font-size: 0.88rem; /* Ligeramente más compacto para albergar todos los ítems */
+  gap: 12px; /* Reducido de 20px a 15px para ganar espacio */
+  font-size: 0.86rem; /* Ligeramente más compacto para albergar todos los ítems */
 }
 
 .nav-links a {
@@ -840,8 +851,8 @@ a {
 
 
 
-/* Breakpoint ajustado a 1024px para evitar desbordes con el nuevo menú */
-@media (max-width: 1024px) {
+/* Breakpoint ajustado a 1120px para albergar el nuevo tamaño del logo sin desbordes */
+@media (max-width: 1120px) {
   .menu-toggle {
     display: flex;
   }

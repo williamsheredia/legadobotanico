@@ -12,7 +12,17 @@
 .project-hero picture,.project-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .project-hero img{filter:brightness(.62) saturate(.88)}
 .project-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#08160f20 20%,#08160fe8 100%)}
-.project-hero-content{position:relative;z-index:1;width:min(calc(100% - 40px),var(--max));margin:auto;padding:100px 0 75px}
+
+
+.project-hero-content{
+  position:relative;
+  z-index:1;
+  width:min(calc(100% - 40px),var(--max));
+  margin:auto;
+  padding:100px 0 75px
+}
+
+
 .project-hero .eyebrow{color:#e5d7b9;opacity:1}
 .project-hero h1{max-width:930px;margin:0 0 22px;font:700 clamp(3rem,7vw,6.5rem)/.95 "Playfair Display",serif;letter-spacing:-.045em}
 .project-lead{max-width:760px;margin:0;font-size:clamp(1.05rem,2vw,1.35rem);line-height:1.65}
@@ -125,6 +135,44 @@
 </style>
 </head>
 <body>
+
+
+<!-- ENCABEZADO / NAVEGACIÓN -->
+<header class="site-header">
+  <nav class="nav container">
+    <a class="brand" href="#inicio">
+      <img src="../assets/logo-large-sf-2.png" alt="Logo Legado Botánico" class="brand-logo">
+    </a>
+
+    <button class="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú de navegación">
+      <i></i><i></i><i></i>
+    </button>
+
+    <div class="nav-links" id="menu">
+      <a href="../index.html#inicio">Inicio</a>
+
+      <div class="dropdown">
+        <div class="dropdown-trigger">Quiénes somos <span class="arrow">▾</span></div>
+        <div class="dropdown-menu">
+          <a href="../quienes-somos.html">Esencia</a>
+          <a href="../equipo.html">Equipo</a>
+          <a href="../politicas.html">Políticas</a>
+        </div>
+      </div>
+
+      <a href="../index.html#proyectos">Proyectos</a>
+      <a href="../index.html#lista-alianzas">Alianzas</a>
+      <a href="../programas.html">Programas</a>
+      <a href="../prensa.html">Prensa</a>
+      <a href="../index.html#galeria">Galería</a>
+      <a class="nav-action" href="../index.html#voluntariado">Voluntariado</a>
+      <a class="nav-action nav-donate" href="../index.html#aporta">Donaciones</a>
+      <a href="../index.html#contacto">Contacto</a>
+    </div>
+  </nav>
+</header>
+
+
 <main class="project-page">
 
 <header class="project-hero">
@@ -464,7 +512,7 @@
   <div class="footer-container">
     <!-- Columna 1: Info & CTAs -->
     <div class="footer-col brand-col">
-      <h3>🌿 LEGADO BOTÁNICO</h3>
+      <img src="../assets/logo-large-sf-2-footer.png" alt="Logo Legado Botánico" class="brand-logo-footer">
       <p>Restauración ecológica · Comunidad · Futuro</p>
       <p class="location">San Martín de Porres · Lima, Perú</p>
 
