@@ -14,6 +14,7 @@
 
   <style>
     .program-content { max-width: 900px; margin: 0 auto; }
+
     .quote-box {
       background: var(--cream);
       border-left: 4px solid var(--forest);
@@ -169,6 +170,117 @@
       text-align: center;
     }
 
+/* Estilo interactivo para la imagen panorámica (permite hacer clic) */
+    .panoramic-map-container {
+      margin: 35px 0;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 30px rgba(13, 33, 26, 0.08);
+      position: relative;
+      cursor: pointer;
+    }
+    .panoramic-map-container img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.9) contrast(1.05);
+      transition: transform 0.4s ease;
+    }
+    .panoramic-map-container:hover img {
+      transform: scale(1.03);
+    }
+    .panoramic-map-container::after {
+      content: "🔍 Ampliar imagen";
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(13, 33, 26, 0.8);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .panoramic-map-container:hover::after {
+      opacity: 1;
+    }
+    .panoramic-map-caption {
+      padding: 15px 20px;
+      background: var(--cream);
+      font-size: 0.9rem;
+      color: var(--forest-deep);
+      font-weight: 600;
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+
+
+
+
+
+    /* Estilos del Modal Lightbox para la vista completa */
+    .panoramic-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(10, 24, 18, 0.92);
+      backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .panoramic-lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .panoramic-lightbox img {
+      max-width: 92vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .panoramic-lightbox-caption {
+      margin-top: 15px;
+      color: var(--paper);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .panoramic-lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: var(--white);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .panoramic-lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.1);
+    }
+
+
+
 
     @media(max-width: 850px) {
       .pillars-grid, .sumarse-grid { grid-template-columns: 1fr; }
@@ -220,7 +332,10 @@
     <div class="hero-overlay"></div>
     <div class="container text-center hero-picture-content">
       <p class="eyebrow light">Programa Continental</p>
-      <h1 class="text-white">Senderos de <span>Vida - Lima</span></h1>
+
+
+      <h1 class="text-white">Senderos de <span style="color: #89F336;">Vida - Lima</span></h1>
+
       <p class="page-hero-text light">Un programa de la Fundación América Sostenible (FAS) impulsado localmente por la Asociación Legado Botánico (ALEBO).</p>
     </div>
   </section>
@@ -237,19 +352,27 @@
         A través de esta alianza estratégica, transformamos espacios urbanos complejos en refugios dinámicos de flora nativa y adaptada, promoviendo la restauración biológica y apoyando a las redes de viveros locales para multiplicar el capital natural de Lima.
       </p>
 
-      <!-- Imagen Geográfica Integrada al Ancho del Contenido -->
-      <div class="panoramic-map-container">
-        <img src="assets/watermarked_img_17400532383948871887.jfif" alt="Vista satelital y geográfica de Lima y sus laderas áridas">
+
+
+
+
+    <!-- Imagen Geográfica Interactiva -->
+      <div class="panoramic-map-container" id="open-panoramic">
+        <img src="assets/watermarked_img_17400532383948871887.jfif" alt="Vista satelital y geográfica de Lima y sus laderas áridas" id="panoramic-img">
         <div class="panoramic-map-caption">
-          🗺️ Vista general de la geografía árida y la expansión urbana de Lima Metropolitana.
+          🗺️ Vista general de la geografía árida y la expansión urbana de Lima Metropolitana. (Haz clic para ampliar)
         </div>
       </div>
 
-      <p class="eyebrow" style="margin-top: 40px;">Ubicación espacial y alcance</p>
-      <h2>Ámbito de intervención en Lima Metropolitana</h2>
-      <p style="font-size: 1.05rem; line-height: 1.75; color: var(--muted);">
-        El programa se despliega estratégicamente en los espacios periurbanos y nodos verdes intraurbanos de Lima, conectando laderas, parques zonales y corredores viales clave para maximizar el flujo biológico.
-      </p>
+      <!-- Ventana Modal Lightbox para la vista completa -->
+      <div class="panoramic-lightbox" id="panoramic-lightbox" aria-hidden="true">
+        <button type="button" class="panoramic-lightbox-close" id="close-panoramic" aria-label="Cerrar">&times;</button>
+        <img src="assets/watermarked_img_17400532383948871887.jfif" alt="Vista satelital completa">
+        <div class="panoramic-lightbox-caption">🗺️ Geografía árida y expansión urbana de Lima Metropolitana</div>
+      </div>
+
+
+
 
       <!-- Tarjeta de Ubicación Espacial Restaurada y Completa -->
       <div class="spatial-card" style="grid-template-columns: 1fr;">
@@ -446,5 +569,38 @@
 </footer>
 
 <script src="js/main.js"></script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const trigger = document.getElementById('open-panoramic');
+    const lightbox = document.getElementById('panoramic-lightbox');
+    const closeBtn = document.getElementById('close-panoramic');
+
+    if (trigger && lightbox) {
+      trigger.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+      });
+
+      const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+      };
+
+      closeBtn.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    }
+  });
+</script>
+
+
+
+
 </body>
 </html>
