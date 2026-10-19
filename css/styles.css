@@ -921,11 +921,14 @@ a {
 }
 
 @media (max-width: 768px) {
+  /* Forzar a que la grilla de miembros activos pase a 1 sola columna en móviles */
   .active-members-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 20px;
   }
+
   .active-members-wrapper {
-    padding: 25px 15px;
+    padding: 20px 15px;
   }
 }
 
