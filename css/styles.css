@@ -169,7 +169,7 @@ a {
 .brand-logo-footer {
   height: 100px;
   width: auto;
-  max-width: 40%;
+  max-width: 45%;
   object-fit: contain;
   display: block;
   margin: 0 auto;
@@ -1134,6 +1134,23 @@ a {
     padding: 30px 20px;
   }
 
+
+
+
+
+.brand-logo-footer {
+  height: 100px;
+  width: auto;
+  max-width: 45%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+
+
   .footer-buttons,
   .newsletter-form {
     flex-direction: column;
@@ -1163,6 +1180,10 @@ a {
     grid-template-columns: 1fr;
   }
 } /* Fin de @media (max-width: 768px) */
+
+
+
+
 
 /* Breakpoint 3: Móviles Pequeños (<= 600px) */
 @media (max-width: 600px) {
