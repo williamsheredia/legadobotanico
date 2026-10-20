@@ -825,8 +825,8 @@ a {
 }
 
 .team-member-avatar { 
-  width: 140px; 
-  height: 140px; 
+  width: 180px; 
+  height: 180px; 
   border-radius: 50%; 
   overflow: hidden; 
   flex-shrink: 0; 
