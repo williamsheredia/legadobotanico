@@ -4,12 +4,12 @@
   <link rel="icon" href="assets/favicon_1.ico" type="image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Alianzas y Colaboraciones — Legado Botánico y Asociación ALEBO. Red de impacto ambiental.">
+  <meta name="description" content="Alianzas Estratégicas y Colaboraciones — Asociación Legado Botánico (ALEBO).">
   <title>Alianzas y Colaboraciones — Legado Botánico</title>
   <link rel="stylesheet" href="css/styles.css">
 
   <meta property="og:title" content="Alianzas y Colaboraciones — Legado Botánico">
-  <meta property="og:description" content="Conoce la red de instituciones que colaboran con la restauración ecológica en San Martín de Porres.">
+  <meta property="og:description" content="Organizaciones e instituciones que respaldan la restauración ecológica de ALEBO.">
   <meta property="og:image" content="assets/logo-large-sf-2.png">
 </head>
 <body>
@@ -37,6 +37,7 @@
 
       <a href="index.html#proyectos">Proyectos</a>
       <a href="alianzas.html" aria-current="page">Alianzas</a>
+      <a href="programas.html">Programas</a>
       <a href="prensa.html">Prensa</a>
       <a href="index.html#galeria">Galería</a>
       <a class="nav-action" href="index.html#voluntariado">Voluntariado</a>
@@ -47,22 +48,23 @@
 </header>
 
 <main>
-  <!-- HERO RESPONSIVO CON PICTURE (SOPORTE MÓVIL Y DESKTOP) -->
+
+  <!-- HERO DE ALIANZAS -->
   <section class="page-hero-picture">
     <picture>
       <source media="(max-width: 600px)" srcset="assets/alianzas-hero-mobile.png">
-      <img src="assets/alianzas-hero.png" alt="Fondo Legado Botánico" class="hero-bg-img">
+      <img src="assets/alianzas-hero.png" alt="Alianzas Legado Botánico" class="hero-bg-img">
     </picture>
     <div class="hero-overlay"></div>
     <div class="container text-center hero-picture-content">
-      <p class="eyebrow light">Red de impacto</p>
+      <p class="eyebrow light">Red Institucional</p>
       <h1 class="text-white">Alianzas y <span>Colaboraciones</span></h1>
-      <p class="page-hero-text light">La restauración ambiental se construye en comunidad. Sumamos esfuerzos con instituciones públicas, organizaciones privadas y la sociedad civil.</p>
+      <p class="page-hero-text light">Conoce a detalle las organizaciones y convenios que potencian nuestro impacto socioambiental en Lima.</p>
     </div>
   </section>
 
-  <!-- SECCIÓN 1: DETALLE DE ORGANIZACIONES Y CONVENIOS -->
-  <section class="section cream" id="lista-alianzas">
+  <!-- CONTENIDO DETALLADO DE ALIANZAS -->
+  <section class="section cream">
     <div class="container">
       
       <!-- Categoría: Alianzas Estratégicas -->
@@ -70,7 +72,6 @@
         <h2 class="alliance-category-title">Alianzas Estratégicas</h2>
         <div class="alliance-detail-grid">
           
-          <!-- Ficha: Fundación América Sostenible -->
           <article class="alliance-card">
             <div class="alliance-card-logo">
               <img src="assets/fas_h.png" alt="Logo Fundación América Sostenible">
@@ -83,7 +84,6 @@
             </div>
           </article>
 
-          <!-- Ficha: HUB 2030 -->
           <article class="alliance-card">
             <div class="alliance-card-logo">
               <img src="assets/hub_2030.png" alt="Logo HUB 2030">
@@ -92,7 +92,7 @@
               <h3>HUB 2030</h3>
               <span class="alliance-type">Alianza Estratégica</span>
               <p>Espacio de articulación y aceleración de proyectos alineados a los Objetivos de Desarrollo Sostenible (ODS) de las Naciones Unidas.</p>
-              <a href="#postular" class="alliance-link">Consultar convenio →</a>
+              <button type="button" class="button primary" id="btn-abrir-aliado-card" style="margin-top: 15px; font-size: 0.85rem; min-height: 38px; padding: 0 16px; background: var(--forest); color: #fff;">Consultar convenio</button>
             </div>
           </article>
 
@@ -100,11 +100,10 @@
       </div>
 
       <!-- Categoría: Colaboraciones -->
-      <div class="alliance-category">
-        <h2 class="alliance-category-title">Colaboraciones</h2>
+      <div class="alliance-category" style="margin-top: 60px;">
+        <h2 class="alliance-category-title">Colaboraciones Institucionales</h2>
         <div class="alliance-detail-grid">
           
-          <!-- Ficha: ONG ARBIO -->
           <article class="alliance-card">
             <div class="alliance-card-logo">
               <img src="assets/arbio.png" alt="Logo ONG ARBIO">
@@ -117,7 +116,6 @@
             </div>
           </article>
 
-          <!-- Ficha: AIESEC -->
           <article class="alliance-card">
             <div class="alliance-card-logo">
               <img src="assets/aiesec.png" alt="Logo AIESEC">
@@ -130,7 +128,6 @@
             </div>
           </article>
 
-          <!-- Ficha: SERPAR -->
           <article class="alliance-card">
             <div class="alliance-card-logo">
               <img src="assets/serpar.png" alt="Logo SERPAR">
@@ -143,198 +140,109 @@
             </div>
           </article>
 
+          <article class="alliance-card">
+            <div class="alliance-card-logo">
+              <img src="assets/logo-claro-rojo.png" alt="Logo CLARO PERÚ">
+            </div>
+            <div class="alliance-card-content">
+              <h3>CLARO PERÚ</h3>
+              <span class="alliance-type">Colaborador Institucional</span>
+              <p>Apoyo logístico y voluntariado corporativo para las iniciativas de forestación y mantenimiento.</p>
+              <a href="https://www.claro.com.pe/personas/" target="_blank" rel="noopener noreferrer" class="alliance-link">Visitar sitio web oficial →</a>
+            </div>
+          </article>
+
+          <article class="alliance-card">
+            <div class="alliance-card-logo">
+              <img src="assets/logo_amazonas_color.png" alt="Logo TEXTIL EL AMAZONAS">
+            </div>
+            <div class="alliance-card-content">
+              <h3>TEXTIL EL AMAZONAS</h3>
+              <span class="alliance-type">Colaborador Institucional</span>
+              <p>Apoyo logístico y articulación industrial en la gestión de recursos para los proyectos de la asociación.</p>
+              <a href="https://textilelamazonas.com/" target="_blank" rel="noopener noreferrer" class="alliance-link">Visitar sitio web oficial →</a>
+            </div>
+          </article>
+
         </div>
       </div>
 
+      <!-- Botón inferior para postular -->
+      <div style="text-align: center; margin-top: 60px;">
+        <p style="color: var(--muted); margin-bottom: 20px;">¿Representas a una organización interesada en sumarse a nuestra red?</p>
+        <button type="button" class="button primary" id="btn-abrir-aliado" style="background: var(--forest); color: #fff;">Postular como aliado estratégico →</button>
+      </div>
+
     </div>
   </section>
 
-  <!-- SECCIÓN 2: FORMULARIO POSTULAR COMO ALIADO ESTRATÉGICO -->
-  <section class="section" id="postular">
-    <div class="container" style="max-width: 800px;">
-      <div class="section-heading text-center">
-        <p class="eyebrow">Construyamos juntos</p>
-        <h2>Postula como <span>aliado estratégico</span></h2>
-        <p>¿Representas a una ONG, institución educativa, empresa u organización pública? Completa este formulario para iniciar un diálogo institucional.</p>
-      </div>
-
-      <div class="partner-form-wrapper">
-        <form name="alianzas" method="POST" action="/gracias.html" data-netlify="true" class="legado-form">
-          <input type="hidden" name="form-name" value="alianzas" />
-
-          <div class="form-grid">
-            <div class="form-row-2">
-              <div class="form-group">
-                <label for="aliado-org">Nombre de la Organización / Institución *</label>
-                <input type="text" id="aliado-org" name="organizacion" required placeholder="Ej: Fundación / Empresa / ONG">
-              </div>
-              <div class="form-group">
-                <label for="aliado-tipo">Tipo de Organización *</label>
-                <select id="aliado-tipo" name="tipo_organizacion" required>
-                  <option value="" disabled selected>Selecciona una opción</option>
-                  <option value="ONG / Asociación Sin Fines de Lucro">ONG / Asociación Sin Fines de Lucro</option>
-                  <option value="Empresa Privada / RSE">Empresa Privada / RSE</option>
-                  <option value="Institución Educativa / Universidad">Institución Educativa / Universidad</option>
-                  <option value="Entidad Pública / Municipalidad">Entidad Pública / Municipalidad</option>
-                  <option value="Colectivo Ciudadano">Colectivo Ciudadano</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-row-2">
-              <div class="form-group">
-                <label for="aliado-contacto">Nombre del Representante *</label>
-                <input type="text" id="aliado-contacto" name="representante" required placeholder="Nombre y cargo">
-              </div>
-              <div class="form-group">
-                <label for="aliado-email">Correo Electrónico Institucional *</label>
-                <input type="email" id="aliado-email" name="email" required placeholder="contacto@organizacion.org">
-              </div>
-            </div>
-
-            <div class="form-row-2">
-              <div class="form-group">
-                <label for="aliado-telefono">Teléfono / WhatsApp *</label>
-                <input type="tel" id="aliado-telefono" name="telefono" required placeholder="+51 999 999 999">
-              </div>
-              <div class="form-group">
-                <label for="aliado-web">Sitio Web / Redes Sociales</label>
-                <input type="url" id="aliado-web" name="sitio_web" placeholder="https://miorganizacion.org">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="aliado-propuesta">Propuesta de Colaboración / Interés *</label>
-              <textarea id="aliado-propuesta" name="propuesta" rows="4" required placeholder="Describa brevemente cómo le gustaría colaborar con Legado Botánico (ej. proyectos de RSE, convenio académico, donación de recursos, etc.)"></textarea>
-            </div>
-
-            <button type="submit" class="button primary btn-submit-form">Enviar propuesta de alianza</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
 </main>
 
 <!-- BOTÓN FLOTANTE WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/51987565786?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20informaci%C3%B3n%20sobre%20alianzas%20con%20Legado%20Bot%C3%A1nico." target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+<a class="whatsapp" href="https://wa.me/51987565786?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20alianzas%20con%20ALEBO." target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
   <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.2C8.93 3.2 3.2 8.93 3.2 16c0 2.26.59 4.38 1.71 6.25L3.2 28.8l6.72-1.67A12.72 12.72 0 0 0 16 28.8c7.07 0 12.8-5.73 12.8-12.8S23.07 3.2 16 3.2Zm0 23.3c-2.04 0-4.04-.55-5.78-1.59l-.41-.24-3.99.99 1.06-3.88-.27-.43A10.6 10.6 0 1 1 16 26.5Zm5.82-7.94c-.32-.16-1.88-.93-2.17-1.04-.29-.11-.5-.16-.71.16-.21.32-.82 1.04-1.01 1.25-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.57-1.88-1.75-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.98-2.34-.26-.61-.52-.53-.71-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.09-1.12 2.66s1.15 3.09 1.31 3.3c.16.21 2.25 3.43 5.45 4.81.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.15-1.51.27-.74.27-1.38.19-1.51-.08-.13-.29-.21-.61-.37Z"/></svg>
 </a>
 
-<!-- MODALES FLOTANTES GLOBALES -->
-<div class="modal-overlay" id="modal-voluntario" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-labelledby="modal-voluntario-titulo">
-    <button type="button" class="modal-close" id="btn-cerrar-voluntario" aria-label="Cerrar ventana">&times;</button>
+<!-- MODAL EMERGENTE DE POSTULACIÓN DE ALIADOS -->
+<div class="modal-overlay" id="modal-aliado" aria-hidden="true">
+  <div class="modal-content" role="dialog" aria-labelledby="modal-aliado-titulo">
+    <button type="button" class="modal-close" id="btn-cerrar-aliado" aria-label="Cerrar ventana">&times;</button>
+    
     <div class="form-header">
-      <h3 id="modal-voluntario-titulo">Únete como Voluntario 🌱</h3>
-      <p>Completa la encuesta para conocer tus disponibilidades y asignar las labores más adecuadas para ti.</p>
+      <h3 id="modal-aliado-titulo">Postula como Aliado Estratégico 🤝</h3>
+      <p>¿Representas a una ONG, institución educativa, empresa u organización pública? Completa este formulario para iniciar un diálogo institucional.</p>
     </div>
-    <form name="voluntarios" method="POST" data-netlify="true" class="legado-form">
-      <input type="hidden" name="form-name" value="voluntarios" />
+
+    <form name="alianzas" method="POST" data-netlify="true" class="legado-form">
+      <input type="hidden" name="form-name" value="alianzas" />
+
       <div class="form-grid">
         <div class="form-row-2">
           <div class="form-group">
-            <label for="vol-nombre">Nombre y Apellido *</label>
-            <input type="text" id="vol-nombre" name="nombre" required placeholder="Tu nombre completo">
+            <label for="aliado-org">Nombre de la Organización / Institución *</label>
+            <input type="text" id="aliado-org" name="organizacion" required placeholder="Ej: Fundación / Empresa / ONG">
           </div>
           <div class="form-group">
-            <label for="vol-distrito">Distrito de residencia *</label>
-            <input type="text" id="vol-distrito" name="distrito" required placeholder="Ej: San Martín de Porres, Los Olivos...">
-          </div>
-        </div>
-        <div class="form-row-2">
-          <div class="form-group">
-            <label for="vol-email">Correo electrónico *</label>
-            <input type="email" id="vol-email" name="email" required placeholder="tu@email.com">
-          </div>
-          <div class="form-group">
-            <label for="vol-telefono">Teléfono / WhatsApp *</label>
-            <input type="tel" id="vol-telefono" name="telefono" required placeholder="+51 999 999 999">
-          </div>
-        </div>
-        <div class="form-row-2">
-          <div class="form-group">
-            <label for="vol-edad">Edad *</label>
-            <input type="number" id="vol-edad" name="edad" required placeholder="Ej: 25" min="12" max="99">
-          </div>
-          <div class="form-group">
-            <label for="vol-profesion">Profesión u ocupación</label>
-            <input type="text" id="vol-profesion" name="profesion" placeholder="Ej: Estudiante, Ingeniero, Esteticista...">
-          </div>
-        </div>
-        <div class="form-row-2">
-          <div class="form-group">
-            <label for="vol-movilidad">¿Cuentas con movilidad propia? *</label>
-            <select id="vol-movilidad" name="movilidad_propia" required>
+            <label for="aliado-tipo">Tipo de Organización *</label>
+            <select id="aliado-tipo" name="tipo_organizacion" required>
               <option value="" disabled selected>Selecciona una opción</option>
-              <option value="No">No</option>
-              <option value="Sí (Auto)">Sí (Auto)</option>
-              <option value="Sí (Moto/Bicicleta)">Sí (Moto / Bicicleta)</option>
+              <option value="ONG / Asociación Sin Fines de Lucro">ONG / Asociación Sin Fines de Lucro</option>
+              <option value="Empresa Privada / RSE">Empresa Privada / RSE</option>
+              <option value="Institución Educativa / Universidad">Institución Educativa / Universidad</option>
+              <option value="Entidad Pública / Municipalidad">Entidad Pública / Municipalidad</option>
+              <option value="Colectivo Ciudadano">Colectivo Ciudadano</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="vol-disponibilidad">Días y horario disponibles *</label>
-            <input type="text" id="vol-disponibilidad" name="disponibilidad" required placeholder="Ej: Sábados por la mañana / Domingos todo el día">
-          </div>
         </div>
-        <div class="form-group">
-          <label for="vol-capacidad-fisica">¿Con qué tipo de labor te sientes más cómodo/a apoyando en campo? *</label>
-          <select id="vol-capacidad-fisica" name="tipo_labor_preferida" required>
-            <option value="" disabled selected>Selecciona la capacidad de esfuerzo</option>
-            <option value="Poca fuerza: Limpieza, recolección de sustrato y epífitas">Labores livianas (Juntar basura en sacos, recoger polvillo/sustrato, recolección)</option>
-            <option value="Mediana fuerza: Cargar pedregal y nivelar andenes">Labores de mediana fuerza (Nivelar andenes, trasladar material liviano)</option>
-            <option value="Gran fuerza: Picar rocas, pircados, mover rocas grandes y sacos">Labores de fuerza e intensas (Picar rocas, mover rocas grandes, cargar sacos o madera)</option>
-            <option value="Redes sociales y difusión comunitaria">Difusión en redes sociales e incentivar a que más personas se sumen</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="vol-mensaje">Comentario adicional / Habilidades especiales</label>
-          <textarea id="vol-mensaje" name="comentario" rows="3" placeholder="Cuéntanos cualquier detalle adicional que consideres relevante..."></textarea>
-        </div>
-        <button type="submit" class="button primary btn-submit-form" style="background: var(--ochre);">Enviar registro de voluntario</button>
-      </div>
-    </form>
-  </div>
-</div>
 
-<div class="modal-overlay" id="modal-aporte" aria-hidden="true">
-  <div class="modal-content" role="dialog" aria-labelledby="modal-aporte-titulo">
-    <button type="button" class="modal-close" id="btn-cerrar-aporte" aria-label="Cerrar ventana">&times;</button>
-    <div class="form-header">
-      <h3 id="modal-aporte-titulo">Formulario de Aporte 💚</h3>
-      <p>Cuéntanos cómo te gustaría colaborar y nos pondremos en contacto contigo para coordinarlo.</p>
-    </div>
-    <form name="donaciones" method="POST" data-netlify="true" class="legado-form">
-      <input type="hidden" name="form-name" value="donaciones" />
-      <div class="form-grid">
-        <div class="form-group">
-          <label for="don-nombre">Nombre o Entidad *</label>
-          <input type="text" id="don-nombre" name="nombre" required placeholder="Tu nombre o el de tu empresa">
-        </div>
         <div class="form-row-2">
           <div class="form-group">
-            <label for="don-email">Correo electrónico *</label>
-            <input type="email" id="don-email" name="email" required placeholder="tu@email.com">
+            <label for="aliado-contacto">Nombre del Representante *</label>
+            <input type="text" id="aliado-contacto" name="representante" required placeholder="Nombre y cargo">
           </div>
           <div class="form-group">
-            <label for="don-telefono">Teléfono / WhatsApp *</label>
-            <input type="tel" id="don-telefono" name="telefono" required placeholder="+51 999 999 999">
+            <label for="aliado-email">Correo Electrónico Institucional *</label>
+            <input type="email" id="aliado-email" name="email" required placeholder="contacto@organizacion.org">
           </div>
         </div>
-        <div class="form-group">
-          <label class="label-title">¿Qué tipo de aporte deseas realizar? (Puedes marcar varios)</label>
-          <div class="checkbox-options">
-            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Aporte economico"><span>💚 <b>Aporte económico:</b> Para sostener y ampliar los proyectos.</span></label>
-            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Plantas y semillas"><span>🌱 <b>Plantas y semillas:</b> Material vegetal destinado a los proyectos.</span></label>
-            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Compost y materia organica"><span>♻️ <b>Compost y materia orgánica:</b> Hojas, compost y otros aportes aprovechables.</span></label>
-            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Materiales y herramientas"><span>🛠️ <b>Materiales y herramientas:</b> Recursos para las jornadas de trabajo.</span></label>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="aliado-telefono">Teléfono / WhatsApp *</label>
+            <input type="tel" id="aliado-telefono" name="telefono" required placeholder="+51 999 999 999">
+          </div>
+          <div class="form-group">
+            <label for="aliado-web">Sitio Web / Redes Sociales</label>
+            <input type="text" id="aliado-web" name="sitio_web" placeholder="https://miorganizacion.org">
           </div>
         </div>
+
         <div class="form-group">
-          <label for="don-detalle">Detalles del aporte / Mensaje</label>
-          <textarea id="don-detalle" name="detalle" rows="3" placeholder="Ej: Tengo 5 sacos de compost / Deseo realizar un depósito Yape o transferencia..."></textarea>
+          <label for="aliado-propuesta">Propuesta de Colaboración / Interés *</label>
+          <textarea id="aliado-propuesta" name="propuesta" rows="4" required placeholder="Describa brevemente cómo le gustaría colaborar con Legado Botánico..."></textarea>
         </div>
-        <button type="submit" class="button primary btn-submit-form">Enviar propuesta de aporte</button>
+
+        <button type="submit" class="button primary btn-submit-form">Enviar propuesta de alianza</button>
       </div>
     </form>
   </div>
@@ -344,7 +252,7 @@
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-col brand-col">
-      <h3>🌿 LEGADO BOTÁNICO</h3>
+      <img src="assets/logo-large-sf-2-footer.png" alt="Logo Legado Botánico" class="brand-logo-footer">
       <p>Restauración ecológica · Comunidad · Futuro</p>
       <p class="location">San Martín de Porres · Lima, Perú</p>
       <div class="footer-buttons">
