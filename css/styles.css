@@ -730,6 +730,18 @@ a {
   transition: all 0.3s ease;
 }
 
+
+
+.footer-text {
+  max-width: 600px;
+  margin: 28px auto;
+  font-size: clamp(0.9rem, 2.3vw, 1.1rem);
+  color: #76d577;
+  text-align: center;
+}
+
+
+
 .footer-buttons .btn-secondary:hover { background-color: #2e6f40; border-color: #2e6f40; color: #ffffff; }
 
 .newsletter-form { display: flex; gap: 8px; margin-top: 10px; }
