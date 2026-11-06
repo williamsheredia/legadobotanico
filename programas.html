@@ -4,35 +4,23 @@
   <link rel="icon" href="assets/favicon_1.ico" type="image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Programa Senderos de Vida - Lima — Iniciativa impulsada por la Asociación Legado Botánico y la Fundación América Sostenible (FAS).">
-  <title>Programas — Senderos de Vida Lima | Legado Botánico</title>
+  <meta name="description" content="Programas de Escala para la Transición Ecológica en el Perú — Iniciativa conjunta entre FAS, HUB 2030 y Asociación Legado Botánico (ALEBO).">
+  <title>Programas de Transición Ecológica — Legado Botánico</title>
   <link rel="stylesheet" href="css/styles.css">
 
-  <meta property="og:title" content="Programas — Senderos de Vida Lima | Legado Botánico">
-  <meta property="og:description" content="Un habitante, una planta: 10 millones de ejemplares para devolverle la vida y la conectividad biológica a Lima.">
+  <meta property="og:title" content="Programas de Transición Ecológica — Legado Botánico">
+  <meta property="og:description" content="Arquitectura de impacto y restauración ecosistémica en el Perú conectada con la visión continental de FAS.">
   <meta property="og:image" content="assets/logo-large-sf-2.png">
 
   <style>
-    .program-content { max-width: 900px; margin: 0 auto; }
+    .program-content { max-width: 960px; margin: 0 auto; }
 
-    .quote-box {
-      background: var(--cream);
-      border-left: 4px solid var(--forest);
-      padding: 30px;
-      border-radius: 16px;
-      margin: 35px 0;
-    }
-    .quote-box p {
-      margin: 0;
-      font: 600 1.25rem/1.5 "Playfair Display", serif;
-      color: var(--forest-deep);
-      font-style: italic;
-    }
-    .pillars-grid {
+    /* Estilos específicos para la sección de programas y pilares */
+    .pillar-card-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
-      margin-top: 35px;
+      margin-top: 30px;
     }
     .pillar-box {
       background: var(--white);
@@ -42,7 +30,7 @@
       box-shadow: 0 8px 24px rgba(13, 33, 26, 0.04);
     }
     .pillar-box h3 {
-      font: 700 1.25rem "Playfair Display", serif;
+      font: 700 1.2rem "Playfair Display", serif;
       color: var(--forest-deep);
       margin: 0 0 10px;
     }
@@ -52,245 +40,180 @@
       margin: 0;
       line-height: 1.55;
     }
-    .challenge-banner {
-      background: var(--forest-deep);
-      color: var(--white);
-      border-radius: 24px;
-      padding: 45px 35px;
-      text-align: center;
-      margin: 50px 0;
-    }
-    .challenge-banner h2 {
-      font: 700 2.2rem "Playfair Display", serif;
-      color: var(--white);
-      margin: 0 0 15px;
-    }
-    .challenge-banner h2 span { color: var(--ochre); }
-    .challenge-banner p {
-      color: rgba(255, 255, 255, 0.88);
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-    .sumarse-grid {
+
+    /* Tarjetas de las 3 líneas programáticas */
+    .program-axis-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 25px;
       margin-top: 35px;
     }
-    .sumarse-card {
+    .axis-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(13, 33, 26, 0.04);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .axis-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(13, 33, 26, 0.09);
+    }
+    .axis-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--leaf);
       background: var(--paper);
+      padding: 5px 12px;
+      border-radius: 999px;
       border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 25px 20px;
+      margin-bottom: 15px;
     }
-    .sumarse-card h3 {
-      font: 700 1.15rem "Playfair Display", serif;
-      color: var(--forest-deep);
-      margin: 0 0 10px;
-    }
-    .sumarse-card p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      margin: 0;
-      line-height: 1.5;
-    }
-
-
-/* Estilos para el bloque de Ubicación Espacial / Superficie */
-    .spatial-card {
-      background: var(--cream);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 32px;
-      margin: 35px 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      align-items: center;
-    }
-    .spatial-info h3 {
-      font: 700 1.4rem "Playfair Display", serif;
+    .axis-card h3 {
+      font: 700 1.35rem "Playfair Display", serif;
       color: var(--forest-deep);
       margin: 0 0 12px;
     }
-    .spatial-info ul {
-      margin: 0;
-      padding-left: 18px;
+    .axis-card p {
       color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin: 0 0 20px 0;
     }
-    .spatial-info li {
-      margin-bottom: 8px;
-    }
-    .spatial-map-mockup {
-      background: var(--paper);
-      border: 1px dashed var(--sage);
-      border-radius: 16px;
-      height: 200px;
-      display: grid;
-      place-content: center;
-      text-align: center;
-      padding: 20px;
+    .axis-footer {
+      border-top: 1px solid var(--line);
+      padding-top: 15px;
+      font-size: 0.82rem;
       color: var(--forest);
-      font-size: 0.85rem;
       font-weight: 700;
     }
-    @media(max-width: 850px) {
-      .spatial-card { grid-template-columns: 1fr; gap: 20px; }
-    }
 
-
-
-/* Ajuste para que la imagen panorámica respete el ancho del contenido principal */
-    .panoramic-map-container {
-      margin: 35px 0;
-      border-radius: 20px;
-      overflow: hidden;
+    /* Tabla de ámbitos territoriales (Ríos de Vida) */
+    .territory-table-wrap {
+      overflow-x: auto;
+      margin: 30px 0;
+      border-radius: 16px;
       border: 1px solid var(--line);
-      box-shadow: 0 10px 30px rgba(13, 33, 26, 0.08);
-      position: relative;
     }
-    .panoramic-map-container img {
+    .territory-table {
       width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-      filter: brightness(0.9) contrast(1.05);
+      border-collapse: collapse;
+      background: var(--white);
+      text-align: left;
+      font-size: 0.93rem;
     }
-    .panoramic-map-caption {
+    .territory-table th {
+      background: var(--forest-deep);
+      color: var(--white);
       padding: 15px 20px;
-      background: var(--cream);
-      font-size: 0.9rem;
-      color: var(--forest-deep);
-      font-weight: 600;
-      border-top: 1px solid var(--line);
-      text-align: center;
-    }
-
-/* Estilo interactivo para la imagen panorámica (permite hacer clic) */
-    .panoramic-map-container {
-      margin: 35px 0;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      box-shadow: 0 10px 30px rgba(13, 33, 26, 0.08);
-      position: relative;
-      cursor: pointer;
-    }
-    .panoramic-map-container img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-      filter: brightness(0.9) contrast(1.05);
-      transition: transform 0.4s ease;
-    }
-    .panoramic-map-container:hover img {
-      transform: scale(1.03);
-    }
-    .panoramic-map-container::after {
-      content: "🔍 Ampliar imagen";
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: rgba(13, 33, 26, 0.8);
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 0.75rem;
       font-weight: 700;
-      opacity: 0;
-      transition: opacity 0.3s ease;
     }
-    .panoramic-map-container:hover::after {
-      opacity: 1;
-    }
-    .panoramic-map-caption {
+    .territory-table td {
       padding: 15px 20px;
-      background: var(--cream);
-      font-size: 0.9rem;
-      color: var(--forest-deep);
-      font-weight: 600;
-      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .territory-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Sección Co-Branding fuera del Hero, al inicio del Main con iluminación elegante */
+    .cobranding-section {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      padding: 30px 0;
       text-align: center;
     }
-
-
-
-
-
-    /* Estilos del Modal Lightbox para la vista completa */
-    .panoramic-lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      background: rgba(10, 24, 18, 0.92);
-      backdrop-filter: blur(8px);
+    .cobranding-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 20px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+      gap: 15px;
+      padding: 0 20px;
     }
-    .panoramic-lightbox.active {
-      opacity: 1;
-      visibility: visible;
+    .cobranding-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--forest);
+      margin: 0;
     }
-    .panoramic-lightbox img {
-      max-width: 92vw;
-      max-height: 80vh;
-      object-fit: contain;
-      border-radius: 16px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-    .panoramic-lightbox-caption {
-      margin-top: 15px;
-      color: var(--paper);
-      font-size: 1rem;
-      font-weight: 600;
-      text-align: center;
-    }
-    .panoramic-lightbox-close {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: var(--white);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      font-size: 1.5rem;
+    .co-branding-container {
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
+      gap: 40px;
+      flex-wrap: wrap;
     }
-    .panoramic-lightbox-close:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: scale(1.1);
+    .brand-logo-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+    /* Logo central (ALEBO): Destacado al frente e iluminado */
+    .brand-logo-center {
+      z-index: 3;
     }
 
 
 
 
-    @media(max-width: 850px) {
-      .pillars-grid, .sumarse-grid { grid-template-columns: 1fr; }
+    .brand-logo-center img {
+      
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(13, 33, 26, 0.15)) brightness(1.05);
+      width: clamp(50px, 30vw, 230px); 
+      height: auto;
+    }
+
+
+    /* Logos laterales (FAS y HUB): Ligeramente detrás, más grandes e iluminados para resaltar */
+    .brand-logo-side {
+      z-index: 1;
+      opacity: 0.95;
+      transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+    }
+
+
+
+    .brand-logo-side img {
+      
+      object-fit: contain;
+      filter: drop-shadow(0 3px 10px rgba(13, 33, 26, 0.12)) brightness(1.1);
+      width: clamp(25px, 15vw, 130px); 
+      height: auto;
+    }
+
+
+
+    .brand-logo-side:hover {
+      transform: scale(1.12);
+      opacity: 1;
+      filter: drop-shadow(0 5px 15px rgba(13, 33, 26, 0.2)) brightness(1.2);
+    }
+
+
+
+
+    @media(max-width: 900px) {
+      .pillar-card-grid, .program-axis-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-
-
-
 
 <!-- ENCABEZADO / NAVEGACIÓN -->
 <header class="site-header">
@@ -315,19 +238,19 @@
         </div>
       </div>
 
-      <!-- NUEVO MENÚ DESPLEGABLE: NUESTRO TRABAJO -->
+      <!-- MENÚ DESPLEGABLE: NUESTRO TRABAJO -->
       <div class="dropdown">
         <div class="dropdown-trigger">Nuestro Trabajo <span class="arrow">▾</span></div>
         <div class="dropdown-menu">
+          <a href="programas.html" style="color: #76d577; font-weight: 700;">Programas</a>          
           <a href="index.html#proyectos">Proyectos</a>
-          <a href="programas.html" style="color: #76d577; font-weight: 700;">Programas</a>
           <a href="alianzas.html">Alianzas</a>
         </div>
       </div>
 
       <a href="prensa.html">Prensa</a>
       <a href="index.html#galeria">Galería</a>
-      <a href="especies.html">Especies</a> <!-- NUEVA SECCIÓN DE ESPECIES -->
+      <a href="especies.html">Especies</a>
       <a class="nav-action" href="index.html#voluntariado">Voluntariado</a>
       <a class="nav-action nav-donate" href="index.html#aporta">Donaciones</a>
       <a href="index.html#contacto">Contacto</a>
@@ -335,144 +258,492 @@
   </nav>
 </header>
 
-
-
-
 <main>
-  <!-- HERO RESPONSIVO -->
+
+  <!-- HERO RESPONSIVO LIMPIO (Sin logos flotantes) -->
   <section class="page-hero-picture">
     <picture>
       <source media="(max-width: 600px)" srcset="assets/alianzas-hero-mobile.png">
-      <img src="assets/alianzas-hero.png" alt="Programa Senderos de Vida Lima" class="hero-bg-img">
+      <img src="assets/alianzas-hero.png" alt="Programas de Escala - Legado Botánico y FAS" class="hero-bg-img">
     </picture>
     <div class="hero-overlay"></div>
     <div class="container text-center hero-picture-content">
-      <p class="eyebrow light">Programa Continental</p>
-
-
-      <h1 class="text-white">Senderos de <span style="color: #89F336;">Vida - Lima</span></h1>
-
-      <p class="page-hero-text light">Un programa de la Fundación América Sostenible (FAS) impulsado localmente por la Asociación Legado Botánico (ALEBO).</p>
+      <p class="eyebrow light">Arquitectura de Impacto y Restauración Ecosistémica</p>
+      <h1 class="text-white">Programas de Escala para la <span style="color: #89F336;">Transición Ecológica en el Perú</span></h1>
+      <p class="page-hero-text light">"Impulsamos un modelo de restauración y desarrollo sostenible que conecta la visión estratégica continental de la Fundación América Sostenible (FAS) con la capacidad de acción e innovación botánica de ALEBO en el Perú."</p>
     </div>
   </section>
 
-  <!-- SECCIÓN PRINCIPAL DEL PROGRAMA -->
-  <section class="section">
+  <!-- NUEVA SECCIÓN DE CO-BRANDING FUERA DEL HERO (Al inicio del Main) -->
+  <div class="cobranding-section">
+    <div class="cobranding-wrapper">
+      <p class="cobranding-title">Alianza Institucional de Impacto Continental</p>
+      <div class="co-branding-container">
+        <!-- Logo FAS (Izquierda) -->
+        <div class="brand-logo-item brand-logo-side" title="Fundación América Sostenible (FAS)">
+          <img src="assets/fas_v.png" alt="FAS">
+        </div>
+        <!-- Logo ALEBO (Centro) -->
+        <div class="brand-logo-item brand-logo-center" title="Asociación Legado Botánico (ALEBO)">
+          <img src="assets/logo-alebo-letras_into.png" alt="ALEBO">
+        </div>
+        <!-- Logo HUB 2030 (Derecha) -->
+        <div class="brand-logo-item brand-logo-side" title="HUB 2030">
+          <img src="assets/hub_2030.png" alt="HUB 2030">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 1: LA ESTRATEGIA CONTINENTAL -->
+ <section class="section" style="padding-bottom: 0;">
     <div class="container program-content">
-      <p class="eyebrow">Sobre la iniciativa</p>
-      <h2>Devolviéndole la conectividad biológica a la ciudad</h2>
-      <p style="font-size: 1.08rem; line-height: 1.75; color: var(--muted);">
-        Senderos de Vida - Lima forma parte de la red continental impulsada por la Fundación América Sostenible (FAS). Esta iniciativa busca enfrentar de manera directa la fragmentación del paisaje natural urbano y la progresiva pérdida de biodiversidad mediante la creación de corredores ecológicos que conectan parques, jardines, vías y espacios naturales en los ámbitos urbanos y sus alrededores.
-      </p>
-      <p style="font-size: 1.08rem; line-height: 1.75; color: var(--muted);">
-        A través de esta alianza estratégica, transformamos espacios urbanos complejos en refugios dinámicos de flora nativa y adaptada, promoviendo la restauración biológica y apoyando a las redes de viveros locales para multiplicar el capital natural de Lima.
-      </p>
+      <div class="section-heading" style="text-align: left; margin-bottom: 40px;">
+        <span class="eyebrow">La Estrategia Continental</span>
+        <h2>De la visión regional a la <span>acción territorial</span></h2>
+        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--muted); margin-top: 10px;">
+          Todos los programas desarrollados por la Fundación América Sostenible (FAS) junto a HUB 2030 responden a una arquitectura de impacto diseñada para transformar dinámicas sistémicas en América Latina. Esta metodología se basa en cinco pilares de gestión integrada:
+        </p>
+      </div>
 
-
-
-
-
-    <!-- Imagen Geográfica Interactiva -->
-      <div class="panoramic-map-container" id="open-panoramic">
-        <img src="assets/watermarked_img_17400532383948871887.jfif" alt="Vista satelital y geográfica de Lima y sus laderas áridas" id="panoramic-img">
-        <div class="panoramic-map-caption">
-          🗺️ Vista general de la geografía árida y la expansión urbana de Lima Metropolitana. (Haz clic para ampliar)
+      <div class="pillar-card-grid">
+        <div class="pillar-box">
+          <h3>1. Objetivos Macro Ambiciosos</h3>
+          <p>Metas cuantitativas continentales trazadas hacia el 2040 y 2050, alineadas rigurosamente a la agenda climática global.</p>
+        </div>
+        <div class="pillar-box">
+          <h3>2. Diseño y Narrativa Unificada</h3>
+          <p>Marcos conceptuales robustos que elevan la acción local a causas de atracción de capital de impacto, cooperación e inversión ESG.</p>
+        </div>
+        <div class="pillar-box">
+          <h3>3. Herramientas y Canales Comunes</h3>
+          <p>Plataformas de monitoreo, gobernanza y tecnologías de trazabilidad compartidas entre todos los nodos de la región.</p>
+        </div>
+        <div class="pillar-box">
+          <h3>4. Aterrizaje en Capítulos Nacionales</h3>
+          <p>Adaptación de la estrategia continental a la realidad socioecológica de cada país, siendo Perú el capítulo pionero mediante la articulación con ALEBO.</p>
         </div>
       </div>
 
-      <!-- Ventana Modal Lightbox para la vista completa -->
-      <div class="panoramic-lightbox" id="panoramic-lightbox" aria-hidden="true">
-        <button type="button" class="panoramic-lightbox-close" id="close-panoramic" aria-label="Cerrar">&times;</button>
-        <img src="assets/watermarked_img_17400532383948871887.jfif" alt="Vista satelital completa">
-        <div class="panoramic-lightbox-caption">🗺️ Geografía árida y expansión urbana de Lima Metropolitana</div>
+      <div style="margin-top: 24px;">
+        <div class="pillar-box" style="background: var(--paper);">
+          <h3>5. Nutrición Multinivel (Proyectos y Subproyectos)</h3>
+          <p>Una estructura donde cada intervención microrregional (cerros, escuelas, tramos de ríos) genera datos auditables que alimentan directamente las métricas e indicadores de avance del país y del continente.</p>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 2: LAS 3 LÍNEAS PROGRAMÁTICAS -->
+      <div style="margin-top: 70px;">
+        <div class="section-heading" style="text-align: left; margin-bottom: 30px;">
+          <span class="eyebrow">Los Programas Eje</span>
+          <h2>Ejes de <span>Transición Ecológica</span></h2>
+          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--muted); margin-top: 10px;">
+            En el Perú, este marco estratégico cobra vida a través de tres programas interconectados que abordan la matriz ecológica de nuestras metrópolis y regiones.
+          </p>
+        </div>
+
+        <div class="program-axis-grid">
+          
+          <!-- Eje 1: Senderos de Vida -->
+          <div class="axis-card">
+            <div>
+              <span class="axis-tag">Eje Terrestre</span>
+              <h3>Senderos de Vida</h3>
+              <p><b>Enfoque:</b> Producción y plantación de flora nativa para generar corredores de biodiversidad en ámbitos urbanos, periurbanos y rurales.</p>
+              <p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 15px;"><b>Nodo Activo:</b> Proyecto Forestal Cerro La Milla (+3,500 m² restaurados, +200 árboles de 26 especies).</p>
+            </div>
+            <div class="axis-footer">
+              Respaldo: FAS + ALEBO
+            </div>
+          </div>
+
+          <!-- Eje 2: Ríos de Vida -->
+          <div class="axis-card">
+            <div>
+              <span class="axis-tag">Eje Hídrico</span>
+              <h3>Ríos de Vida</h3>
+              <p><b>Enfoque:</b> Bio-remediación, limpieza de plásticos y forestación de fajas marginales, transformando márgenes degradadas en infraestructura viva.</p>
+              <p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 15px;"><b>Nodo Activo:</b> Proyecto de Restauración del Río Surco para revitalización ecosistémica y comunitaria.</p>
+            </div>
+            <div class="axis-footer">
+              Respaldo: FAS + ALEBO + RCE Cuenca del Plata
+            </div>
+          </div>
+
+          <!-- Eje 3: Escuelas de Vida -->
+          <div class="axis-card">
+            <div>
+              <span class="axis-tag">Eje Educativo y Circular</span>
+              <h3>Escuelas de Vida</h3>
+              <p><b>Enfoque:</b> Viveros escolares, biohuertos, jardín de polinizadores, compostaje y riego solar para laboratorios vivos de sostenibilidad.</p>
+              <p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 15px;"><b>Nodos Activos:</b> I.E.I. Luis Enrique X e I.E. 2032 Manuel Scorza (SMP).</p>
+            </div>
+            <div class="axis-footer">
+              Respaldo: FAS + ALEBO
+            </div>
+          </div>
+
+        </div>
       </div>
 
 
 
 
-      <!-- Tarjeta de Ubicación Espacial Restaurada y Completa -->
-      <div class="spatial-card" style="grid-template-columns: 1fr;">
-        <div class="spatial-info">
-          <h3>Parámetros del Territorio</h3>
-          <ul>
-            <li><b>Ámbito geográfico:</b> Lima Metropolitana y zonas de influencia (incluyendo distritos de Lima Norte como San Martín de Porres).</li>
-            <li><b>Enfoque de conectividad:</b> Creación de puentes biológicos entre laderas áridas, áreas naturales protegidas locales y parques urbanos.</li>
-            <li><b>Meta de densidad verde:</b> 1 ejemplar de flora nativa por cada habitante de la ciudad.</li>
+
+      <!-- DETALLE AMPLIADO DE RÍOS DE VIDA Y ÁMBITOS -->
+      <div style="margin-top: 70px;">
+        <span class="eyebrow">Enfoque Hídrico</span>
+        <h2>Programa Ríos de Vida: <span>Conservación, Regeneración y Gobernanza Comunitaria de Cuencas y Corredores Fluviales</span></h2>
+        
+        <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 24px; margin-top: 20px; font-size: 0.95rem; color: var(--muted); line-height: 1.6;">
+          <p style="margin: 0 0 8px 0;"><b>Diseñado por:</b> Fundación América Sostenible (FAS) y HUB 2030</p>
+          <p style="margin: 0 0 8px 0;"><b>Operador y Articulador Local en Perú:</b> Asociación Legado Botánico (ALEBO)</p>
+          <p style="margin: 0 0 8px 0;"><b>Ámbito de Intervención:</b> Cuencas y corredores hídricos intraurbanos, periurbanos, interurbanos y rurales</p>
+          <p style="margin: 0;"><b>Articulación Programática:</b> Programa Marco Senderos de Vida | Escuelas de Vida</p>
+        </div>
+
+        <!-- 1. VISIÓN GENERAL -->
+        <div style="margin-top: 35px;">
+          <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">1. Visión General del Programa</h3>
+          <p style="font-size: 1rem; color: var(--muted); line-height: 1.7;">
+            Ríos de Vida es el eje hídrico de la estrategia de infraestructura verde y resiliencia climática impulsada por FAS y ALEBO. El programa transforma canales, ríos y fajas marginales degradadas en corredores biológicos vivos, seguros y comunitarios.
+          </p>
+          <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-top: 10px;">
+            A través de la integración de bio-remediación, limpieza de residuos, reforestación con flora nativa ribereña, equipamiento urbano sostenible y participación ciudadana, Ríos de Vida recupera el tejido ecológico y social de las cuencas hídricas del Perú.
+          </p>
+        </div>
+
+        <!-- 2. PILARES ESTRATÉGICOS -->
+        <div style="margin-top: 35px;">
+          <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 20px;">2. Pilares Estratégicos de Intervención</h3>
+          
+          <div class="pillar-card-grid">
+            <div class="pillar-box">
+              <h3>Pilar 1: Limpieza, Bio-remediación y Gestión de Residuos</h3>
+              <p style="margin-bottom: 10px;"><b>• Descontaminación y Recuperación Física:</b> Jornadas continuas de retiro de plásticos, residuos sólidos acumulados y escombros en fajas marginales y del cauce hídrico.</p>
+              <p style="margin-bottom: 10px;"><b>• Fito-remediación Natural:</b> Establecimiento de islas flotantes biológicas y filtros vegetales con especies macrófitas nativas para la absorción de metales pesados y exceso de nutrientes.</p>
+              <p><b>• Centros de Acopio y Circularidad:</b> Articulación con recicladores locales y programas de valorización de residuos orgánicos e inorgánicos extraídos de la cuenca.</p>
+            </div>
+
+            <div class="pillar-box">
+              <h3>Pilar 2: Forestación Ribereña con Flora Nativa</h3>
+              <p style="margin-bottom: 10px;"><b>• Estabilización de Taludes y Márgenes:</b> Control de erosión mediante andenería botánica y siembra de flora nativa con raíces profundas y resistentes a crecidas.</p>
+              <p style="margin-bottom: 10px;"><b>• Corredores Biológicos Fluviales:</b> Plantación de árboles y arbustos nativos para bajar la temperatura del agua, reducir la evaporación y crear microclimas.</p>
+              <p><b>• Suministro Circular:</b> Los plantines nativos y el compost utilizado son abastecidos directamente por la red del programa Escuelas de Vida y la red de viveros de Senderos de Vida - Perú.</p>
+            </div>
+
+            <div class="pillar-box">
+              <h3>Pilar 3: Mobiliario Urbano Sostenible e Infraestructura de Conectividad</h3>
+              <p style="margin-bottom: 10px;"><b>• Equipamiento Ecológico:</b> Instalación de bancas, senderos peatonales, miradores y puntos de descanso elaborados con plástico reciclado y madera de origen sostenible.</p>
+              <p><b>• Zonas de Encuentro Comunitario:</b> Conversión de márgenes abandonados en parques lineales seguros para el disfrute y recreación comunitaria.</p>
+            </div>
+
+            <div class="pillar-box">
+              <h3>Pilar 4: Señalética Interpretativa, Ciencia Ciudadana y Gobernanza</h3>
+              <p style="margin-bottom: 10px;"><b>• Cartelería Sensibilizadora:</b> Paneles informativos e interpretativos sobre la historia de la cuenca, la biodiversidad retornada y las pautas para el cuidado colectivo.</p>
+              <p style="margin-bottom: 10px;"><b>• Monitoreo y Citizen Science:</b> Muestreos comunitarios periódicos de la calidad del agua e identificación de fauna (aves, anfibios, insectos) vinculados a la App SdV.</p>
+              <p><b>• Comités de Cuenca Urbana:</b> Creación de mesas de gobernanza local con vecinos, municipios y juntas de usuarios de agua.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. ÁMBITOS Y ESCALAS TERRITORIALES (TABLA MANTENIDA) -->
+        <div style="margin-top: 45px;">
+          <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 15px;">3. Ámbitos y Escalas Territoriales</h3>
+          <div class="territory-table-wrap">
+            <table class="territory-table">
+              <thead>
+                <tr>
+                  <th>Ámbito</th>
+                  <th>Enfoque Territorial</th>
+                  <th>Objetivo Principal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Intraurbano</b></td>
+                  <td>Canales urbanos, acequias históricas y tramos de ríos dentro de la ciudad.</td>
+                  <td>Reducción de contaminación, mitigación de olores y parques lineales urbanos.</td>
+                </tr>
+                <tr>
+                  <td><b>Periurbano</b></td>
+                  <td>Transición entre la ciudad y lomas/cerros áridos.</td>
+                  <td>Control de escorrentías, retención de suelo y amortiguamiento de erosión.</td>
+                </tr>
+                <tr>
+                  <td><b>Interurbano y Rural</b></td>
+                  <td>Tramos conectores entre distritos, valles agrícolas y cuencas medias/altas.</td>
+                  <td>Conservación de biodiversidad, protección de fuentes hídricas y agroecología.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 4. NODO PILOTO ACTIVO -->
+        <div style="margin-top: 45px;">
+          <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">4. Nodo Piloto Activo: Río Surco (Lima, Perú)</h3>
+          <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 15px;">
+            El programa despega con su primer nodo demostrativo en el Río/Canal Surco en Lima, liderado en campo por Emiliano Cacciavillani y el equipo de ALEBO.
+          </p>
+          <ul style="color: var(--muted); line-height: 1.7; padding-left: 20px; font-size: 0.95rem;">
+            <li style="margin-bottom: 8px;"><b>Hito 01:</b> Limpieza intensiva de plásticos y sedimentos en tramos prioritarios.</li>
+            <li style="margin-bottom: 8px;"><b>Hito 02:</b> Arbolado de faja marginal con especies nativas peruanas.</li>
+            <li><b>Hito 03:</b> Instalación del primer circuito de señalética ambiental e integración comunitaria.</li>
           </ul>
         </div>
+
+        <!-- 5. ARTICULACIÓN SISTÉMICA -->
+        <div style="margin-top: 45px;">
+          <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">5. Articulación Sistémica con Otros Programas</h3>
+          <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 15px;">
+            Ríos de Vida se entrelaza de manera directa en la matriz de impacto:
+          </p>
+          <ul style="color: var(--muted); line-height: 1.7; padding-left: 20px; font-size: 0.95rem;">
+            <li style="margin-bottom: 8px;"><b>Con Senderos de Vida:</b> Cada ejemplar vegetal sembrado en las riberas y cada metro lineal de cuenca recuperado forma parte de las métricas de la meta marco continental de FAS.</li>
+            <li><b>Con Escuelas de Vida:</b> Los colegios aledaños a la cuenca participan activamente en las jornadas de monitoreo y suministran el compost escolar para las plantaciones ribereñas.</li>
+          </ul>
+        </div>
+
+        <!-- 6. MODELO DE ALIANZAS -->
+        <div style="margin-top: 45px;">
+          <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">6. Modelo de Alianzas y Llamados a la Acción</h3>
+          
+          <div class="pillar-card-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="pillar-box" style="background: var(--paper);">
+              <h3>Para Empresas</h3>
+              <p>Financia la recuperación de un tramo del Río Surco o cuencas periurbanas. Recibe reportes auditados de plásticos retirados, metros de faja restaurada e indicadores de huella hídrica y CO2.</p>
+            </div>
+            <div class="pillar-box" style="background: var(--paper);">
+              <h3>Para Municipios</h3>
+              <p>Integra tu distrito al programa Ríos de Vida para transformar fajas marginales degradadas en espacio público verde y bio-remediado.</p>
+            </div>
+            <div class="pillar-box" style="background: var(--paper);">
+              <h3>Para la Comunidad y Voluntariado</h3>
+              <p>Participa en las jornadas de limpieza, siembra ribereña y talleres de ciencia ciudadana.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="quote-box">
-        <p>"Un habitante, una planta: 10 millones de ejemplares para devolverle la vida y la conectividad biológica a Lima."</p>
+
+
+
+
+<!-- DETALLE AMPLIADO DE ESCUELAS DE VIDA (Fondo extendido de lado a lado real) -->
+  <div style="
+	background: #eef7f0; 
+	border-top: 1px solid #d4ebd8; 
+	border-bottom: 1px solid #d4ebd8; 
+	margin-top: 70px; 
+	padding: 60px 0; 
+	width: 100vw; 
+	position: relative; 
+	left: 50%; 
+	right: 50%; 
+	margin-left: -50vw; 
+	margin-right: -50vw;
+	">
+    <div class="container program-content">
+      <span class="eyebrow" style="color: var(--forest);">Educación y Regeneración</span>
+      <h2 style="color: var(--forest-deep);">Escuelas de Vida: <span>Red de Viveros, Biohuertos, Jardín de Polinizadores y Centros de Economía Circular Escolar</span></h2>
+      
+      <div style="background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 20px 24px; margin-top: 20px; font-size: 0.93rem; color: var(--muted); line-height: 1.6;">
+        <p style="margin: 0;"><b>Diseñado por:</b> Fundación América Sostenible y el RCE Cuenca del Plata junto a ALEBO para su implementación en Lima, Perú.</p>
       </div>
 
+      <!-- 1. INTRODUCCIÓN / SOBRE EL PROGRAMA -->
+      <div style="margin-top: 35px;">
+        <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">Sobre el Programa</h3>
+        <p style="font-size: 1rem; color: var(--muted); line-height: 1.7;">
+          <b>'Escuelas de Vida'</b> no es un taller ambiental aislado: es un sistema de gestión escolar integral que convierte patios, azoteas y áreas libres en nodos de producción vegetal, conservación de biodiversidad y valorización de recursos. Cada escuela opera mediante 4 pilares temáticos biológicos, potenciados por una capa tecnológica de energías limpias y riego autónomo.
+        </p>
+      </div>
 
-      <!-- PILARES DE IMPACTO -->
-      <div style="margin-top: 50px;">
-        <p class="eyebrow">Nuestra visión</p>
-        <h2>Nuestros Pilares de Impacto en Lima</h2>
-
-        <div class="pillars-grid">
-          <div class="pillar-box">
-            <h3>1. Capital Natural y Producción Local</h3>
-            <p>Incorporamos la capacidad de viveros comunitarios y botánicos para asegurar la propagación responsable de especies adaptadas.</p>
+      <!-- 2. LOS 4 PILARES TEMÁTICOS -->
+      <div style="margin-top: 30px;">
+        <div class="pillar-card-grid">
+          <div class="pillar-box" style="background: var(--white);">
+            <h3>🌿 Pilar 1 — Vivero Pedagógico y Forestal</h3>
+            <p>Cultivo de árboles y arbustos nativos para la reforestación de la escuela y corredores urbanos. Los ejemplares producidos alimentan directamente el programa <b>'Senderos de Vida - Lima'</b> impulsado por ALEBO y la Fundación América Sostenible junto a diversos aliados locales e internacionales.</p>
           </div>
-          <div class="pillar-box">
-            <h3>2. Conectividad Ecológica Urbana</h3>
-            <p>Restauramos la trama verde uniendo espacios periurbanos e intraurbanos, generando 'puentes de vida' esenciales para polinizadores y aves.</p>
+          <div class="pillar-box" style="background: var(--white);">
+            <h3>🥗 Pilar 2 — Biohuerto Agroecológico y Módulos Verticales</h3>
+            <p>Producción de hortalizas y plantas medicinales mediante diversas técnicas de cultivo de bajo costo con recipientes reciclados, promoviendo la soberanía alimentaria y la nutrición saludable.</p>
           </div>
-          <div class="pillar-box">
-            <h3>3. Resiliencia y Clima</h3>
-            <p>Mitigamos el efecto de isla de calor urbana, mejoramos la captación de agua de lluvia y contribuimos a la captura de carbono.</p>
+          <div class="pillar-box" style="background: var(--white);">
+            <h3>🦋 Pilar 3 — Refugio de Polinizadores e Islas de Biodiversidad</h3>
+            <p>Reservas naturales permanentes con flora nativa hospederas y nectaríferas, acompañadas de 'hoteles para insectos solitarios e inofensivos', creando aulas abiertas para el estudio de ciclos biológicos.</p>
           </div>
-          <div class="pillar-box">
-            <h3>4. Empoderamiento Ciudadano</h3>
-            <p>Involucramos a vecinos, escuelas y organizaciones civiles mediante el programa de <em>Guardianes del Sendero</em> en talleres y siembras.</p>
+          <div class="pillar-box" style="background: var(--white);">
+            <h3>♻ Pilar 4 — Economía Circular y Centro de Valorización</h3>
+            <p>Separación en origen de residuos orgánicos (compostaje y lombricultura para abono) e inorgánicos (reutilización de plásticos PET, bidones y pallets para la infraestructura del huerto).</p>
           </div>
         </div>
       </div>
 
-      <!-- EL RETO -->
-      <div class="challenge-banner">
-        <h2>El Reto: <span>10 Millones de Ejemplares</span></h2>
-        <p>Nos hemos propuesto el ambicioso objetivo de escalar la producción y siembra participativa hasta alcanzar 1 ejemplar de flora por cada habitante de Lima.</p>
+      <!-- 3. LA MATRIZ DE GESTIÓN INTEGRADA 360° -->
+      <div style="margin-top: 45px;">
+        <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">La Matriz de Gestión Integrada 360°</h3>
+        <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px;">
+          El programa organiza la sostenibilidad escolar mediante una matriz transparente que conecta los pilares biológicos y tecnológicos con las dimensiones de gestión institucional:
+        </p>
+        <div class="pillar-card-grid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="pillar-box" style="background: var(--white); text-align: center; padding: 20px;">
+            <h4 style="color: var(--forest); font-size: 0.95rem; margin-bottom: 8px;">Gobernanza</h4>
+            <p style="font-size: 0.85rem;">Políticas & Convenios institucionales</p>
+          </div>
+          <div class="pillar-box" style="background: var(--white); text-align: center; padding: 20px;">
+            <h4 style="color: var(--forest); font-size: 0.95rem; margin-bottom: 8px;">Pedagogía</h4>
+            <p style="font-size: 0.85rem;">EBR / EDS & STEM Verde</p>
+          </div>
+          <div class="pillar-box" style="background: var(--white); text-align: center; padding: 20px;">
+            <h4 style="color: var(--forest); font-size: 0.95rem; margin-bottom: 8px;">Gestión & Tecno</h4>
+            <p style="font-size: 0.85rem;">Prácticas y Riego autónomo</p>
+          </div>
+          <div class="pillar-box" style="background: var(--white); text-align: center; padding: 20px;">
+            <h4 style="color: var(--forest); font-size: 0.95rem; margin-bottom: 8px;">Datos Auditables</h4>
+            <p style="font-size: 0.85rem;">Supervisión y Reportes ESG</p>
+          </div>
+        </div>
       </div>
 
-      <!-- CÓMO SUMARTE -->
-      <div style="margin-top: 50px;">
-        <p class="eyebrow">Participación</p>
-        <h2>¿Cómo sumarte a la red?</h2>
+      <!-- 4. ENFOQUE EDUCATIVO: EDS & RESPALDO RCE -->
+      <div style="margin-top: 45px;">
+        <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">Enfoque Educativo: EDS & Respaldo RCE (ONU / UNESCO)</h3>
+        <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 15px;">
+          El programa aplica el enfoque y la metodología de la Educación para el Desarrollo Sostenible (EDS), garantizando una transformación profunda e institucional:
+        </p>
+        <ul style="color: var(--muted); line-height: 1.7; padding-left: 20px; font-size: 0.95rem;">
+          <li style="margin-bottom: 8px;"><b>Educación 'PARA' la Sostenibilidad:</b> Pasamos de dar lecciones teóricas a habilitar experiencias prácticas de acción ambiental donde los alumnos solucionan problemas reales de su comunidad escolar.</li>
+          <li style="margin-bottom: 8px;"><b>Modelo de Fortalezas:</b> No se crea una materia nueva; cada disciplina del currículo nacional (Ciencias, Matemáticas, Cívica, Lenguaje, Tecnología) aporta desde sus propios contenidos al proyecto del huerto y vivero solar.</li>
+          <li><b>Respaldo Internacional RCE:</b> RCE Cuenca del Plata avalado por la Universidad de Naciones Unidas, integrando a Lima en la red global de expertos en educación ambiental.</li>
+        </ul>
+      </div>
 
-        <div class="sumarse-grid">
-          <div class="sumarse-card">
-            <h3>Comunidad y Ciudadanía</h3>
-            <p>Adopta una planta nativa, participa en las jornadas de siembra comunitaria o capacítate como Guardián del Sendero.</p>
+      <!-- 5. NODOS PILOTO EN SAN MARTÍN DE PORRES -->
+      <div style="margin-top: 45px;">
+        <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">Nodos Piloto en San Martín de Porres (Evidencia en Campo)</h3>
+        <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px;">
+          ALEBO ya ejecuta el modelo en instituciones educativas públicas de Lima, demostrando la viabilidad técnica y social del programa:
+        </p>
+        <div class="pillar-card-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="pillar-box" style="background: var(--white);">
+            <h3>🏫 I.E.I. Luis Enrique X (SMP)</h3>
+            <p>Biohuerto escolar e iniciación en compostaje para la educación inicial, acercando a niños desde temprana edad al cultivo de alimentos y la biodiversidad.</p>
           </div>
-          <div class="sumarse-card">
-            <h3>Viveros e Instituciones</h3>
-            <p>Intégrate a la red técnica de producción de especies clave y al monitoreo biológico constante.</p>
-          </div>
-          <div class="sumarse-card">
-            <h3>Empresas y Sponsors</h3>
-            <p>Financia hectáreas de corredores verdes e impulsa de forma activa el voluntariado corporativo de tu organización.</p>
+          <div class="pillar-box" style="background: var(--white);">
+            <h3>🏫 I.E. 2032 Manuel Scorza (SMP)</h3>
+            <p>Nodo de cultivo e investigación con participación activa de jóvenes y voluntariado local, generando germoplasma y producción vegetal para la comunidad.</p>
           </div>
         </div>
+      </div>
 
-        <div style="text-align: center; margin-top: 40px;">
-          <a class="button primary" href="https://wa.me/51987565786?text=Hola%2C%20quisiera%20saber%20m%C3%A1s%20sobre%20el%20programa%20Senderos%20de%20Vida%20Lima." target="_blank" rel="noopener noreferrer" style="background: var(--forest); color: #fff;">Unirme al programa por WhatsApp →</a>
-        </div>
+      <!-- 6. CONEXIÓN TERRITORIAL -->
+      <div style="margin-top: 45px;">
+        <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">Conexión Territorial: De la Escuela al Continente</h3>
+        <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 15px;">
+          Cada vivero y biohuerto escolar opera como un motor biológico conectado a dos grandes iniciativas de conservación:
+        </p>
+        <ul style="color: var(--muted); line-height: 1.7; padding-left: 20px; font-size: 0.95rem;">
+          <li style="margin-bottom: 8px;"><b>Escala Local — 'Senderos de Lima':</b> Los árboles nativos cultivados por los estudiantes son trasplantados en las inmediaciones del colegio, parques locales y zonas degradadas.</li>
+          <li><b>Escala Continental — 'Senderos de Vida' (FAS):</b> Cada ejemplar sembrado, kilogramos de compost generado, plástico reciclado y kWh solar generado se georreferencia en la plataforma continental de FAS, sumando a la gran meta de 1 árbol por habitante en las Américas.</li>
+        </ul>
+      </div>
+
+      <!-- 7. LLAMADO A LA ACCIÓN -->
+      <div style="margin-top: 45px; background: var(--white); border-radius: 16px; padding: 24px; text-align: center; border: 1px solid var(--line);">
+        <h3 style="font: 700 1.2rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 8px;">🎓 ¿Eres Directivo o Docente Escolar?</h3>
+        <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 15px;">Transforma tu institución en una Escuela Verde y Tecnológica. Solicita el diagnóstico de tu plantel para incorporarte a la red.</p>
+        <a href="#contacto-programas" class="button primary" style="background: var(--forest); display: inline-block; padding: 10px 24px; border-radius: 999px; color: #fff; text-decoration: none; font-weight: 700; font-size: 0.9rem;">Solicitar diagnóstico escolar →</a>
       </div>
 
     </div>
+  </div>
+
   </section>
+
+  <!-- SECCIÓN FINAL: FORMULARIO UNIFICADO DE ALIANZAS E INVERSIÓN (CTA) -->
+  
+
+
+<section class="section cream" id="contacto-programas">
+    <div class="container" style="max-width: 800px;">
+      <div class="section-heading" style="text-align: center; margin-bottom: 40px;">
+        <span class="eyebrow">Súmate a la red de impacto</span>
+        <h2>Co-diseñemos la <span>transformación del territorio</span></h2>
+        <p style="font-size: 1.05rem; color: var(--muted); margin-top: 10px;">
+          ¿Eres una empresa (ESG), municipio, donante o colegio? Completa el formulario y nos pondremos en contacto contigo.
+        </p>
+      </div>
+
+      <div class="modal-content" style="box-shadow: 0 15px 40px rgba(13, 33, 26, 0.06); border-radius: 24px; padding: 40px; background: var(--white); border: 1px solid var(--line);">
+        <form name="alianzas_programas" method="POST" data-netlify="true" class="legado-form">
+          <input type="hidden" name="form-name" value="alianzas_programas" />
+          <div class="form-grid">
+            
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="prog-nombre">Nombre y Apellido *</label>
+                <input type="text" id="prog-nombre" name="nombre" required placeholder="Tu nombre completo">
+              </div>
+              <div class="form-group">
+                <label for="prog-org">Organización / Empresa / Colegio *</label>
+                <input type="text" id="prog-org" name="organizacion" required placeholder="Nombre de tu entidad">
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="prog-contacto">Correo electrónico o WhatsApp *</label>
+                <input type="text" id="prog-contacto" name="contacto" required placeholder="tucorreo@email.com o teléfono">
+              </div>
+              <div class="form-group">
+                <label for="prog-interes">Programa de Interés *</label>
+                <select id="prog-interes" name="programa_interes" required>
+                  <option value="" disabled selected>Selecciona una opción</option>
+                  <option value="Senderos de Vida">Senderos de Vida</option>
+                  <option value="Rios de Vida">Ríos de Vida</option>
+                  <option value="Escuelas de Vida">Escuelas de Vida</option>
+                  <option value="Todos">Todos los programas</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="prog-tipo">Tipo de Alianza *</label>
+              <select id="prog-tipo" name="tipo_alianza" required>
+                <option value="" disabled selected>Selecciona el tipo de colaboración</option>
+                <option value="Financiamiento ESG">Financiamiento ESG / Inversión de Impacto</option>
+                <option value="Voluntariado Corporativo">Voluntariado Corporativo</option>
+                <option value="Postular Territorio o Escuela">Postular Territorio o Escuela</option>
+                <option value="Prensa">Prensa y Difusión</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="prog-mensaje">Mensaje / Comentarios adicionales</label>
+              <textarea id="prog-mensaje" name="mensaje" rows="4" placeholder="Cuéntanos brevemente tu propuesta o consulta..."></textarea>
+            </div>
+
+            <button type="submit" class="button primary btn-submit-form" style="width: 100%; text-align: center; justify-content: center; background: var(--forest);">Enviar propuesta de alianza →</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <!-- BOTÓN FLOTANTE WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/51987565786?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20el%20programa%20Senderos%20de%20Vida." target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
-  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3.2C8.93 3.2 3.2 8.93 3.2 16c0 2.26.59 4.38 1.71 6.25L3.2 28.8l6.72-1.67A12.72 12.72 0 0 0 16 28.8c7.07 0 12.8-5.73 12.8-12.8S23.07 3.2 16 3.2Zm0 23.3c-2.04 0-4.04-.55-5.78-1.59l-.41-.24-3.99.99 1.06-3.88-.27-.43A10.6 10.6 0 1 1 16 26.5Zm5.82-7.94c-.32-.16-1.88-.93-2.17-1.04-.29-.11-.5-.16-.71.16-.21.32-.82 1.04-1.01 1.25-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.57-1.88-1.75-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.98-2.34-.26-.61-.52-.53-.71-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.09-1.12 2.66s1.15 3.09 1.31 3.3c.16.21 2.25 3.43 5.45 4.81.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.15-1.51.27-.74.27-1.38.19-1.51-.08-.13-.29-.21-.61-.37Z"/></svg>
+<a class="whatsapp" href="https://wa.me/51987565786?text=Hola%2C%20quisiera%20obtener%20informaci%C3%B3n%20sobre%20c%C3%B3mo%20participar%20en%20Legado%20Bot%C3%A1nico." target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" title="Contactar por WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <path d="M16 3.2C8.93 3.2 3.2 8.93 3.2 16c0 2.26.59 4.38 1.71 6.25L3.2 28.8l6.72-1.67A12.72 12.72 0 0 0 16 28.8c7.07 0 12.8-5.73 12.8-12.8S23.07 3.2 16 3.2Zm0 23.3c-2.04 0-4.04-.55-5.78-1.59l-.41-.24-3.99.99 1.06-3.88-.27-.43A10.6 10.6 0 1 1 16 26.5Zm5.82-7.94c-.32-.16-1.88-.93-2.17-1.04-.29-.11-.5-.16-.71.16-.21.32-.82 1.04-1.01 1.25-.18.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.57-1.88-1.75-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.71-.98-2.34-.26-.61-.52-.53-.71-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.09-1.12 2.66s1.15 3.09 1.31 3.3c.16.21 2.25 3.43 5.45 4.81.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.15-1.51.27-.74.27-1.38.19-1.51-.08-.13-.29-.21-.61-.37Z"/>
+  </svg>
 </a>
 
-<!-- MODALES GLOBALES (VOLUNTARIADO Y APORTE) -->
+<!-- MODALES FLOTANTES GLOBALES -->
 <div class="modal-overlay" id="modal-voluntario" aria-hidden="true">
   <div class="modal-content" role="dialog" aria-labelledby="modal-voluntario-titulo">
     <button type="button" class="modal-close" id="btn-cerrar-voluntario" aria-label="Cerrar ventana">&times;</button>
@@ -484,20 +755,49 @@
       <input type="hidden" name="form-name" value="voluntarios" />
       <div class="form-grid">
         <div class="form-row-2">
-          <div class="form-group"><label for="vol-nombre">Nombre y Apellido *</label><input type="text" id="vol-nombre" name="nombre" required placeholder="Tu nombre completo"></div>
-          <div class="form-group"><label for="vol-distrito">Distrito de residencia *</label><input type="text" id="vol-distrito" name="distrito" required placeholder="Ej: San Martín de Porres, Los Olivos..."></div>
+          <div class="form-group">
+            <label for="vol-nombre">Nombre y Apellido *</label>
+            <input type="text" id="vol-nombre" name="nombre" required placeholder="Tu nombre completo">
+          </div>
+          <div class="form-group">
+            <label for="vol-distrito">Distrito de residencia *</label>
+            <input type="text" id="vol-distrito" name="distrito" required placeholder="Ej: San Martín de Porres, Los Olivos...">
+          </div>
         </div>
         <div class="form-row-2">
-          <div class="form-group"><label for="vol-email">Correo electrónico *</label><input type="email" id="vol-email" name="email" required placeholder="tu@email.com"></div>
-          <div class="form-group"><label for="vol-telefono">Teléfono / WhatsApp *</label><input type="tel" id="vol-telefono" name="telefono" required placeholder="+51 999 999 999"></div>
+          <div class="form-group">
+            <label for="vol-email">Correo electrónico *</label>
+            <input type="email" id="vol-email" name="email" required placeholder="tu@email.com">
+          </div>
+          <div class="form-group">
+            <label for="vol-telefono">Teléfono / WhatsApp *</label>
+            <input type="tel" id="vol-telefono" name="telefono" required placeholder="+51 999 999 999">
+          </div>
         </div>
         <div class="form-row-2">
-          <div class="form-group"><label for="vol-edad">Edad *</label><input type="number" id="vol-edad" name="edad" required placeholder="Ej: 25" min="12" max="99"></div>
-          <div class="form-group"><label for="vol-profesion">Profesión u ocupación</label><input type="text" id="vol-profesion" name="profesion" placeholder="Ej: Estudiante, Ingeniero..."></div>
+          <div class="form-group">
+            <label for="vol-edad">Edad *</label>
+            <input type="number" id="vol-edad" name="edad" required placeholder="Ej: 25" min="12" max="99">
+          </div>
+          <div class="form-group">
+            <label for="vol-profesion">Profesión u ocupación</label>
+            <input type="text" id="vol-profesion" name="profesion" placeholder="Ej: Estudiante, Ingeniero...">
+          </div>
         </div>
         <div class="form-row-2">
-          <div class="form-group"><label for="vol-movilidad">¿Cuentas con movilidad propia? *</label><select id="vol-movilidad" name="movilidad_propia" required><option value="" disabled selected>Selecciona una opción</option><option value="No">No</option><option value="Sí (Auto)">Sí (Auto)</option><option value="Sí (Moto/Bicicleta)">Sí (Moto / Bicicleta)</option></select></div>
-          <div class="form-group"><label for="vol-disponibilidad">Días y horario disponibles *</label><input type="text" id="vol-disponibilidad" name="disponibilidad" required placeholder="Ej: Sábados por la mañana"></div>
+          <div class="form-group">
+            <label for="vol-movilidad">¿Cuentas con movilidad propia? *</label>
+            <select id="vol-movilidad" name="movilidad_propia" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="No">No</option>
+              <option value="Sí (Auto)">Sí (Auto)</option>
+              <option value="Sí (Moto/Bicicleta)">Sí (Moto / Bicicleta)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="vol-disponibilidad">Días y horario disponibles *</label>
+            <input type="text" id="vol-disponibilidad" name="disponibilidad" required placeholder="Ej: Sábados por la mañana">
+          </div>
         </div>
         <div class="form-group">
           <label for="vol-capacidad-fisica">¿Con qué tipo de labor te sientes más cómodo/a apoyando en campo? *</label>
@@ -505,11 +805,14 @@
             <option value="" disabled selected>Selecciona la capacidad de esfuerzo</option>
             <option value="Poca fuerza: Limpieza, recolección de sustrato y epífitas">Labores livianas (Limpieza, recolección)</option>
             <option value="Mediana fuerza: Cargar pedregal y nivelar andenes">Labores de mediana fuerza (Nivelar andenes)</option>
-            <option value="Gran fuerza: Picar rocas, pircados, mover rocas grandes y sacos">Labores intensas (Picar rocas, mover sacos)</option>
+            <option value="Gran fuerza: Picar rocas, pircados, mover rocas grandes y sacos">Labores intensas (Picar rocas, cargar sacos)</option>
             <option value="Redes sociales y difusión comunitaria">Difusión en redes sociales</option>
           </select>
         </div>
-        <div class="form-group"><label for="vol-mensaje">Comentario adicional / Habilidades especiales</label><textarea id="vol-mensaje" name="comentario" rows="3" placeholder="Cuéntanos cualquier detalle..."></textarea></div>
+        <div class="form-group">
+          <label for="vol-mensaje">Comentario adicional / Habilidades especiales</label>
+          <textarea id="vol-mensaje" name="comentario" rows="3" placeholder="Cuéntanos cualquier detalle adicional..."></textarea>
+        </div>
         <button type="submit" class="button primary btn-submit-form" style="background: var(--ochre);">Enviar registro de voluntario</button>
       </div>
     </form>
@@ -526,10 +829,19 @@
     <form name="donaciones" method="POST" data-netlify="true" class="legado-form">
       <input type="hidden" name="form-name" value="donaciones" />
       <div class="form-grid">
-        <div class="form-group"><label for="don-nombre">Nombre o Entidad *</label><input type="text" id="don-nombre" name="nombre" required placeholder="Tu nombre o el de tu empresa"></div>
+        <div class="form-group">
+          <label for="don-nombre">Nombre o Entidad *</label>
+          <input type="text" id="don-nombre" name="nombre" required placeholder="Tu nombre o el de tu empresa">
+        </div>
         <div class="form-row-2">
-          <div class="form-group"><label for="don-email">Correo electrónico *</label><input type="email" id="don-email" name="email" required placeholder="tu@email.com"></div>
-          <div class="form-group"><label for="don-telefono">Teléfono / WhatsApp *</label><input type="tel" id="don-telefono" name="telefono" required placeholder="+51 999 999 999"></div>
+          <div class="form-group">
+            <label for="don-email">Correo electrónico *</label>
+            <input type="email" id="don-email" name="email" required placeholder="tu@email.com">
+          </div>
+          <div class="form-group">
+            <label for="don-telefono">Teléfono / WhatsApp *</label>
+            <input type="tel" id="don-telefono" name="telefono" required placeholder="+51 999 999 999">
+          </div>
         </div>
         <div class="form-group">
           <label class="label-title">¿Qué tipo de aporte deseas realizar?</label>
@@ -540,7 +852,10 @@
             <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Materiales y herramientas"><span>🛠️ <b>Herramientas</b></span></label>
           </div>
         </div>
-        <div class="form-group"><label for="don-detalle">Detalles del aporte</label><textarea id="don-detalle" name="detalle" rows="3" placeholder="Mensaje..."></textarea></div>
+        <div class="form-group">
+          <label for="don-detalle">Detalles del aporte / Mensaje</label>
+          <textarea id="don-detalle" name="detalle" rows="3" placeholder="Detalles de tu aporte..."></textarea>
+        </div>
         <button type="submit" class="button primary btn-submit-form">Enviar propuesta de aporte</button>
       </div>
     </form>
@@ -552,7 +867,7 @@
   <div class="footer-container">
     <div class="footer-col brand-col">
       <img src="assets/logo-large-sf-2-footer.png" alt="Logo Legado Botánico" class="brand-logo-footer">
-      <p>Restauración ecológica · Comunidad · Futuro</p>
+      <p class="footer-text">Restauración ecológica · Comunidad · Futuro</p>
       <p class="location">San Martín de Porres · Lima, Perú</p>
       <div class="footer-buttons">
         <button type="button" class="btn-primary" id="btn-abrir-aporte-footer">Quiero APORTAR</button>
@@ -562,9 +877,9 @@
     <div class="footer-col nav-col">
       <h4>Navegación</h4>
       <ul>
-        <li><a href="index.html#proyectos">Proyectos</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="quienes-somos.html">Quiénes Somos</a></li>
-        <li><a href="programas.html">Programas</a></li>
+        <li><a href="alianzas.html">Alianzas</a></li>
         <li><a href="prensa.html">Prensa</a></li>
       </ul>
     </div>
@@ -585,38 +900,5 @@
 </footer>
 
 <script src="js/main.js"></script>
-
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const trigger = document.getElementById('open-panoramic');
-    const lightbox = document.getElementById('panoramic-lightbox');
-    const closeBtn = document.getElementById('close-panoramic');
-
-    if (trigger && lightbox) {
-      trigger.addEventListener('click', () => {
-        lightbox.classList.add('active');
-        lightbox.setAttribute('aria-hidden', 'false');
-      });
-
-      const closeLightbox = () => {
-        lightbox.classList.remove('active');
-        lightbox.setAttribute('aria-hidden', 'true');
-      };
-
-      closeBtn.addEventListener('click', closeLightbox);
-      lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-      });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeLightbox();
-      });
-    }
-  });
-</script>
-
-
-
-
 </body>
 </html>
