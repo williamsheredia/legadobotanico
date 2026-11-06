@@ -168,17 +168,12 @@
       z-index: 3;
     }
 
-
-
-
     .brand-logo-center img {
-      
       object-fit: contain;
       filter: drop-shadow(0 4px 12px rgba(13, 33, 26, 0.15)) brightness(1.05);
       width: clamp(50px, 30vw, 230px); 
       height: auto;
     }
-
 
     /* Logos laterales (FAS y HUB): Ligeramente detrás, más grandes e iluminados para resaltar */
     .brand-logo-side {
@@ -187,17 +182,12 @@
       transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
     }
 
-
-
     .brand-logo-side img {
-      
       object-fit: contain;
       filter: drop-shadow(0 3px 10px rgba(13, 33, 26, 0.12)) brightness(1.1);
       width: clamp(25px, 15vw, 130px); 
       height: auto;
     }
-
-
 
     .brand-logo-side:hover {
       transform: scale(1.12);
@@ -205,11 +195,14 @@
       filter: drop-shadow(0 5px 15px rgba(13, 33, 26, 0.2)) brightness(1.2);
     }
 
-
-
-
+    /* ==========================================================================
+       MEDIA QUERY OPTIMIZADA PARA MÓVILES (Apilado vertical de cuadrículas)
+       ========================================================================== */
     @media(max-width: 900px) {
-      .pillar-card-grid, .program-axis-grid { grid-template-columns: 1fr; }
+      .pillar-card-grid, 
+      .program-axis-grid { 
+        grid-template-columns: 1fr !important; 
+      }
     }
   </style>
 </head>
@@ -296,29 +289,37 @@
   </div>
 
   <!-- SECCIÓN 1: LA ESTRATEGIA CONTINENTAL -->
- <section class="section" style="padding-bottom: 0;">
+  <section class="section" style="padding-bottom: 0;">
     <div class="container program-content">
       <div class="section-heading" style="text-align: left; margin-bottom: 40px;">
         <span class="eyebrow">La Estrategia Continental</span>
         <h2>De la visión regional a la <span>acción territorial</span></h2>
         <p style="font-size: 1.05rem; line-height: 1.7; color: var(--muted); margin-top: 10px;">
-          Todos los programas desarrollados por la Fundación América Sostenible (FAS) junto a HUB 2030 responden a una arquitectura de impacto diseñada para transformar dinámicas sistémicas en América Latina. Esta metodología se basa en cinco pilares de gestión integrada:
+          Todos los programas desarrollados por la Fundación América Sostenible (FAS) junto al HUB 2030 responden a una arquitectura de impacto diseñada para transformar dinámicas sistémicas en América Latina. Esta metodología se basa en cinco pilares de gestión integrada:
         </p>
       </div>
 
       <div class="pillar-card-grid">
+
+
         <div class="pillar-box">
           <h3>1. Objetivos Macro Ambiciosos</h3>
           <p>Metas cuantitativas continentales trazadas hacia el 2040 y 2050, alineadas rigurosamente a la agenda climática global.</p>
         </div>
+
+
         <div class="pillar-box">
           <h3>2. Diseño y Narrativa Unificada</h3>
           <p>Marcos conceptuales robustos que elevan la acción local a causas de atracción de capital de impacto, cooperación e inversión ESG.</p>
         </div>
+
+
         <div class="pillar-box">
           <h3>3. Herramientas y Canales Comunes</h3>
           <p>Plataformas de monitoreo, gobernanza y tecnologías de trazabilidad compartidas entre todos los nodos de la región.</p>
         </div>
+
+
         <div class="pillar-box">
           <h3>4. Aterrizaje en Capítulos Nacionales</h3>
           <p>Adaptación de la estrategia continental a la realidad socioecológica de cada país, siendo Perú el capítulo pionero mediante la articulación con ALEBO.</p>
@@ -326,7 +327,7 @@
       </div>
 
       <div style="margin-top: 24px;">
-        <div class="pillar-box" style="background: var(--paper);">
+        <div class="pillar-box" >
           <h3>5. Nutrición Multinivel (Proyectos y Subproyectos)</h3>
           <p>Una estructura donde cada intervención microrregional (cerros, escuelas, tramos de ríos) genera datos auditables que alimentan directamente las métricas e indicadores de avance del país y del continente.</p>
         </div>
@@ -350,7 +351,12 @@
               <span class="axis-tag">Eje Terrestre</span>
               <h3>Senderos de Vida</h3>
               <p><b>Enfoque:</b> Producción y plantación de flora nativa para generar corredores de biodiversidad en ámbitos urbanos, periurbanos y rurales.</p>
-              <p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 15px;"><b>Nodo Activo:</b> Proyecto Forestal Cerro La Milla (+3,500 m² restaurados, +200 árboles de 26 especies).</p>
+              
+
+		<p><b>Descripción:</b> Restauración ecológica en ámbitos intraurbanos, periurbanos, interurbanos y rurales para reducir la isla de calor y crear corredores biológicos.</p>
+		
+
+		<p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 15px;"><b>Nodo Activo:</b> Proyecto Forestal Cerro La Milla (+3,500 m² restaurados, +200 árboles de 26 especies).</p>
             </div>
             <div class="axis-footer">
               Respaldo: FAS + ALEBO
@@ -363,10 +369,13 @@
               <span class="axis-tag">Eje Hídrico</span>
               <h3>Ríos de Vida</h3>
               <p><b>Enfoque:</b> Bio-remediación, limpieza de plásticos y forestación de fajas marginales, transformando márgenes degradadas en infraestructura viva.</p>
-              <p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 15px;"><b>Nodo Activo:</b> Proyecto de Restauración del Río Surco para revitalización ecosistémica y comunitaria.</p>
+             
+		<p><b>Descripción:</b> Recuperación de canales, ríos y corredores fluviales urbanos, transformando márgenes degradadas en infraestructura viva.</p>
+
+		<p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 15px;"><b>Nodo Activo:</b> Proyecto de Restauración del Río Surco para revitalización ecosistémica y comunitaria.</p>
             </div>
             <div class="axis-footer">
-              Respaldo: FAS + ALEBO + RCE Cuenca del Plata
+              Respaldo: FAS + ALEBO 
             </div>
           </div>
 
@@ -376,24 +385,28 @@
               <span class="axis-tag">Eje Educativo y Circular</span>
               <h3>Escuelas de Vida</h3>
               <p><b>Enfoque:</b> Viveros escolares, biohuertos, jardín de polinizadores, compostaje y riego solar para laboratorios vivos de sostenibilidad.</p>
-              <p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 15px;"><b>Nodos Activos:</b> I.E.I. Luis Enrique X e I.E. 2032 Manuel Scorza (SMP).</p>
+              
+		<p><b>Descripción:</b> Red de instituciones educativas transformadas en laboratorios vivos de sostenibilidad y regeneración ecológica.</p>
+		
+		<p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 15px;"><b>Nodos Activos:</b> I.E.I. Luis Enrique X e I.E. 2032 Manuel Scorza (SMP).</p>
             </div>
             <div class="axis-footer">
-              Respaldo: FAS + ALEBO
+              Respaldo: FAS + ALEBO + RCE Cuenca del Plata
             </div>
           </div>
 
         </div>
       </div>
 
-
-
-
-
       <!-- DETALLE AMPLIADO DE RÍOS DE VIDA Y ÁMBITOS -->
       <div style="margin-top: 70px;">
         <span class="eyebrow">Enfoque Hídrico</span>
-        <h2>Programa Ríos de Vida: <span>Conservación, Regeneración y Gobernanza Comunitaria de Cuencas y Corredores Fluviales</span></h2>
+	
+
+
+        <h1>Programa Ríos de Vida: <span>Conservación, Regeneración y Gobernanza Comunitaria de Cuencas y Corredores Fluviales</span></h1>
+
+
         
         <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 24px; margin-top: 20px; font-size: 0.95rem; color: var(--muted); line-height: 1.6;">
           <p style="margin: 0 0 8px 0;"><b>Diseñado por:</b> Fundación América Sostenible (FAS) y HUB 2030</p>
@@ -407,9 +420,6 @@
           <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">1. Visión General del Programa</h3>
           <p style="font-size: 1rem; color: var(--muted); line-height: 1.7;">
             Ríos de Vida es el eje hídrico de la estrategia de infraestructura verde y resiliencia climática impulsada por FAS y ALEBO. El programa transforma canales, ríos y fajas marginales degradadas en corredores biológicos vivos, seguros y comunitarios.
-          </p>
-          <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-top: 10px;">
-            A través de la integración de bio-remediación, limpieza de residuos, reforestación con flora nativa ribereña, equipamiento urbano sostenible y participación ciudadana, Ríos de Vida recupera el tejido ecológico y social de las cuencas hídricas del Perú.
           </p>
         </div>
 
@@ -447,7 +457,7 @@
           </div>
         </div>
 
-        <!-- 3. ÁMBITOS Y ESCALAS TERRITORIALES (TABLA MANTENIDA) -->
+        <!-- 3. ÁMBITOS Y ESCALAS TERRITORIALES -->
         <div style="margin-top: 45px;">
           <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 15px;">3. Ámbitos y Escalas Territoriales</h3>
           <div class="territory-table-wrap">
@@ -505,11 +515,11 @@
           </ul>
         </div>
 
-        <!-- 6. MODELO DE ALIANZAS -->
+        <!-- 6. MODELO DE ALIANZAS (3 columnas en PC, apiladas verticalmente en móvil) -->
         <div style="margin-top: 45px;">
           <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">6. Modelo de Alianzas y Llamados a la Acción</h3>
           
-          <div class="pillar-card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="pillar-card-grid" style="grid-template-columns: repeat(3, 1fr);" id="mobile-stack-3">
             <div class="pillar-box" style="background: var(--paper);">
               <h3>Para Empresas</h3>
               <p>Financia la recuperación de un tramo del Río Surco o cuencas periurbanas. Recibe reportes auditados de plásticos retirados, metros de faja restaurada e indicadores de huella hídrica y CO2.</p>
@@ -527,148 +537,149 @@
 
       </div>
 
+      <!-- DETALLE AMPLIADO DE ESCUELAS DE VIDA (Fondo extendido de lado a lado real) -->
+      <div style="
+        background: #eef7f0; 
+        border-top: 1px solid #d4ebd8; 
+        border-bottom: 1px solid #d4ebd8; 
+        margin-top: 70px; 
+        padding: 60px 0; 
+        width: 100vw; 
+        position: relative; 
+        left: 50%; 
+        right: 50%; 
+        margin-left: -50vw; 
+        margin-right: -50vw;
+      ">
+        <div class="container program-content">
+          <span class="eyebrow" style="color: var(--forest);">Educación y Regeneración</span>
+          
 
 
 
 
-<!-- DETALLE AMPLIADO DE ESCUELAS DE VIDA (Fondo extendido de lado a lado real) -->
-  <div style="
-	background: #eef7f0; 
-	border-top: 1px solid #d4ebd8; 
-	border-bottom: 1px solid #d4ebd8; 
-	margin-top: 70px; 
-	padding: 60px 0; 
-	width: 100vw; 
-	position: relative; 
-	left: 50%; 
-	right: 50%; 
-	margin-left: -50vw; 
-	margin-right: -50vw;
-	">
-    <div class="container program-content">
-      <span class="eyebrow" style="color: var(--forest);">Educación y Regeneración</span>
-      <h2 style="color: var(--forest-deep);">Escuelas de Vida: <span>Red de Viveros, Biohuertos, Jardín de Polinizadores y Centros de Economía Circular Escolar</span></h2>
-      
-      <div style="background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 20px 24px; margin-top: 20px; font-size: 0.93rem; color: var(--muted); line-height: 1.6;">
-        <p style="margin: 0;"><b>Diseñado por:</b> Fundación América Sostenible y el RCE Cuenca del Plata junto a ALEBO para su implementación en Lima, Perú.</p>
-      </div>
+	<h1 style="color: var(--forest-deep);">Escuelas de Vida: <span>Red de Viveros, Biohuertos, Jardín de Polinizadores y Centros de Economía Circular Escolar</span></h1>
+          
 
-      <!-- 1. INTRODUCCIÓN / SOBRE EL PROGRAMA -->
-      <div style="margin-top: 35px;">
-        <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">Sobre el Programa</h3>
-        <p style="font-size: 1rem; color: var(--muted); line-height: 1.7;">
-          <b>'Escuelas de Vida'</b> no es un taller ambiental aislado: es un sistema de gestión escolar integral que convierte patios, azoteas y áreas libres en nodos de producción vegetal, conservación de biodiversidad y valorización de recursos. Cada escuela opera mediante 4 pilares temáticos biológicos, potenciados por una capa tecnológica de energías limpias y riego autónomo.
-        </p>
-      </div>
 
-      <!-- 2. LOS 4 PILARES TEMÁTICOS -->
-      <div style="margin-top: 30px;">
-        <div class="pillar-card-grid">
-          <div class="pillar-box" style="background: var(--white);">
-            <h3>🌿 Pilar 1 — Vivero Pedagógico y Forestal</h3>
-            <p>Cultivo de árboles y arbustos nativos para la reforestación de la escuela y corredores urbanos. Los ejemplares producidos alimentan directamente el programa <b>'Senderos de Vida - Lima'</b> impulsado por ALEBO y la Fundación América Sostenible junto a diversos aliados locales e internacionales.</p>
+
+          <div style="background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 20px 24px; margin-top: 20px; font-size: 0.93rem; color: var(--muted); line-height: 1.6;">
+            <p style="margin: 0;"><b>Diseñado por:</b> Fundación América Sostenible y el RCE Cuenca del Plata junto a ALEBO para su implementación en Lima, Perú.</p>
           </div>
-          <div class="pillar-box" style="background: var(--white);">
-            <h3>🥗 Pilar 2 — Biohuerto Agroecológico y Módulos Verticales</h3>
-            <p>Producción de hortalizas y plantas medicinales mediante diversas técnicas de cultivo de bajo costo con recipientes reciclados, promoviendo la soberanía alimentaria y la nutrición saludable.</p>
+
+          <!-- 1. INTRODUCCIÓN / SOBRE EL PROGRAMA -->
+          <div style="margin-top: 35px;">
+            <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">Sobre el Programa</h3>
+            <p style="font-size: 1rem; color: var(--muted); line-height: 1.7;">
+              <b>'Escuelas de Vida'</b> no es un taller ambiental aislado: es un sistema de gestión escolar integral que convierte patios, azoteas y áreas libres en nodos de producción vegetal, conservación de biodiversidad y valorización de recursos. Cada escuela opera mediante 4 pilares temáticos biológicos, potenciados por una capa tecnológica de energías limpias y riego autónomo.
+            </p>
           </div>
-          <div class="pillar-box" style="background: var(--white);">
-            <h3>🦋 Pilar 3 — Refugio de Polinizadores e Islas de Biodiversidad</h3>
-            <p>Reservas naturales permanentes con flora nativa hospederas y nectaríferas, acompañadas de 'hoteles para insectos solitarios e inofensivos', creando aulas abiertas para el estudio de ciclos biológicos.</p>
+
+          <!-- 2. LOS 4 PILARES TEMÁTICOS -->
+          <div style="margin-top: 30px;">
+            <div class="pillar-card-grid">
+              <div class="pillar-box" style="background: var(--white);">
+                <h3>🌿 Pilar 1 — Vivero Pedagógico y Forestal</h3>
+                <p>Cultivo de árboles y arbustos nativos para la reforestación de la escuela y corredores urbanos. Los ejemplares producidos alimentan directamente el programa <b>'Senderos de Vida - Lima'</b> impulsado por ALEBO y la Fundación América Sostenible junto a diversos aliados locales e internacionales.</p>
+              </div>
+              <div class="pillar-box" style="background: var(--white);">
+                <h3>🥗 Pilar 2 — Biohuerto Agroecológico y Módulos Verticales</h3>
+                <p>Producción de hortalizas y plantas medicinales mediante diversas técnicas de cultivo de bajo costo con recipientes reciclados, promoviendo la soberanía alimentaria y la nutrición saludable.</p>
+              </div>
+              <div class="pillar-box" style="background: var(--white);">
+                <h3>🦋 Pilar 3 — Refugio de Polinizadores e Islas de Biodiversidad</h3>
+                <p>Reservas naturales permanentes con flora nativa hospederas y nectaríferas, acompañadas de 'hoteles para insectos solitarios e inofensivos', creando aulas abiertas para el estudio de ciclos biológicos.</p>
+              </div>
+              <div class="pillar-box" style="background: var(--white);">
+                <h3>♻ Pilar 4 — Economía Circular y Centro de Valorización</h3>
+                <p>Separación en origen de residuos orgánicos (compostaje y lombricultura para abono) e inorgánicos (reutilización de plásticos PET, bidones y pallets para la infraestructura del huerto).</p>
+              </div>
+            </div>
           </div>
-          <div class="pillar-box" style="background: var(--white);">
-            <h3>♻ Pilar 4 — Economía Circular y Centro de Valorización</h3>
-            <p>Separación en origen de residuos orgánicos (compostaje y lombricultura para abono) e inorgánicos (reutilización de plásticos PET, bidones y pallets para la infraestructura del huerto).</p>
+
+          <!-- 3. LA MATRIZ DE GESTIÓN INTEGRADA 360° (4 columnas en PC, apiladas verticalmente en móvil) -->
+          <div style="margin-top: 45px;">
+            <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">La Matriz de Gestión Integrada 360°</h3>
+            <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px;">
+              El programa organiza la sostenibilidad escolar mediante una matriz transparente que conecta los pilares biológicos y tecnológicos con las dimensiones de gestión institucional:
+            </p>
+            <div class="pillar-card-grid" style="grid-template-columns: repeat(4, 1fr);" id="mobile-stack-4">
+              <div class="pillar-box" style="background: var(--white); text-align: center; padding: 20px;">
+                <h4 style="color: var(--forest); font-size: 0.95rem; margin-bottom: 8px;">Gobernanza</h4>
+                <p style="font-size: 0.85rem;">Políticas & Convenios institucionales</p>
+              </div>
+              <div class="pillar-box" style="background: var(--white); text-align: center; padding: 20px;">
+                <h4 style="color: var(--forest); font-size: 0.95rem; margin-bottom: 8px;">Pedagogía</h4>
+                <p style="font-size: 0.85rem;">EBR / EDS & STEM Verde</p>
+              </div>
+              <div class="pillar-box" style="background: var(--white); text-align: center; padding: 20px;">
+                <h4 style="color: var(--forest); font-size: 0.95rem; margin-bottom: 8px;">Gestión & Tecno</h4>
+                <p style="font-size: 0.85rem;">Prácticas y Riego autónomo</p>
+              </div>
+              <div class="pillar-box" style="background: var(--white); text-align: center; padding: 20px;">
+                <h4 style="color: var(--forest); font-size: 0.95rem; margin-bottom: 8px;">Datos Auditables</h4>
+                <p style="font-size: 0.85rem;">Supervisión y Reportes ESG</p>
+              </div>
+            </div>
           </div>
+
+          <!-- 4. ENFOQUE EDUCATIVO: EDS & RESPALDO RCE -->
+          <div style="margin-top: 45px;">
+            <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">Enfoque Educativo: EDS & Respaldo RCE (ONU / UNESCO)</h3>
+            <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 15px;">
+              El programa aplica el enfoque y la metodología de la Educación para el Desarrollo Sostenible (EDS), garantizando una transformación profunda e institucional:
+            </p>
+            <ul style="color: var(--muted); line-height: 1.7; padding-left: 20px; font-size: 0.95rem;">
+              <li style="margin-bottom: 8px;"><b>Educación 'PARA' la Sostenibilidad:</b> Pasamos de dar lecciones teóricas a habilitar experiencias prácticas de acción ambiental donde los alumnos solucionan problemas reales de su comunidad escolar.</li>
+              <li style="margin-bottom: 8px;"><b>Modelo de Fortalezas:</b> No se crea una materia nueva; cada disciplina del currículo nacional (Ciencias, Matemáticas, Cívica, Lenguaje, Tecnología) aporta desde sus propios contenidos al proyecto del huerto y vivero solar.</li>
+              <li><b>Respaldo Internacional RCE:</b> RCE Cuenca del Plata avalado por la Universidad de Naciones Unidas, integrando a Lima en la red global de expertos en educación ambiental.</li>
+            </ul>
+          </div>
+
+          <!-- 5. NODOS PILOTO EN SAN MARTÍN DE PORRES (2 columnas en PC, apiladas verticalmente en móvil) -->
+          <div style="margin-top: 45px;">
+            <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">Nodos Piloto en San Martín de Porres (Evidencia en Campo)</h3>
+            <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px;">
+              ALEBO ya ejecuta el modelo en instituciones educativas públicas de Lima, demostrando la viabilidad técnica y social del programa:
+            </p>
+            <div class="pillar-card-grid" style="grid-template-columns: repeat(2, 1fr);" id="mobile-stack-2">
+              <div class="pillar-box" style="background: var(--white);">
+                <h3>🏫 I.E.I. Luis Enrique X (SMP)</h3>
+                <p>Biohuerto escolar e iniciación en compostaje para la educación inicial, acercando a niños desde temprana edad al cultivo de alimentos y la biodiversidad.</p>
+              </div>
+              <div class="pillar-box" style="background: var(--white);">
+                <h3>🏫 I.E. 2032 Manuel Scorza (SMP)</h3>
+                <p>Nodo de cultivo e investigación con participación activa de jóvenes y voluntariado local, generando germoplasma y producción vegetal para la comunidad.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. CONEXIÓN TERRITORIAL -->
+          <div style="margin-top: 45px;">
+            <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">Conexión Territorial: De la Escuela al Continente</h3>
+            <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 15px;">
+              Cada vivero y biohuerto escolar opera como un motor biológico conectado a dos grandes iniciativas de conservación:
+            </p>
+            <ul style="color: var(--muted); line-height: 1.7; padding-left: 20px; font-size: 0.95rem;">
+              <li style="margin-bottom: 8px;"><b>Escala Local — 'Senderos de Lima':</b> Los árboles nativos cultivados por los estudiantes son trasplantados en las inmediaciones del colegio, parques locales y zonas degradadas.</li>
+              <li><b>Escala Continental — 'Senderos de Vida' (FAS):</b> Cada ejemplar sembrado, kilogramos de compost generado, plástico reciclado y kWh solar generado se georreferencia en la plataforma continental de FAS, sumando a la gran meta de 1 árbol por habitante en las Américas.</li>
+            </ul>
+          </div>
+
+          <!-- 7. LLAMADO A LA ACCIÓN -->
+          <div style="margin-top: 45px; background: var(--white); border-radius: 16px; padding: 24px; text-align: center; border: 1px solid var(--line);">
+            <h3 style="font: 700 1.2rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 8px;">🎓 ¿Eres Directivo o Docente Escolar?</h3>
+            <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 15px;">Transforma tu institución en una Escuela Verde y Tecnológica. Solicita el diagnóstico de tu plantel para incorporarte a la red.</p>
+            <a href="#contacto-programas" class="button primary" style="background: var(--forest); display: inline-block; padding: 10px 24px; border-radius: 999px; color: #fff; text-decoration: none; font-weight: 700; font-size: 0.9rem;">Solicitar diagnóstico escolar →</a>
+          </div>
+
         </div>
       </div>
-
-      <!-- 3. LA MATRIZ DE GESTIÓN INTEGRADA 360° -->
-      <div style="margin-top: 45px;">
-        <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">La Matriz de Gestión Integrada 360°</h3>
-        <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px;">
-          El programa organiza la sostenibilidad escolar mediante una matriz transparente que conecta los pilares biológicos y tecnológicos con las dimensiones de gestión institucional:
-        </p>
-        <div class="pillar-card-grid" style="grid-template-columns: repeat(4, 1fr);">
-          <div class="pillar-box" style="background: var(--white); text-align: center; padding: 20px;">
-            <h4 style="color: var(--forest); font-size: 0.95rem; margin-bottom: 8px;">Gobernanza</h4>
-            <p style="font-size: 0.85rem;">Políticas & Convenios institucionales</p>
-          </div>
-          <div class="pillar-box" style="background: var(--white); text-align: center; padding: 20px;">
-            <h4 style="color: var(--forest); font-size: 0.95rem; margin-bottom: 8px;">Pedagogía</h4>
-            <p style="font-size: 0.85rem;">EBR / EDS & STEM Verde</p>
-          </div>
-          <div class="pillar-box" style="background: var(--white); text-align: center; padding: 20px;">
-            <h4 style="color: var(--forest); font-size: 0.95rem; margin-bottom: 8px;">Gestión & Tecno</h4>
-            <p style="font-size: 0.85rem;">Prácticas y Riego autónomo</p>
-          </div>
-          <div class="pillar-box" style="background: var(--white); text-align: center; padding: 20px;">
-            <h4 style="color: var(--forest); font-size: 0.95rem; margin-bottom: 8px;">Datos Auditables</h4>
-            <p style="font-size: 0.85rem;">Supervisión y Reportes ESG</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4. ENFOQUE EDUCATIVO: EDS & RESPALDO RCE -->
-      <div style="margin-top: 45px;">
-        <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">Enfoque Educativo: EDS & Respaldo RCE (ONU / UNESCO)</h3>
-        <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 15px;">
-          El programa aplica el enfoque y la metodología de la Educación para el Desarrollo Sostenible (EDS), garantizando una transformación profunda e institucional:
-        </p>
-        <ul style="color: var(--muted); line-height: 1.7; padding-left: 20px; font-size: 0.95rem;">
-          <li style="margin-bottom: 8px;"><b>Educación 'PARA' la Sostenibilidad:</b> Pasamos de dar lecciones teóricas a habilitar experiencias prácticas de acción ambiental donde los alumnos solucionan problemas reales de su comunidad escolar.</li>
-          <li style="margin-bottom: 8px;"><b>Modelo de Fortalezas:</b> No se crea una materia nueva; cada disciplina del currículo nacional (Ciencias, Matemáticas, Cívica, Lenguaje, Tecnología) aporta desde sus propios contenidos al proyecto del huerto y vivero solar.</li>
-          <li><b>Respaldo Internacional RCE:</b> RCE Cuenca del Plata avalado por la Universidad de Naciones Unidas, integrando a Lima en la red global de expertos en educación ambiental.</li>
-        </ul>
-      </div>
-
-      <!-- 5. NODOS PILOTO EN SAN MARTÍN DE PORRES -->
-      <div style="margin-top: 45px;">
-        <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">Nodos Piloto en San Martín de Porres (Evidencia en Campo)</h3>
-        <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px;">
-          ALEBO ya ejecuta el modelo en instituciones educativas públicas de Lima, demostrando la viabilidad técnica y social del programa:
-        </p>
-        <div class="pillar-card-grid" style="grid-template-columns: repeat(2, 1fr);">
-          <div class="pillar-box" style="background: var(--white);">
-            <h3>🏫 I.E.I. Luis Enrique X (SMP)</h3>
-            <p>Biohuerto escolar e iniciación en compostaje para la educación inicial, acercando a niños desde temprana edad al cultivo de alimentos y la biodiversidad.</p>
-          </div>
-          <div class="pillar-box" style="background: var(--white);">
-            <h3>🏫 I.E. 2032 Manuel Scorza (SMP)</h3>
-            <p>Nodo de cultivo e investigación con participación activa de jóvenes y voluntariado local, generando germoplasma y producción vegetal para la comunidad.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6. CONEXIÓN TERRITORIAL -->
-      <div style="margin-top: 45px;">
-        <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">Conexión Territorial: De la Escuela al Continente</h3>
-        <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 15px;">
-          Cada vivero y biohuerto escolar opera como un motor biológico conectado a dos grandes iniciativas de conservación:
-        </p>
-        <ul style="color: var(--muted); line-height: 1.7; padding-left: 20px; font-size: 0.95rem;">
-          <li style="margin-bottom: 8px;"><b>Escala Local — 'Senderos de Lima':</b> Los árboles nativos cultivados por los estudiantes son trasplantados en las inmediaciones del colegio, parques locales y zonas degradadas.</li>
-          <li><b>Escala Continental — 'Senderos de Vida' (FAS):</b> Cada ejemplar sembrado, kilogramos de compost generado, plástico reciclado y kWh solar generado se georreferencia en la plataforma continental de FAS, sumando a la gran meta de 1 árbol por habitante en las Américas.</li>
-        </ul>
-      </div>
-
-      <!-- 7. LLAMADO A LA ACCIÓN -->
-      <div style="margin-top: 45px; background: var(--white); border-radius: 16px; padding: 24px; text-align: center; border: 1px solid var(--line);">
-        <h3 style="font: 700 1.2rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 8px;">🎓 ¿Eres Directivo o Docente Escolar?</h3>
-        <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 15px;">Transforma tu institución en una Escuela Verde y Tecnológica. Solicita el diagnóstico de tu plantel para incorporarte a la red.</p>
-        <a href="#contacto-programas" class="button primary" style="background: var(--forest); display: inline-block; padding: 10px 24px; border-radius: 999px; color: #fff; text-decoration: none; font-weight: 700; font-size: 0.9rem;">Solicitar diagnóstico escolar →</a>
-      </div>
-
-    </div>
-  </div>
 
   </section>
 
   <!-- SECCIÓN FINAL: FORMULARIO UNIFICADO DE ALIANZAS E INVERSIÓN (CTA) -->
-  
-
-
-<section class="section cream" id="contacto-programas">
+  <section class="section cream" id="contacto-programas">
     <div class="container" style="max-width: 800px;">
       <div class="section-heading" style="text-align: center; margin-bottom: 40px;">
         <span class="eyebrow">Súmate a la red de impacto</span>
@@ -848,7 +859,7 @@
           <div class="checkbox-options">
             <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Aporte economico"><span>💚 <b>Aporte económico</b></span></label>
             <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Plantas y semillas"><span>🌱 <b>Plantas y semillas</b></span></label>
-            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Compost y materia organica"><span>♻️ <b>Compost y materia orgánica</b></span></label>
+            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Plantas y semillas"><span>♻️ <b>Compost y materia orgánica</b></span></label>
             <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Materiales y herramientas"><span>🛠️ <b>Herramientas</b></span></label>
           </div>
         </div>
