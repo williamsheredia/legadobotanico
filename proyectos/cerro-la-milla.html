@@ -13,7 +13,6 @@
 .project-hero img{filter:brightness(.62) saturate(.88)}
 .project-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#08160f20 20%,#08160fe8 100%)}
 
-
 .project-hero-content{
   position:relative;
   z-index:1;
@@ -21,7 +20,6 @@
   margin:auto;
   padding:100px 0 75px
 }
-
 
 .project-hero .eyebrow{color:#e5d7b9;opacity:1}
 .project-hero h1{max-width:930px;margin:0 0 22px;font:700 clamp(3rem,7vw,6.5rem)/.95 "Playfair Display",serif;letter-spacing:-.045em}
@@ -33,11 +31,120 @@
 .project-inner{width:min(calc(100% - 40px),var(--max));margin:auto}
 .project-kicker{text-transform:uppercase;letter-spacing:.15em;color:var(--leaf);font-size:.76rem;font-weight:800;margin:0 0 12px}
 .project-section h2{max-width:850px;margin:0 0 22px;font:700 clamp(2.35rem,5vw,4.3rem)/1.05 "Playfair Display",serif;letter-spacing:-.035em;color:var(--forest-deep)}
-.project-copy{max-width:820px;font-size:1.08rem;line-height:1.8}
+.project-copy{font-size:1.08rem;line-height:1.8}
 .project-copy p{margin:0 0 18px}
-.project-stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:50px;border-block:1px solid var(--line)}
 
+/* ==========================================================================
+   ESTILO EXACTO SEGÚN IMAGEN REFERENCIAL: MAPA ÍNTEGRO + CAJA FLOTANTE DERECHA
+   ========================================================================== */
+.challenge-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: stretch;
+  margin-top: 10px;
+}
 
+.challenge-left-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.challenge-left-col h2 {
+  margin-top: 0;
+  margin-bottom: 22px;
+}
+
+/* Contenedor del mapa que deja ver la imagen completa de fondo */
+.map-card-overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 580px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 15px 35px rgba(13, 33, 26, 0.08);
+  background: #ffffff;
+}
+
+/* Imagen completa sin recortes */
+.map-card-overlay img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Caja de texto y botón flotando exactamente en la esquina inferior derechabackdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px); */
+.map-overlay-content {
+  position: absolute;
+  z-index: 3;
+  bottom: 5px;
+  right: 20px;
+  left: 20px; /* En móviles ocupa el ancho con margen, en PC se alinea a la derecha */
+  max-width: 380px;
+  margin-left: auto;
+  background: rgba(15, 28, 22, 0.45); /* Fondo oscuro translúcido elegante que resalta sobre el mapa */
+  
+  padding: 22px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: right; /* Alinea textos y contenido a la derecha como pediste */
+}
+
+.map-overlay-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #e5d7b9;
+  margin-bottom: 0;
+  display: block;
+}
+
+.map-overlay-content h3 {
+  font: 700 1.2rem "Playfair Display", serif;
+  color: #ffffff;
+  margin: 0;
+}
+
+.map-overlay-content p {
+  color: #d1d8d4;
+  font-size: 0.83rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.map-preview-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #3a7d5c;
+  color: #fff;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+  margin-top: 6px;
+  align-self: flex-end; /* Alinea el botón a la derecha */
+}
+
+.map-preview-btn:hover {
+  background: #2b5f45;
+  transform: translateY(-2px);
+}
+/* ========================================================================== */
 
 .project-stats-grid {
   display: grid;
@@ -84,6 +191,18 @@
 }
 
 @media(max-width:950px) {
+  .challenge-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .map-card-overlay {
+    min-height: 480px;
+  }
+  .map-overlay-content {
+    left: 16px;
+    right: 16px;
+    max-width: none;
+  }
   .project-stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
@@ -95,8 +214,6 @@
     grid-template-columns: 1fr;
   }
 }
-
-
 
 .project-note{margin-top:18px;color:var(--muted);font-size:.82rem}
 .method-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:45px}
@@ -136,9 +253,6 @@
 </head>
 <body>
 
-
-
-
 <!-- ENCABEZADO / NAVEGACIÓN -->
 <header class="site-header">
   <nav class="nav container">
@@ -162,29 +276,24 @@
         </div>
       </div>
 
-      <!-- NUEVO MENÚ DESPLEGABLE: NUESTRO TRABAJO -->
       <div class="dropdown">
         <div class="dropdown-trigger">Nuestro Trabajo <span class="arrow">▾</span></div>
         <div class="dropdown-menu">
 	  <a href="../programas.html">Programas</a>
           <a href="../index.html#proyectos">Proyectos</a>
-          
           <a href="../alianzas.html">Alianzas</a>
         </div>
       </div>
 
       <a href="../prensa.html">Prensa</a>
       <a href="../index.html#galeria">Galería</a>
-      <a href="../especies.html">Especies</a> <!-- NUEVA SECCIÓN DE ESPECIES -->
+      <a href="../especies.html">Especies</a>
       <a class="nav-action" href="../index.html#voluntariado">Voluntariado</a>
       <a class="nav-action nav-donate" href="../index.html#aporta">Donaciones</a>
       <a href="../index.html#contacto">Contacto</a>
     </div>
   </nav>
 </header>
-
-
-
 
 <main class="project-page">
 
@@ -195,12 +304,7 @@
   </picture>
   <div class="project-hero-content">
     <p class="eyebrow">Proyecto 01 · Restauración ecológica</p>
-
-
     <h1>Proyecto Forestal<br><span class="texto-resaltado">Cerro La Milla</span></h1>
-
-
-
     <p class="project-lead">Un territorio árido que se transforma paso a paso: recuperando suelo, estableciendo vegetación y creando condiciones para que la vida vuelva a encontrar un lugar.</p>
   </div>
 </header>
@@ -210,15 +314,33 @@
 <section class="project-section">
   <div class="project-inner">
     <p class="project-kicker">El desafío</p>
-    <h2>Restaurar un territorio, no solamente plantar árboles</h2>
-    <div class="project-copy">
-      <p>El Proyecto Forestal Cerro La Milla se desarrolla en San Martín de Porres, Lima, sobre un terreno con condiciones difíciles para la vegetación: aridez, pendientes, roca expuesta y escasez de sustrato.</p>
-      <p>El proyecto comenzó el <strong>19 de diciembre de 2021</strong> y plantea una recuperación progresiva del territorio mediante acondicionamiento del terreno, manejo del suelo, incorporación de materia orgánica, establecimiento de vegetación y participación comunitaria.</p>
-      <p>La idea fundamental es sencilla, aunque el trabajo no lo sea: <strong>crear las condiciones para que un ecosistema pueda desarrollarse y mantenerse.</strong></p>
+    
+    <!-- GRID PRINCIPAL: TÍTULO Y TEXTOS A LA IZQUIERDA, MAPA CON CAJA FLOTANTE A LA DERECHA -->
+    <div class="challenge-grid">
+      <div class="challenge-left-col">
+        <h2>Restaurar un territorio, no solamente plantar árboles</h2>
+        <div class="project-copy">
+          <p>El Proyecto Forestal Cerro La Milla se desarrolla en San Martín de Porres, Lima, sobre un terreno con condiciones difíciles para la vegetación: aridez, pendientes, roca expuesta y escasez de sustrato.</p>
+          <p>El proyecto comenzó el <strong>19 de diciembre de 2021</strong> y plantea una recuperación progresiva del territorio mediante acondicionamiento del terreno, manejo del suelo, incorporación de materia orgánica, establecimiento de vegetación y participación comunitaria.</p>
+          <p>La idea fundamental es sencilla, aunque el trabajo no lo sea: <strong>crear las condiciones para que un ecosistema pueda desarrollarse y mantenerse.</strong></p>
+        </div>
+      </div>
+
+      <div class="challenge-right-col">
+        <!-- TARJETA CON IMAGEN COMPLETA Y CAJA FLOTANTE A LA DERECHA -->
+        <div class="map-card-overlay">
+          <img src="../assets/Cerro-La-Milla.jpg" alt="Mapa satelital y señalizaciones del Cerro La Milla">
+          <div class="map-overlay-content">
+            <span class="map-overlay-eyebrow">Ubicación estratégica</span>
+            <h3>Cerro La Milla</h3>
+            <p>San Martín de Porres · Lima, Perú. <!-- Área de intervención en laderas urbanas para la restauración forestal. --> </p>
+            <a href="https://maps.google.com/?q=Cerro+La+Milla+San+Martin+de+Porres+Lima" target="_blank" rel="noopener noreferrer" class="map-preview-btn">
+              Abrir mapa satelital en Google ↗
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-
-
-
 
     <!-- GRILLA DE IMPACTO ESPECÍFICA DE CERRO LA MILLA -->
     <div class="project-stats-grid">
@@ -237,7 +359,7 @@
       <div class="project-stat-card">
   	<strong>7,872 hrs</strong>
   	<span class="stat-label">Horas de Voluntariado Acumulado (2024–2026)</span>
-  	<p class="stat-desc">Trabajo intensivo en campo e infraestructura verde, con un núcleo operativo de <span style="font-size: 1.3em; font-weight: 600; color: var(--forest);">2,966 horas</span> aportadas directamente por los miembros de la Asociación.</p>
+  	<p class="stat-desc">Trabajo intensivo en campo e infraestructura verde, con un núcleo operativo de <span style="font-size: 0.9em; font-weight: 600; color: var(--forest);">2,966 horas</span> aportadas directamente por los miembros de la Asociación.</p>
       </div>
 
       <div class="project-stat-card">
@@ -260,12 +382,8 @@
     </div>
     <p class="project-note">Datos actualizados al registro oficial de la Asociación Legado Botánico (2024–2026).</p>
 
-
   </div>
 </section>
-
-
-
 
 <section class="project-section alt">
   <div class="project-inner">
@@ -332,7 +450,6 @@
   </div>
 </section>
 
-
 <a
   class="whatsapp"
   href="https://wa.me/51987565786?text=Hola%2C%20quisiera%20obtener%20informaci%C3%B3n%20sobre%20c%C3%B3mo%20participar%20en%20Legado%20Bot%C3%A1nico."
@@ -353,25 +470,18 @@
   <a class="project-back" href="../index.html#proyectos">← Volver a Proyectos</a>
 </section>
 
-
 </main>
 
-
-
 <!-- MODAL EMERGENTE DE VOLUNTARIADO -->
-
 <div class="modal-overlay" id="modal-voluntario" aria-hidden="true">
   <div class="modal-content" role="dialog" aria-labelledby="modal-voluntario-titulo">
     <button type="button" class="modal-close" id="btn-cerrar-voluntario" aria-label="Cerrar ventana">&times;</button>
-    
     <div class="form-header">
       <h3 id="modal-voluntario-titulo">Únete como Voluntario 🌱</h3>
       <p>Completa la encuesta para conocer tus disponibilidades y asignar las labores más adecuadas para ti.</p>
     </div>
-
     <form name="voluntarios" method="POST" data-netlify="true" class="legado-form">
       <input type="hidden" name="form-name" value="voluntarios" />
-
       <div class="form-grid">
         <div class="form-row-2">
           <div class="form-group">
@@ -383,7 +493,6 @@
             <input type="text" id="vol-distrito" name="distrito" required placeholder="Ej: San Martín de Porres, Los Olivos...">
           </div>
         </div>
-
         <div class="form-row-2">
           <div class="form-group">
             <label for="vol-email">Correo electrónico *</label>
@@ -394,7 +503,6 @@
             <input type="tel" id="vol-telefono" name="telefono" required placeholder="+51 999 999 999">
           </div>
         </div>
-
         <div class="form-row-2">
           <div class="form-group">
             <label for="vol-edad">Edad *</label>
@@ -405,7 +513,6 @@
             <input type="text" id="vol-profesion" name="profesion" placeholder="Ej: Estudiante, Ingeniero, Esteticista...">
           </div>
         </div>
-
         <div class="form-row-2">
           <div class="form-group">
             <label for="vol-movilidad">¿Cuentas con movilidad propia? *</label>
@@ -421,7 +528,6 @@
             <input type="text" id="vol-disponibilidad" name="disponibilidad" required placeholder="Ej: Sábados por la mañana / Domingos todo el día">
           </div>
         </div>
-
         <div class="form-group">
           <label for="vol-capacidad-fisica">¿Con qué tipo de labor te sientes más cómodo/a apoyando en campo? *</label>
           <select id="vol-capacidad-fisica" name="tipo_labor_preferida" required>
@@ -432,42 +538,31 @@
             <option value="Redes sociales y difusión comunitaria">Difusión en redes sociales e incentivar a que más personas se sumen</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="vol-mensaje">Comentario adicional / Habilidades especiales</label>
           <textarea id="vol-mensaje" name="comentario" rows="3" placeholder="Cuéntanos cualquier detalle adicional que consideres relevante..."></textarea>
         </div>
-
         <button type="submit" class="button primary btn-submit-form" style="background: var(--ochre);">Enviar registro de voluntario</button>
       </div>
     </form>
   </div>
 </div>
 
-<!-- FIN DEL MODAL EMERGENTE DE VOLUNTARIADO -->
-
-
-
-
 <!-- MODAL EMERGENTE DE APORTES -->
 <div class="modal-overlay" id="modal-aporte" aria-hidden="true">
   <div class="modal-content" role="dialog" aria-labelledby="modal-aporte-titulo">
     <button type="button" class="modal-close" id="btn-cerrar-aporte" aria-label="Cerrar ventana">&times;</button>
-    
     <div class="form-header">
       <h3 id="modal-aporte-titulo">Formulario de Aporte 💚</h3>
       <p>Cuéntanos cómo te gustaría colaborar y nos pondremos en contacto contigo para coordinarlo.</p>
     </div>
-
     <form name="donaciones" method="POST" data-netlify="true" class="legado-form">
       <input type="hidden" name="form-name" value="donaciones" />
-
       <div class="form-grid">
         <div class="form-group">
           <label for="don-nombre">Nombre o Entidad *</label>
           <input type="text" id="don-nombre" name="nombre" required placeholder="Tu nombre o el de tu empresa">
         </div>
-
         <div class="form-row-2">
           <div class="form-group">
             <label for="don-email">Correo electrónico *</label>
@@ -478,7 +573,6 @@
             <input type="tel" id="don-telefono" name="telefono" required placeholder="+51 999 999 999">
           </div>
         </div>
-
         <div class="form-group">
           <label class="label-title">¿Qué tipo de aporte deseas realizar? (Puedes marcar varios)</label>
           <div class="checkbox-options">
@@ -486,56 +580,41 @@
               <input type="checkbox" name="tipo_aporte" value="Aporte economico">
               <span>💚 <b>Aporte económico:</b> Para sostener y ampliar los proyectos.</span>
             </label>
-
             <label class="checkbox-card">
               <input type="checkbox" name="tipo_aporte" value="Plantas y semillas">
               <span>🌱 <b>Plantas y semillas:</b> Material vegetal destinado a los proyectos.</span>
             </label>
-
             <label class="checkbox-card">
               <input type="checkbox" name="tipo_aporte" value="Compost y materia organica">
               <span>♻️ <b>Compost y materia orgánica:</b> Hojas, compost y otros aportes aprovechables.</span>
             </label>
-
             <label class="checkbox-card">
               <input type="checkbox" name="tipo_aporte" value="Materiales y herramientas">
               <span>🛠️ <b>Materiales y herramientas:</b> Recursos para las jornadas de trabajo.</span>
             </label>
           </div>
         </div>
-
         <div class="form-group">
           <label for="don-detalle">Detalles del aporte / Mensaje</label>
           <textarea id="don-detalle" name="detalle" rows="3" placeholder="Ej: Tengo 5 sacos de compost / Deseo realizar un depósito Yape o transferencia..."></textarea>
         </div>
-
         <button type="submit" class="button primary btn-submit-form">Enviar propuesta de aporte</button>
       </div>
     </form>
   </div>
 </div>
 
-<!-- FIN MODAL EMERGENTE DE APORTES -->
-
-
-
 <footer class="footer">
-
-  <!-- Contenido Principal en Columnas -->
   <div class="footer-container">
-    <!-- Columna 1: Info & CTAs -->
     <div class="footer-col brand-col">
       <img src="../assets/logo-large-sf-2-footer.png" alt="Logo Legado Botánico" class="brand-logo-footer">
       <p>Restauración ecológica · Comunidad · Futuro</p>
       <p class="location">San Martín de Porres · Lima, Perú</p>
-
       <div class="footer-buttons">
   		<button type="button" class="btn-primary" id="btn-abrir-aporte-footer">Quiero APORTAR</button>
   		<button type="button" class="btn-secondary" id="btn-abrir-voluntario-footer">Quiero ser voluntario</button>
 	</div>
     </div>
-
-    <!-- Columna 2: Navegación -->
     <div class="footer-col nav-col">
       <h4>Navegación</h4>
       <ul>
@@ -545,33 +624,23 @@
         <li><a href="../prensa.html">Prensa</a></li>
       </ul>
     </div>
-
-    <!-- Columna 3: Boletín -->
     <div class="footer-col newsletter-col">
       <h4>Boletín Informativo</h4>
       <p>Recibe novedades de nuestras jornadas de restauración.</p>
-
-
       <form name="boletin" method="POST" data-netlify="true" class="newsletter-form">
   	<input type="hidden" name="form-name" value="boletin" />
   	<input type="email" name="email" placeholder="Tu correo electrónico" required />
-      <button type="submit">Unirse</button>
-     </form>
-
+        <button type="submit">Unirse</button>
+      </form>
     </div>
   </div>
-
-  <!-- Copyright -->
   <div class="footer-bottom">
     <p>Asociación Legado Botánico.</p>
     <p>© <span id="year"></span> ALEBO. Todos los derechos reservados.</p>
   </div>
 </footer>
 
-
 <script src="../js/main.js"></script>
-
-
 
 </body>
 </html>
