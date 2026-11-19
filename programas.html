@@ -95,6 +95,81 @@
       font-weight: 700;
     }
 
+    /* Elementos adicionales para Senderos de Vida */
+    .spatial-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px;
+      margin-top: 30px;
+      box-shadow: 0 8px 24px rgba(13, 33, 26, 0.04);
+    }
+    .spatial-info h3 {
+      font: 700 1.2rem "Playfair Display", serif;
+      color: var(--forest-deep);
+      margin: 0 0 12px;
+    }
+    .spatial-info ul {
+      color: var(--muted);
+      padding-left: 20px;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .quote-box {
+      background: var(--paper);
+      border-left: 4px solid var(--leaf);
+      padding: 20px 24px;
+      border-radius: 0 16px 16px 0;
+      margin: 30px 0;
+      font-style: italic;
+      color: var(--forest-deep);
+      font-size: 1.05rem;
+    }
+    .challenge-banner {
+      background: var(--forest-deep);
+      color: var(--white);
+      border-radius: 20px;
+      padding: 35px;
+      margin-top: 40px;
+      text-align: center;
+    }
+    .challenge-banner h2 {
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .challenge-banner h2 span {
+      color: #89F336;
+    }
+    .challenge-banner p {
+      color: #e5d7b9;
+      margin: 0;
+      font-size: 1.05rem;
+    }
+    .sumarse-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 30px;
+    }
+    .sumarse-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 8px 24px rgba(13, 33, 26, 0.04);
+    }
+    .sumarse-card h3 {
+      font: 700 1.15rem "Playfair Display", serif;
+      color: var(--forest-deep);
+      margin: 0 0 10px;
+    }
+    .sumarse-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+
     /* Tabla de ámbitos territoriales (Ríos de Vida) */
     .territory-table-wrap {
       overflow-x: auto;
@@ -125,7 +200,7 @@
       border-bottom: none;
     }
 
-    /* Sección Co-Branding fuera del Hero, al inicio del Main con iluminación elegante */
+    /* Sección Co-Branding fuera del Hero */
     .cobranding-section {
       background: var(--paper);
       border-bottom: 1px solid var(--line);
@@ -163,44 +238,37 @@
       justify-content: center;
       transition: transform 0.3s ease;
     }
-    /* Logo central (ALEBO): Destacado al frente e iluminado */
     .brand-logo-center {
       z-index: 3;
     }
-
     .brand-logo-center img {
       object-fit: contain;
       filter: drop-shadow(0 4px 12px rgba(13, 33, 26, 0.15)) brightness(1.05);
       width: clamp(50px, 30vw, 230px); 
       height: auto;
     }
-
-    /* Logos laterales (FAS y HUB): Ligeramente detrás, más grandes e iluminados para resaltar */
     .brand-logo-side {
       z-index: 1;
       opacity: 0.95;
       transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
     }
-
     .brand-logo-side img {
       object-fit: contain;
       filter: drop-shadow(0 3px 10px rgba(13, 33, 26, 0.12)) brightness(1.1);
       width: clamp(25px, 15vw, 130px); 
       height: auto;
     }
-
     .brand-logo-side:hover {
       transform: scale(1.12);
       opacity: 1;
       filter: drop-shadow(0 5px 15px rgba(13, 33, 26, 0.2)) brightness(1.2);
     }
 
-    /* ==========================================================================
-       MEDIA QUERY OPTIMIZADA PARA MÓVILES (Apilado vertical de cuadrículas)
-       ========================================================================== */
+    /* MEDIA QUERY OPTIMIZADA PARA MÓVILES */
     @media(max-width: 900px) {
       .pillar-card-grid, 
-      .program-axis-grid { 
+      .program-axis-grid,
+      .sumarse-grid { 
         grid-template-columns: 1fr !important; 
       }
     }
@@ -231,7 +299,6 @@
         </div>
       </div>
 
-      <!-- MENÚ DESPLEGABLE: NUESTRO TRABAJO -->
       <div class="dropdown">
         <div class="dropdown-trigger">Nuestro Trabajo <span class="arrow">▾</span></div>
         <div class="dropdown-menu">
@@ -253,7 +320,7 @@
 
 <main>
 
-  <!-- HERO RESPONSIVO LIMPIO (Sin logos flotantes) -->
+  <!-- HERO -->
   <section class="page-hero-picture">
     <picture>
       <source media="(max-width: 600px)" srcset="assets/alianzas-hero-mobile.png">
@@ -267,20 +334,17 @@
     </div>
   </section>
 
-  <!-- NUEVA SECCIÓN DE CO-BRANDING FUERA DEL HERO (Al inicio del Main) -->
+  <!-- CO-BRANDING -->
   <div class="cobranding-section">
     <div class="cobranding-wrapper">
       <p class="cobranding-title">Alianza Institucional de Impacto Continental</p>
       <div class="co-branding-container">
-        <!-- Logo FAS (Izquierda) -->
         <div class="brand-logo-item brand-logo-side" title="Fundación América Sostenible (FAS)">
           <img src="assets/fas_v.png" alt="FAS">
         </div>
-        <!-- Logo ALEBO (Centro) -->
         <div class="brand-logo-item brand-logo-center" title="Asociación Legado Botánico (ALEBO)">
           <img src="assets/logo-alebo-letras_into.png" alt="ALEBO">
         </div>
-        <!-- Logo HUB 2030 (Derecha) -->
         <div class="brand-logo-item brand-logo-side" title="HUB 2030">
           <img src="assets/hub_2030.png" alt="HUB 2030">
         </div>
@@ -288,8 +352,8 @@
     </div>
   </div>
 
-  <!-- SECCIÓN 1: LA ESTRATEGIA CONTINENTAL -->
-  <section class="section" style="padding-bottom: 0;">
+  <!-- SECCIÓN 1: LA ESTRATEGIA CONTINENTAL Y 3 EJES -->
+  <section class="section">
     <div class="container program-content">
       <div class="section-heading" style="text-align: left; margin-bottom: 40px;">
         <span class="eyebrow">La Estrategia Continental</span>
@@ -300,26 +364,18 @@
       </div>
 
       <div class="pillar-card-grid">
-
-
         <div class="pillar-box">
           <h3>1. Objetivos Macro Ambiciosos</h3>
           <p>Metas cuantitativas continentales trazadas hacia el 2040 y 2050, alineadas rigurosamente a la agenda climática global.</p>
         </div>
-
-
         <div class="pillar-box">
           <h3>2. Diseño y Narrativa Unificada</h3>
           <p>Marcos conceptuales robustos que elevan la acción local a causas de atracción de capital de impacto, cooperación e inversión ESG.</p>
         </div>
-
-
         <div class="pillar-box">
           <h3>3. Herramientas y Canales Comunes</h3>
           <p>Plataformas de monitoreo, gobernanza y tecnologías de trazabilidad compartidas entre todos los nodos de la región.</p>
         </div>
-
-
         <div class="pillar-box">
           <h3>4. Aterrizaje en Capítulos Nacionales</h3>
           <p>Adaptación de la estrategia continental a la realidad socioecológica de cada país, siendo Perú el capítulo pionero mediante la articulación con ALEBO.</p>
@@ -327,13 +383,13 @@
       </div>
 
       <div style="margin-top: 24px;">
-        <div class="pillar-box" >
+        <div class="pillar-box">
           <h3>5. Nutrición Multinivel (Proyectos y Subproyectos)</h3>
           <p>Una estructura donde cada intervención microrregional (cerros, escuelas, tramos de ríos) genera datos auditables que alimentan directamente las métricas e indicadores de avance del país y del continente.</p>
         </div>
       </div>
 
-      <!-- SECCIÓN 2: LAS 3 LÍNEAS PROGRAMÁTICAS -->
+      <!-- LAS 3 LÍNEAS PROGRAMÁTICAS -->
       <div style="margin-top: 70px;">
         <div class="section-heading" style="text-align: left; margin-bottom: 30px;">
           <span class="eyebrow">Los Programas Eje</span>
@@ -344,42 +400,57 @@
         </div>
 
         <div class="program-axis-grid">
-          
-          <!-- Eje 1: Senderos de Vida -->
+          <!-- Eje 1 -->
           <div class="axis-card">
             <div>
               <span class="axis-tag">Eje Terrestre</span>
               <h3>Senderos de Vida</h3>
               <p><b>Enfoque:</b> Producción y plantación de flora nativa para generar corredores de biodiversidad en ámbitos urbanos, periurbanos y rurales.</p>
               
-
 		<p><b>Descripción:</b> Restauración ecológica en ámbitos intraurbanos, periurbanos, interurbanos y rurales para reducir la isla de calor y crear corredores biológicos.</p>
-		
 
 		<p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 15px;"><b>Nodo Activo:</b> Proyecto Forestal Cerro La Milla (+3,500 m² restaurados, +200 árboles de 26 especies).</p>
             </div>
-            <div class="axis-footer">
-              Respaldo: FAS + ALEBO
-            </div>
+            <div class="axis-footer">Respaldo: FAS + ALEBO</div>
+
+
+
+ 	<!-- Botón inferior para proyecto -->
+      <div style="text-align: center; margin-top: 60px;">
+        <a href="proyectos/cerro-la-milla.html" class="button primary" id="btn-abrir-aliado" style="background: #EAD2CC; color: #16382A; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Proyecto Cerro La Milla</a>
+
+
+      </div>
+
+
+
           </div>
 
-          <!-- Eje 2: Ríos de Vida -->
+          <!-- Eje 2 -->
           <div class="axis-card">
             <div>
               <span class="axis-tag">Eje Hídrico</span>
               <h3>Ríos de Vida</h3>
               <p><b>Enfoque:</b> Bio-remediación, limpieza de plásticos y forestación de fajas marginales, transformando márgenes degradadas en infraestructura viva.</p>
-             
+
+
 		<p><b>Descripción:</b> Recuperación de canales, ríos y corredores fluviales urbanos, transformando márgenes degradadas en infraestructura viva.</p>
 
-		<p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 15px;"><b>Nodo Activo:</b> Proyecto de Restauración del Río Surco para revitalización ecosistémica y comunitaria.</p>
+
+              <p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 15px;"><b>Nodo Activo:</b> Proyecto de Restauración del Río Surco para revitalización ecosistémica y comunitaria.</p>
             </div>
-            <div class="axis-footer">
-              Respaldo: FAS + ALEBO 
-            </div>
+            <div class="axis-footer">Respaldo: FAS + ALEBO</div>
+
+
+<!-- Botón inferior para proyecto -->
+      <div style="text-align: center; margin-top: 60px;">
+        <a href="proyectos/rio-surco.html" class="button primary" id="btn-abrir-aliado" style="background: #D1E5EB; color: #16382A; text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Proyecto Río Surco</a>
+
+
+</div>
           </div>
 
-          <!-- Eje 3: Escuelas de Vida -->
+          <!-- Eje 3 -->
           <div class="axis-card">
             <div>
               <span class="axis-tag">Eje Educativo y Circular</span>
@@ -387,123 +458,224 @@
               <p><b>Enfoque:</b> Viveros escolares, biohuertos, jardín de polinizadores, compostaje y riego solar para laboratorios vivos de sostenibilidad.</p>
               
 		<p><b>Descripción:</b> Red de instituciones educativas transformadas en laboratorios vivos de sostenibilidad y regeneración ecológica.</p>
-		
-		<p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 15px;"><b>Nodos Activos:</b> I.E.I. Luis Enrique X e I.E. 2032 Manuel Scorza (SMP).</p>
+	
+		<p style="font-size: 0.88rem; color: var(--muted); margin-bottom: 15px;"><b>Nodos Activos:</b> I.E.I. Luis Enrique X.</p>
             </div>
-            <div class="axis-footer">
-              Respaldo: FAS + ALEBO + RCE Cuenca del Plata
-            </div>
-          </div>
+            <div class="axis-footer">Respaldo: FAS + ALEBO + RCE Cuenca del Plata</div>
+
+
+
+<!-- Botón inferior para proyecto -->
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: center; margin-top: 40px;">     
+
+  <a href="proyectos/biohuerto-luis-enrique-x.html" class="button primary" style="background: #B7CEB8; color: #16382A; text-decoration: none; display: inline-flex; align-items: center; text-align: center; justify-content: center; margin: 0;">
+    Proyecto Biohuerto Escolar
+  </a>
+
+  <a href="proyectos/jardin-botanico.html" class="button primary" style="background: #B7CEB8; color: #16382A; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; margin: 0;">
+    Proyecto Jardín Botánico
+  </a>
+
+</div>
+
+
 
         </div>
       </div>
 
-      <!-- DETALLE AMPLIADO DE RÍOS DE VIDA Y ÁMBITOS -->
-      <div style="margin-top: 70px;">
-        <span class="eyebrow">Enfoque Hídrico</span>
-	
+    </div>
+  </section>
 
 
-        <h1>Programa Ríos de Vida: <span>Conservación, Regeneración y Gobernanza Comunitaria de Cuencas y Corredores Fluviales</span></h1>
 
 
-        
-        <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 24px; margin-top: 20px; font-size: 0.95rem; color: var(--muted); line-height: 1.6;">
-          <p style="margin: 0 0 8px 0;"><b>Diseñado por:</b> Fundación América Sostenible (FAS) y HUB 2030</p>
-          <p style="margin: 0 0 8px 0;"><b>Operador y Articulador Local en Perú:</b> Asociación Legado Botánico (ALEBO)</p>
-          <p style="margin: 0 0 8px 0;"><b>Ámbito de Intervención:</b> Cuencas y corredores hídricos intraurbanos, periurbanos, interurbanos y rurales</p>
-          <p style="margin: 0;"><b>Articulación Programática:</b> Programa Marco Senderos de Vida | Escuelas de Vida</p>
-        </div>
 
-        <!-- 1. VISIÓN GENERAL -->
-        <div style="margin-top: 35px;">
-          <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">1. Visión General del Programa</h3>
-          <p style="font-size: 1rem; color: var(--muted); line-height: 1.7;">
-            Ríos de Vida es el eje hídrico de la estrategia de infraestructura verde y resiliencia climática impulsada por FAS y ALEBO. El programa transforma canales, ríos y fajas marginales degradadas en corredores biológicos vivos, seguros y comunitarios.
-          </p>
-        </div>
+  <!-- SECCIÓN 2: SENDEROS DE VIDA (Detalle ampliado) -->
+  <section class="section alt" style="background: #EAD2CC;">
+    <div class="container program-content">
+      <span class="eyebrow">Enfoque Terrestre</span>
+      <h2>Devolviéndole la conectividad biológica a la ciudad</h2>
+      <p style="font-size: 1.08rem; line-height: 1.75; color: var(--muted); margin-top: 15px;">
+        <b>Senderos de Vida - Lima</b> forma parte de la red continental impulsada por la Fundación América Sostenible (FAS). Esta iniciativa busca enfrentar de manera directa la fragmentación del paisaje natural urbano y la progresiva pérdida de biodiversidad mediante la creación de corredores ecológicos que conectan parques, jardines, vías y espacios naturales en los ámbitos urbanos y sus alrededores.
+      </p>
+      <p style="font-size: 1.08rem; line-height: 1.75; color: var(--muted);">
+        A través de esta alianza estratégica, transformamos espacios urbanos complejos en refugios dinámicos de flora nativa y adaptada, promoviendo la restauración biológica y apoyando a las redes de viveros locales para multiplicar el capital natural de Lima.
+      </p>
 
-        <!-- 2. PILARES ESTRATÉGICOS -->
-        <div style="margin-top: 35px;">
-          <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 20px;">2. Pilares Estratégicos de Intervención</h3>
-          
-          <div class="pillar-card-grid">
-            <div class="pillar-box">
-              <h3>Pilar 1: Limpieza, Bio-remediación y Gestión de Residuos</h3>
-              <p style="margin-bottom: 10px;"><b>• Descontaminación y Recuperación Física:</b> Jornadas continuas de retiro de plásticos, residuos sólidos acumulados y escombros en fajas marginales y del cauce hídrico.</p>
-              <p style="margin-bottom: 10px;"><b>• Fito-remediación Natural:</b> Establecimiento de islas flotantes biológicas y filtros vegetales con especies macrófitas nativas para la absorción de metales pesados y exceso de nutrientes.</p>
-              <p><b>• Centros de Acopio y Circularidad:</b> Articulación con recicladores locales y programas de valorización de residuos orgánicos e inorgánicos extraídos de la cuenca.</p>
-            </div>
-
-            <div class="pillar-box">
-              <h3>Pilar 2: Forestación Ribereña con Flora Nativa</h3>
-              <p style="margin-bottom: 10px;"><b>• Estabilización de Taludes y Márgenes:</b> Control de erosión mediante andenería botánica y siembra de flora nativa con raíces profundas y resistentes a crecidas.</p>
-              <p style="margin-bottom: 10px;"><b>• Corredores Biológicos Fluviales:</b> Plantación de árboles y arbustos nativos para bajar la temperatura del agua, reducir la evaporación y crear microclimas.</p>
-              <p><b>• Suministro Circular:</b> Los plantines nativos y el compost utilizado son abastecidos directamente por la red del programa Escuelas de Vida y la red de viveros de Senderos de Vida - Perú.</p>
-            </div>
-
-            <div class="pillar-box">
-              <h3>Pilar 3: Mobiliario Urbano Sostenible e Infraestructura de Conectividad</h3>
-              <p style="margin-bottom: 10px;"><b>• Equipamiento Ecológico:</b> Instalación de bancas, senderos peatonales, miradores y puntos de descanso elaborados con plástico reciclado y madera de origen sostenible.</p>
-              <p><b>• Zonas de Encuentro Comunitario:</b> Conversión de márgenes abandonados en parques lineales seguros para el disfrute y recreación comunitaria.</p>
-            </div>
-
-            <div class="pillar-box">
-              <h3>Pilar 4: Señalética Interpretativa, Ciencia Ciudadana y Gobernanza</h3>
-              <p style="margin-bottom: 10px;"><b>• Cartelería Sensibilizadora:</b> Paneles informativos e interpretativos sobre la historia de la cuenca, la biodiversidad retornada y las pautas para el cuidado colectivo.</p>
-              <p style="margin-bottom: 10px;"><b>• Monitoreo y Citizen Science:</b> Muestreos comunitarios periódicos de la calidad del agua e identificación de fauna (aves, anfibios, insectos) vinculados a la App SdV.</p>
-              <p><b>• Comités de Cuenca Urbana:</b> Creación de mesas de gobernanza local con vecinos, municipios y juntas de usuarios de agua.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. ÁMBITOS Y ESCALAS TERRITORIALES -->
-        <div style="margin-top: 45px;">
-          <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 15px;">3. Ámbitos y Escalas Territoriales</h3>
-          <div class="territory-table-wrap">
-            <table class="territory-table">
-              <thead>
-                <tr>
-                  <th>Ámbito</th>
-                  <th>Enfoque Territorial</th>
-                  <th>Objetivo Principal</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><b>Intraurbano</b></td>
-                  <td>Canales urbanos, acequias históricas y tramos de ríos dentro de la ciudad.</td>
-                  <td>Reducción de contaminación, mitigación de olores y parques lineales urbanos.</td>
-                </tr>
-                <tr>
-                  <td><b>Periurbano</b></td>
-                  <td>Transición entre la ciudad y lomas/cerros áridos.</td>
-                  <td>Control de escorrentías, retención de suelo y amortiguamiento de erosión.</td>
-                </tr>
-                <tr>
-                  <td><b>Interurbano y Rural</b></td>
-                  <td>Tramos conectores entre distritos, valles agrícolas y cuencas medias/altas.</td>
-                  <td>Conservación de biodiversidad, protección de fuentes hídricas y agroecología.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- 4. NODO PILOTO ACTIVO -->
-        <div style="margin-top: 45px;">
-          <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">4. Nodo Piloto Activo: Río Surco (Lima, Perú)</h3>
-          <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 15px;">
-            El programa despega con su primer nodo demostrativo en el Río/Canal Surco en Lima, liderado en campo por Emiliano Cacciavillani y el equipo de ALEBO.
-          </p>
-          <ul style="color: var(--muted); line-height: 1.7; padding-left: 20px; font-size: 0.95rem;">
-            <li style="margin-bottom: 8px;"><b>Hito 01:</b> Limpieza intensiva de plásticos y sedimentos en tramos prioritarios.</li>
-            <li style="margin-bottom: 8px;"><b>Hito 02:</b> Arbolado de faja marginal con especies nativas peruanas.</li>
-            <li><b>Hito 03:</b> Instalación del primer circuito de señalética ambiental e integración comunitaria.</li>
+      <div class="spatial-card">
+        <div class="spatial-info">
+          <h3>Parámetros del Territorio</h3>
+          <ul>
+            <li><b>Ámbito geográfico:</b> Lima Metropolitana y zonas de influencia (incluyendo distritos de Lima Norte como San Martín de Porres).</li>
+            <li><b>Enfoque de conectividad:</b> Creación de puentes biológicos entre laderas áridas, áreas naturales protegidas locales y parques urbanos.</li>
+            <li><b>Meta de densidad verde:</b> 1 ejemplar de flora nativa por cada habitante de la ciudad.</li>
           </ul>
         </div>
+      </div>
 
-        <!-- 5. ARTICULACIÓN SISTÉMICA -->
+      <div class="quote-box">
+        <p>"Un habitante, una planta: 10 millones de ejemplares para devolverle la vida y la conectividad biológica a Lima."</p>
+      </div>
+
+      <div style="margin-top: 50px;">
+        <span class="eyebrow">Nuestra visión</span>
+        <h2>Nuestros Pilares de Impacto en Lima</h2>
+
+        <div class="pillar-card-grid">
+          <div class="pillar-box">
+            <h3>1. Capital Natural y Producción Local</h3>
+            <p>Incorporamos la capacidad de viveros comunitarios y botánicos para asegurar la propagación responsable de especies adaptadas.</p>
+          </div>
+          <div class="pillar-box">
+            <h3>2. Conectividad Ecológica Urbana</h3>
+            <p>Restauramos la trama verde uniendo espacios periurbanos e intraurbanos, generando 'puentes de vida' esenciales para polinizadores y aves.</p>
+          </div>
+          <div class="pillar-box">
+            <h3>3. Resiliencia y Clima</h3>
+            <p>Mitigamos el efecto de isla de calor urbana, mejoramos la captación de agua de lluvia y contribuimos a la captura de carbono.</p>
+          </div>
+          <div class="pillar-box">
+            <h3>4. Empoderamiento Ciudadano</h3>
+            <p>Involucramos a vecinos, escuelas y organizaciones civiles mediante el programa de <em>Guardianes del Sendero</em> en talleres y siembras.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="challenge-banner">
+        <h2>El Reto: <span>10 Millones de Ejemplares</span></h2>
+        <p>Nos hemos propuesto el ambicioso objetivo de escalar la producción y siembra participativa hasta alcanzar 1 ejemplar de flora por cada habitante de Lima.</p>
+      </div>
+
+      <div style="margin-top: 50px;">
+        <span class="eyebrow">Participación</span>
+        <h2>¿Cómo sumarte a la red?</h2>
+
+        <div class="sumarse-grid">
+          <div class="sumarse-card">
+            <h3>Comunidad y Ciudadanía</h3>
+            <p>Adopta una planta nativa, participa en las jornadas de siembra comunitaria o capacítate como Guardián del Sendero.</p>
+          </div>
+          <div class="sumarse-card">
+            <h3>Viveros e Instituciones</h3>
+            <p>Intégrate a la red técnica de producción de especies clave y al monitoreo biológico constante.</p>
+          </div>
+          <div class="sumarse-card">
+            <h3>Empresas y Sponsors</h3>
+            <p>Financia hectáreas de corredores verdes e impulsa de forma activa el voluntariado corporativo de tu organización.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+
+  <!-- SECCIÓN 3: RÍOS DE VIDA (Detalle ampliado) -->
+  <section class="section" style="background: #D1E5EB;">
+    <div class="container program-content">
+      <span class="eyebrow">Enfoque Hídrico</span>
+      <h2>Programa Ríos de Vida: Conservación, Regeneración y Gobernanza Comunitaria</h2>
+      
+      <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 24px; margin-top: 20px; font-size: 0.95rem; color: var(--muted); line-height: 1.6;">
+        <p style="margin: 0 0 8px 0;"><b>Diseñado por:</b> Fundación América Sostenible (FAS) y HUB 2030</p>
+        <p style="margin: 0 0 8px 0;"><b>Operador y Articulador Local en Perú:</b> Asociación Legado Botánico (ALEBO)</p>
+        <p style="margin: 0 0 8px 0;"><b>Ámbito de Intervención:</b> Cuencas y corredores hídricos intraurbanos, periurbanos, interurbanos y rurales</p>
+        <p style="margin: 0;"><b>Articulación Programática:</b> Programa Marco Senderos de Vida | Escuelas de Vida</p>
+      </div>
+
+      <div style="margin-top: 35px;">
+        <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">1. Visión General del Programa</h3>
+        <p style="font-size: 1rem; color: var(--muted); line-height: 1.7;">
+          Ríos de Vida es el eje hídrico de la estrategia de infraestructura verde y resiliencia climática impulsada por FAS y ALEBO. El programa transforma canales, ríos y fajas marginales degradadas en corredores biológicos vivos, seguros y comunitarios.
+        </p>
+      </div>
+
+      <div style="margin-top: 35px;">
+        <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 20px;">2. Pilares Estratégicos de Intervención</h3>
+        
+        <div class="pillar-card-grid">
+          <div class="pillar-box">
+            <h3>Pilar 1: Limpieza, Bio-remediación y Gestión de Residuos</h3>
+            <p style="margin-bottom: 10px;"><b>• Descontaminación y Recuperación Física:</b> Jornadas continuas de retiro de plásticos y residuos.</p>
+            <p style="margin-bottom: 10px;"><b>• Fito-remediación Natural:</b> Filtros vegetales con especies macrófitas nativas.</p>
+            <p><b>• Centros de Acopio y Circularidad:</b> Articulación con recicladores y valorización de residuos.</p>
+          </div>
+
+          <div class="pillar-box">
+            <h3>Pilar 2: Forestación Ribereña con Flora Nativa</h3>
+            <p style="margin-bottom: 10px;"><b>• Estabilización de Taludes:</b> Control de erosión mediante andenería botánica.</p>
+            <p style="margin-bottom: 10px;"><b>• Corredores Biológicos Fluviales:</b> Plantación de árboles y arbustos nativos.</p>
+            <p><b>• Suministro Circular:</b> Abastecido directamente por Escuelas de Vida y Viveros.</p>
+          </div>
+
+          <div class="pillar-box">
+            <h3>Pilar 3: Mobiliario Urbano Sostenible</h3>
+            <p style="margin-bottom: 10px;"><b>• Equipamiento Ecológico:</b> Bancas y senderos con plástico reciclado y madera sostenible.</p>
+            <p><b>• Zonas de Encuentro:</b> Conversión de márgenes abandonados en parques lineales seguros.</p>
+          </div>
+
+          <div class="pillar-box">
+            <h3>Pilar 4: Ciencia Ciudadana y Gobernanza</h3>
+            <p style="margin-bottom: 10px;"><b>• Cartelería Sensibilizadora:</b> Paneles informativos sobre la biodiversidad recuperada.</p>
+            <p style="margin-bottom: 10px;"><b>• Monitoreo Comunitario:</b> Muestreos de calidad de agua.</p>
+            <p><b>• Comités de Cuenca:</b> Mesas de gobernanza local con vecinos y municipios.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 45px;">
+        <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 15px;">3. Ámbitos y Escalas Territoriales</h3>
+        <div class="territory-table-wrap">
+          <table class="territory-table">
+            <thead>
+              <tr>
+                <th>Ámbito</th>
+                <th>Enfoque Territorial</th>
+                <th>Objetivo Principal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Intraurbano</b></td>
+                <td>Canales urbanos, acequias históricas y tramos de ríos dentro de la ciudad.</td>
+                <td>Reducción de contaminación, mitigación de olores y parques lineales urbanos.</td>
+              </tr>
+              <tr>
+                <td><b>Periurbano</b></td>
+                <td>Transición entre la ciudad y lomas/cerros áridos.</td>
+                <td>Control de escorrentías, retención de suelo y amortiguamiento de erosión.</td>
+              </tr>
+              <tr>
+                <td><b>Interurbano y Rural</b></td>
+                <td>Tramos conectores entre distritos, valles agrícolas y cuencas medias/altas.</td>
+                <td>Conservación de biodiversidad, protección de fuentes hídricas y agroecología.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div style="margin-top: 45px;">
+        <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">4. Nodo Piloto Activo: Río Surco (Lima, Perú)</h3>
+        <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 15px;">
+          El programa despega con su primer nodo demostrativo en el Río/Canal Surco en Lima, liderado en campo por Emiliano Cacciavillani y el equipo de ALEBO.
+        </p>
+        <ul style="color: var(--muted); line-height: 1.7; padding-left: 20px; font-size: 0.95rem;">
+          <li style="margin-bottom: 8px;"><b>Hito 01:</b> Limpieza intensiva de plásticos y sedimentos en tramos prioritarios.</li>
+          <li style="margin-bottom: 8px;"><b>Hito 02:</b> Arbolado de faja marginal con especies nativas peruanas.</li>
+          <li><b>Hito 03:</b> Instalación del primer circuito de señalética ambiental e integración comunitaria.</li>
+        </ul>
+      </div>
+
+
+
+
+
+	<!-- 5. ARTICULACIÓN SISTÉMICA -->
         <div style="margin-top: 45px;">
           <h3 style="font: 700 1.25rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 12px;">5. Articulación Sistémica con Otros Programas</h3>
           <p style="font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 15px;">
@@ -535,14 +707,20 @@
           </div>
         </div>
 
-      </div>
+    </div>
+  </section>
 
-      <!-- DETALLE AMPLIADO DE ESCUELAS DE VIDA (Fondo extendido de lado a lado real) -->
+
+
+
+
+
+  <!-- DETALLE AMPLIADO DE ESCUELAS DE VIDA (Fondo extendido de lado a lado real) -->
       <div style="
-        background: #eef7f0; 
+        background: #B7CEB8; 
         border-top: 1px solid #d4ebd8; 
         border-bottom: 1px solid #d4ebd8; 
-        margin-top: 70px; 
+        margin-top: 0px; 
         padding: 60px 0; 
         width: 100vw; 
         position: relative; 
@@ -554,15 +732,8 @@
         <div class="container program-content">
           <span class="eyebrow" style="color: var(--forest);">Educación y Regeneración</span>
           
-
-
-
-
 	<h1 style="color: var(--forest-deep);">Escuelas de Vida: <span>Red de Viveros, Biohuertos, Jardín de Polinizadores y Centros de Economía Circular Escolar</span></h1>
           
-
-
-
           <div style="background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 20px 24px; margin-top: 20px; font-size: 0.93rem; color: var(--muted); line-height: 1.6;">
             <p style="margin: 0;"><b>Diseñado por:</b> Fundación América Sostenible y el RCE Cuenca del Plata junto a ALEBO para su implementación en Lima, Perú.</p>
           </div>
@@ -666,19 +837,15 @@
             </ul>
           </div>
 
-          <!-- 7. LLAMADO A LA ACCIÓN -->
-          <div style="margin-top: 45px; background: var(--white); border-radius: 16px; padding: 24px; text-align: center; border: 1px solid var(--line);">
-            <h3 style="font: 700 1.2rem 'Playfair Display', serif; color: var(--forest-deep); margin-bottom: 8px;">🎓 ¿Eres Directivo o Docente Escolar?</h3>
-            <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 15px;">Transforma tu institución en una Escuela Verde y Tecnológica. Solicita el diagnóstico de tu plantel para incorporarte a la red.</p>
-            <a href="#contacto-programas" class="button primary" style="background: var(--forest); display: inline-block; padding: 10px 24px; border-radius: 999px; color: #fff; text-decoration: none; font-weight: 700; font-size: 0.9rem;">Solicitar diagnóstico escolar →</a>
-          </div>
+         
 
         </div>
       </div>
 
   </section>
 
-  <!-- SECCIÓN FINAL: FORMULARIO UNIFICADO DE ALIANZAS E INVERSIÓN (CTA) -->
+
+<!-- SECCIÓN FINAL: FORMULARIO UNIFICADO DE ALIANZAS E INVERSIÓN (CTA) -->
   <section class="section cream" id="contacto-programas">
     <div class="container" style="max-width: 800px;">
       <div class="section-heading" style="text-align: center; margin-bottom: 40px;">
@@ -857,10 +1024,10 @@
         <div class="form-group">
           <label class="label-title">¿Qué tipo de aporte deseas realizar?</label>
           <div class="checkbox-options">
-            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Aporte economico"><span>💚 <b>Aporte económico</b></span></label>
-            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Plantas y semillas"><span>🌱 <b>Plantas y semillas</b></span></label>
-            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Plantas y semillas"><span>♻️ <b>Compost y materia orgánica</b></span></label>
-            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Materiales y herramientas"><span>🛠️ <b>Herramientas</b></span></label>
+            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte[]" value="Aporte economico"><span>💚 <b>Aporte económico</b></span></label>
+            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte[]" value="Plantas y semillas"><span>🌱 <b>Plantas y semillas</b></span></label>
+            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte[]" value="Compost y materia organica"><span>♻️ <b>Compost y materia orgánica</b></span></label>
+            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte[]" value="Materiales y herramientas"><span>🛠️ <b>Herramientas</b></span></label>
           </div>
         </div>
         <div class="form-group">

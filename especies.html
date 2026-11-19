@@ -41,6 +41,15 @@
       justify-content: center;
     }
 
+
+
+.grid-col-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+
+
+
     .grid-col-3 {
       grid-template-columns: repeat(3, 1fr);
     }
@@ -183,7 +192,7 @@
       .flora-species-row {
         padding: 20px;
       }
-      .grid-col-3, .grid-col-2 {
+      .grid-col-4, .grid-col-3, .grid-col-2 {
         grid-template-columns: 1fr;
       }
       .species-grid {
@@ -269,29 +278,63 @@
         
         <div class="flora-container-full">
           
-          <!-- Especie 1: Algarrobo / Huarango (Neltuma pallida) -->
+         
+
+
+
+	 <!-- Especie 1: Palo Negro -->
           <article class="flora-species-row">
-            <h3 class="flora-title">Algarrobo u Huarango (Neltuma pallida)</h3>
+            <h3 class="flora-title">Palo Negro</h3>
             
             <div class="flora-images-grid grid-col-2">
-              <div class="zoomable-img-wrap"><img src="assets/especies/espiga_floral_algarrobo_o_huarango-Neltuma_pallida.jpg" alt="Espiga floral de algarrobo o huarango"></div>
-              <div class="zoomable-img-wrap"><img src="assets/especies/floración_algarrobo_o_huarango-Neltuma_pallida.jpg" alt="Floración de algarrobo con abeja polinizadora"></div>
+              <div class="zoomable-img-wrap"><img src="assets/especies/Palo_Negro-cerro_la_milla.jpeg" alt="Palo Negro 1"></div>
+              <div class="zoomable-img-wrap"><img src="assets/especies/Palo_Negro2-cerro_la_milla.jpeg" alt="Palo Negro 2"></div>
+              <div class="zoomable-img-wrap"><img src="assets/especies/Palo_Negro3-cerro_la_milla.jpeg" alt="Palo Negro 3"></div>
+              <div class="zoomable-img-wrap"><img src="assets/especies/Palo_Negro4-cerro_la_milla.jpeg" alt="Palo Negro 4"></div>
             </div>
 
             <div class="flora-details">
               <span class="flora-tag">Árbol nativo / Especie clave</span>
-              <p>Árbol emblemático de la costa peruana. Sus inflorescencias atraen y alimentan a numerosos insectos polinizadores como abejas, cumpliendo un rol ecológico crítico en las laderas áridas.</p>
+              <p>Especie forestal emblemática presente en Cerro La Milla. Destaca por su resistencia a condiciones áridas y su capacidad de brindar sombra y refugio a la microfauna local.</p>
             </div>
           </article>
 
-          <!-- Especie 2: Algarrobo Blanco (Neltuma alba) -->
+          <!-- Especie 2: Vallesia glabra -->
           <article class="flora-species-row">
-            <h3 class="flora-title">Algarrobo Blanco (Neltuma alba)</h3>
+            <h3 class="flora-title">Vallesia glabra (Cuncuno / Cachorrito)</h3>
+            
+            <div class="flora-images-grid grid-col-3">
+              <div class="zoomable-img-wrap"><img src="assets/especies/vallesia_glabra-cerro_la_milla.jpeg" alt="Vallesia glabra 1"></div>
+              <div class="zoomable-img-wrap"><img src="assets/especies/vallesia_glabra2-cerro_la_milla.jpeg" alt="Vallesia glabra 2"></div>
+              <div class="zoomable-img-wrap"><img src="assets/especies/vallesia_glabra3-cerro_la_milla.jpeg" alt="Vallesia glabra 3"></div>
+            </div>
+
+            <div class="flora-details">
+              <span class="flora-tag">Arbusto nativo / Costero</span>
+              <p>Arbusto de follaje denso adaptado a los cerros y lomas de la costa peruana. Desempeña un rol fundamental en la retención de humedad y soporte de polinizadores.</p>
+            </div>
+          </article>
+
+
+
+
+
+
+
+          <!-- Especie 3: Algarrobo / Huarango -->
+          <article class="flora-species-row">
+            <h3 class="flora-title">Algarrobo / Huarango</h3>
             
             <div class="flora-images-grid grid-col-3">
               <div class="zoomable-img-wrap"><img src="assets/especies/algarrobo_blanco-neltuma_alba.jpg" alt="Algarrobo blanco en floración"></div>
               <div class="zoomable-img-wrap"><img src="assets/especies/algarrobo_blanco-neltuma_alba_2.jpg" alt="Detalle de algarrobo blanco 2"></div>
               <div class="zoomable-img-wrap"><img src="assets/especies/algarrobo_blanco-neltuma_alba_3.jpg" alt="Detalle de algarrobo blanco 3"></div>
+
+
+              <div class="zoomable-img-wrap"><img src="assets/especies/espiga_floral_algarrobo_o_huarango-Neltuma_pallida.jpg" alt="Espiga floral de algarrobo o huarango"></div>
+              <div class="zoomable-img-wrap"><img src="assets/especies/floración_algarrobo_o_huarango-Neltuma_pallida.jpg" alt="Floración de algarrobo con abeja polinizadora"></div>
+         
+
             </div>
 
             <div class="flora-details">
@@ -300,7 +343,7 @@
             </div>
           </article>
 
-          <!-- Especie 3: Palo Verde (Parkinsonia aculeata) -->
+          <!-- Especie 4: Palo Verde (Parkinsonia aculeata) -->
           <article class="flora-species-row">
             <h3 class="flora-title">Palo Verde (Parkinsonia aculeata)</h3>
             
@@ -315,7 +358,7 @@
             </div>
           </article>
 
-          <!-- Especie 4: Tara (Caesalpinia spinosa) -->
+          <!-- Especie 5: Tara (Caesalpinia spinosa) -->
           <article class="flora-species-row">
             <h3 class="flora-title">Tara (Caesalpinia spinosa)</h3>
             
@@ -357,6 +400,50 @@
         
         <div class="species-grid">
           
+
+	<article class="species-card">
+            <div class="zoomable-img-wrap species-img-single">
+              <img src="assets/especies/chinches-Pellaea_stictica.jpg" alt="Chinches">
+            </div>
+            <div class="species-content">
+              <span class="species-tag">Insecto / Pellaea Stictica</span>
+              <h3>Chinches</h3>
+              <p>Especie de chinche de la familia Pentatomidae, reconocida por su caparazón en forma de escudo, su coloración marrón con detalles en tonos anaranjados/rojizos y bordes con marcas distintivas en blanco y negro o naranja.</p>
+		<p>Al igual que otras chinches hediondas, pueden emitir un olor fuerte si se sienten amenazadas o son manipuladas.</p>
+            </div>
+          </article>
+
+
+	<article class="species-card">
+            <div class="zoomable-img-wrap species-img-single">
+              <img src="assets/especies/escarabajo_de_las_flores.jpg" alt="Escarabajo de las flores">
+            </div>
+            <div class="species-content">
+              <span class="species-tag">Insecto / Gymnetis merops</span>
+              <h3>Escarabajo de las flores</h3>
+              <p>Conocido popularmente como escarabajo arlequín peruano, tienen un caparazón característico de fondo amarillo crema o anaranjado con un llamativo patrón de manchas o marcas negras.</p>
+		<p>Son de hábitos diurnos y se les suele ver sobre plantas, flores o arbustos, los adultos se alimentan principalmente de polen, néctar y savia y son completamente inofensivos.</p>
+            </div>
+          </article>
+
+
+	<article class="species-card">
+            <div class="zoomable-img-wrap species-img-single">
+              <img src="assets/especies/escarabajo_rinoceronte.jpg" alt="Escarabajo Rinoceronte">
+            </div>
+            <div class="species-content">
+              <span class="species-tag">Insecto / Scarabaeidae (subfamilia Dynastinae)</span>
+              <h3>Escarabajo Rinoceronte</h3>
+              <p>Conocido también como escarabajo cornudo o cachudo del carrizo, los machos de esta especie poseen un cuerno cefálico largo en forma de hoz que utilizan como palanca para competir con otros rivales durante la época de apareamiento</p>
+		<p>Son inofensivos, frecuentan zonas montañosas y bosques nublados de Sudamérica (como Ecuador y Colombia).</p>
+            </div>
+          </article>
+
+
+
+
+
+
 
 	<article class="species-card">
             <div class="zoomable-img-wrap species-img-single">
@@ -638,10 +725,10 @@
         <div class="form-group">
           <label class="label-title">¿Qué tipo de aporte deseas realizar?</label>
           <div class="checkbox-options">
-            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Aporte economico"><span>💚 <b>Aporte económico</b></span></label>
-            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Plantas y semillas"><span>🌱 <b>Plantas y semillas</b></span></label>
-            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Compost y materia organica"><span>♻️ <b>Compost y materia orgánica</b></span></label>
-            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte" value="Materiales y herramientas"><span>🛠️ <b>Materiales y herramientas</b></span></label>
+            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte[]" value="Aporte economico"><span>💚 <b>Aporte económico</b></span></label>
+            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte[]" value="Plantas y semillas"><span>🌱 <b>Plantas y semillas</b></span></label>
+            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte[]" value="Compost y materia organica"><span>♻️ <b>Compost y materia orgánica</b></span></label>
+            <label class="checkbox-card"><input type="checkbox" name="tipo_aporte[]" value="Materiales y herramientas"><span>🛠️ <b>Materiales y herramientas</b></span></label>
           </div>
         </div>
         <div class="form-group">

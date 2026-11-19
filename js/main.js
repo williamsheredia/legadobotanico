@@ -139,31 +139,211 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target === modal) cerrarModal();
     });
 
-    // Envío en segundo plano para Netlify
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
+    
+// Envío de formularios
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
 
-      fetch('/', {
+  // Procesamiento del formulario de voluntariado en Hosting Perú
+  if (formName === 'voluntarios') {
+    const botonEnviar = form.querySelector('button[type="submit"]');
+
+    if (botonEnviar) {
+      botonEnviar.disabled = true;
+      botonEnviar.textContent = 'Enviando...';
+    }
+
+    try {
+      const response = await fetch('/enviar-voluntariado.php', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      })
-      .then(() => {
-        form.style.display = 'none';
-        const header = modal.querySelector('.form-header');
-        if (header) header.style.display = 'none';
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
 
-        exitoContainer.innerHTML = `
-          <span style="font-size: 3rem;">🌱</span>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 15px 0 10px; color: var(--ink);">${exitoTitulo}</h3>
-          <p style="color: var(--muted); line-height: 1.5;">${exitoTexto}</p>
-        `;
-        exitoContainer.style.display = 'block';
-      })
-      .catch((error) => console.error('Error al enviar formulario:', error));
-    });
-  };
+      const resultado = await response.json();
+
+      if (!response.ok || resultado.success !== true) {
+        throw new Error(
+          resultado.message || 'No se pudo enviar el registro.'
+        );
+      }
+
+      // Mostrar confirmación únicamente si el servidor confirma el envío
+      form.style.display = 'none';
+
+      const header = modal.querySelector('.form-header');
+      if (header) header.style.display = 'none';
+
+      exitoContainer.innerHTML = `
+        <span style="font-size: 3rem;">🌱</span>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 15px 0 10px; color: var(--ink);">${exitoTitulo}</h3>
+        <p style="color: var(--muted); line-height: 1.5;">${exitoTexto}</p>
+      `;
+
+      exitoContainer.style.display = 'block';
+
+    } catch (error) {
+      alert(error.message || 'Ocurrió un error al enviar el registro.');
+
+      if (botonEnviar) {
+        botonEnviar.disabled = false;
+        botonEnviar.textContent = 'Enviar registro de voluntario';
+      }
+
+      console.error('Error al enviar voluntariado:', error);
+    }
+
+    return;
+  }
+
+
+
+
+  // Procesamiento del formulario de donaciones en Hosting Perú
+  if (formName === 'donaciones') {
+    const botonEnviar = form.querySelector('button[type="submit"]');
+
+    if (botonEnviar) {
+      botonEnviar.disabled = true;
+      botonEnviar.textContent = 'Enviando...';
+    }
+
+    try {
+      const response = await fetch('/enviar-donaciones.php', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      const resultado = await response.json();
+
+      if (!response.ok || resultado.success !== true) {
+        throw new Error(
+          resultado.message || 'No se pudo enviar la propuesta.'
+        );
+      }
+
+      // Mostrar confirmación únicamente si el servidor confirma el envío
+      form.style.display = 'none';
+
+      const header = modal.querySelector('.form-header');
+      if (header) header.style.display = 'none';
+
+      exitoContainer.innerHTML = `
+        <span style="font-size: 3rem;">🌱</span>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 15px 0 10px; color: var(--ink);">${exitoTitulo}</h3>
+        <p style="color: var(--muted); line-height: 1.5;">${exitoTexto}</p>
+      `;
+
+      exitoContainer.style.display = 'block';
+
+    } catch (error) {
+      alert(error.message || 'Ocurrió un error al enviar la propuesta.');
+
+      if (botonEnviar) {
+        botonEnviar.disabled = false;
+        botonEnviar.textContent = 'Enviar propuesta de aporte';
+      }
+
+      console.error('Error al enviar donaciones:', error);
+    }
+
+    return;
+  }
+
+
+
+
+
+
+  // Procesamiento del formulario de alianzas en Hosting Perú
+  if (formName === 'alianzas') {
+    const botonEnviar = form.querySelector('button[type="submit"]');
+
+    if (botonEnviar) {
+      botonEnviar.disabled = true;
+      botonEnviar.textContent = 'Enviando...';
+    }
+
+    try {
+      const response = await fetch('/enviar-alianzas.php', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      const resultado = await response.json();
+
+      if (!response.ok || resultado.success !== true) {
+        throw new Error(
+          resultado.message || 'No se pudo enviar la propuesta de alianza.'
+        );
+      }
+
+      // Mostrar confirmación únicamente si el servidor confirma el envío
+      form.style.display = 'none';
+
+      const header = modal.querySelector('.form-header');
+      if (header) header.style.display = 'none';
+
+      exitoContainer.innerHTML = `
+        <span style="font-size: 3rem;">🌱</span>
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 15px 0 10px; color: var(--ink);">${exitoTitulo}</h3>
+        <p style="color: var(--muted); line-height: 1.5;">${exitoTexto}</p>
+      `;
+
+      exitoContainer.style.display = 'block';
+
+    } catch (error) {
+      alert(error.message || 'Ocurrió un error al enviar la propuesta de alianza.');
+
+      if (botonEnviar) {
+        botonEnviar.disabled = false;
+        botonEnviar.textContent = 'Enviar propuesta de alianza';
+      }
+
+      console.error('Error al enviar alianzas:', error);
+    }
+
+    return;
+  }
+
+
+
+
+  // Los demás formularios conservan temporalmente el envío Netlify
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(formData).toString()
+  })
+  .then(() => {
+    form.style.display = 'none';
+
+    const header = modal.querySelector('.form-header');
+    if (header) header.style.display = 'none';
+
+    exitoContainer.innerHTML = `
+      <span style="font-size: 3rem;">🌱</span>
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 15px 0 10px; color: var(--ink);">${exitoTitulo}</h3>
+      <p style="color: var(--muted); line-height: 1.5;">${exitoTexto}</p>
+    `;
+
+    exitoContainer.style.display = 'block';
+  })
+  .catch((error) => {
+    console.error('Error al enviar formulario:', error);
+  });
+});
+ };
+
 
   // Inicialización de Modales
   setupModal(
@@ -210,26 +390,126 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+ 
   // ==========================================
   // 4. SUSCRIPCIÓN AL BOLETÍN INFORMATIVO
   // ==========================================
   const newsletterForm = document.querySelector('form[name="boletin"]');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const formData = new FormData(newsletterForm);
 
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      })
-      .then(() => {
-        newsletterForm.innerHTML = '<p style="color: #76d577; font-weight: bold; margin-top: 10px;">¡Gracias por unirte! 🌱</p>';
-      })
-      .catch((error) => console.error('Error en suscripción:', error));
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(newsletterForm);
+      const botonEnviar = newsletterForm.querySelector('button[type="submit"]');
+
+      if (botonEnviar) {
+        botonEnviar.disabled = true;
+        botonEnviar.textContent = 'Enviando...';
+      }
+
+      try {
+        const response = await fetch('/enviar-boletin.php', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        const resultado = await response.json();
+
+        if (!response.ok || resultado.success !== true) {
+          throw new Error(
+            resultado.message || 'No se pudo procesar la suscripción.'
+          );
+        }
+
+        newsletterForm.innerHTML = `
+          <p style="color: #76d577; font-weight: bold; margin-top: 10px;">
+            ¡Gracias por unirte! 🌱
+          </p>
+        `;
+
+      } catch (error) {
+        alert(error.message || 'Ocurrió un error al suscribirte.');
+
+        if (botonEnviar) {
+          botonEnviar.disabled = false;
+          botonEnviar.textContent = 'Unirse';
+        }
+
+        console.error('Error en suscripción:', error);
+      }
     });
   }
+
+
+
+
+  // ==========================================
+  // 5. POSTULACIONES A PROGRAMAS
+  // ==========================================
+  const programasForm = document.querySelector('form[name="alianzas_programas"]');
+
+  if (programasForm) {
+    programasForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(programasForm);
+      const botonEnviar = programasForm.querySelector('button[type="submit"]');
+
+      if (botonEnviar) {
+        botonEnviar.disabled = true;
+        botonEnviar.textContent = 'Enviando...';
+      }
+
+      try {
+        const response = await fetch('/enviar-programas.php', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        const resultado = await response.json();
+
+        if (!response.ok || resultado.success !== true) {
+          throw new Error(
+            resultado.message || 'No se pudo enviar la propuesta.'
+          );
+        }
+
+        programasForm.innerHTML = `
+          <div style="text-align: center; padding: 20px;">
+            <span style="font-size: 3rem;">🌱</span>
+            <h3 style="color: var(--forest); margin: 15px 0 10px;">
+              ¡Gracias por tu interés!
+            </h3>
+            <p style="color: var(--muted); line-height: 1.5;">
+              Hemos recibido tu propuesta correctamente. Nos pondremos en contacto contigo muy pronto.
+            </p>
+          </div>
+        `;
+
+      } catch (error) {
+        alert(error.message || 'Ocurrió un error al enviar la propuesta.');
+
+        if (botonEnviar) {
+          botonEnviar.disabled = false;
+          botonEnviar.textContent = 'Enviar propuesta de alianza →';
+        }
+
+        console.error('Error al enviar postulación a programas:', error);
+      }
+    });
+  }
+
+
+
+
+
 });
 
 

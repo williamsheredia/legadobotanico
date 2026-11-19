@@ -397,7 +397,7 @@ a {
 /* Grilla de Proyectos */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
@@ -429,8 +429,9 @@ a {
 }
 
 .p1 { background: linear-gradient(135deg, rgba(79, 124, 76, 0.1), rgba(22, 56, 42, 0.1)), url('../assets/la-milla.jpg') center/cover no-repeat; }
-.p2 { background: linear-gradient(135deg, rgba(120, 150, 107, 0.1), rgba(47, 93, 58, 0.1)), url('../assets/jardin-desktop.jpg') center/cover no-repeat; }
-.p3 { background: linear-gradient(135deg, rgba(181, 138, 58, 0.1), rgba(122, 82, 56, 0.1)), url('../assets/biohuerto.jpg') center/cover no-repeat; }
+.p2 { background: linear-gradient(135deg, rgba(120, 150, 107, 0.1), rgba(47, 93, 58, 0.1)), url('../assets/rio_surco.jpg') center/cover no-repeat; }
+.p3 { background: linear-gradient(135deg, rgba(120, 150, 107, 0.1), rgba(47, 93, 58, 0.1)), url('../assets/jardin-desktop.jpg') center/cover no-repeat; }
+.p4 { background: linear-gradient(135deg, rgba(181, 138, 58, 0.1), rgba(122, 82, 56, 0.1)), url('../assets/biohuerto.jpg') center/cover no-repeat; }
 
 .project-body { padding: 25px; }
 .project-body small, .schedule small { color: var(--leaf); font-weight: 800; letter-spacing: .12em; }
