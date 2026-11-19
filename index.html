@@ -5,19 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Legado Botánico — restauración ecológica, forestación, biohuertos y voluntariado en San Martín de Porres, Lima.">
   <title>Legado Botánico</title>
+
   
   <link rel="icon" href="assets/favicon_1.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/styles.css">
+
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/mapa-alebo.css">
 
   <!-- SEO / Open Graph -->
   <meta property="og:title" content="Legado Botánico — Asociación ALEBO">
   <meta property="og:description" content="Restauración ecológica, forestación y biohuertos en San Martín de Porres.">
   <meta property="og:image" content="assets/logo-large-sf-2.png">
+
+
+
 </head>
+
+
+
 <body>
-
-
-
 
 <!-- ENCABEZADO / NAVEGACIÓN -->
 <header class="site-header">
@@ -80,6 +88,9 @@
     </div>
   </section>
 
+
+
+
   <!-- PROYECTOS -->
   <section class="section" id="proyectos">
     <div class="container">
@@ -138,6 +149,35 @@
     </div>
   </section>
 
+
+
+
+
+  <!-- MAPA INTERACTIVO ALEBO -->
+  <section class="section map-section" id="mapa-proyectos">
+    <div class="container">
+      <div class="section-heading map-intro">
+        <span class="eyebrow">Nuestro territorio</span>
+        <h2>Proyectos <span>en el mapa</span></h2>
+        <p>Conoce dónde desarrollamos nuestras iniciativas de restauración, biodiversidad, educación ambiental y recuperación hídrica.</p>
+      </div>
+
+      <div class="map-switcher" role="group" aria-label="Vistas del mapa">
+        <button type="button" id="alebo-map-mode" aria-pressed="true">Mapa de proyectos</button>
+        <button type="button" id="alebo-areas-mode" aria-pressed="false">Área de trabajo</button>
+      </div>
+      <p class="map-status" id="alebo-map-status" aria-live="polite">Cargando mapa de proyectos...</p>
+      <div id="alebo-map" class="alebo-map" role="region" aria-label="Mapa interactivo de los proyectos de Legado Botánico"></div>
+      <div class="alebo-map-note">
+        <span aria-hidden="true">🌱</span>
+        <span><strong>Información territorial en desarrollo.</strong> Los puntos identifican ubicaciones de referencia. Las áreas de intervención se incorporarán cuando sus límites hayan sido georreferenciados y validados por ALEBO.</span>
+      </div>
+    </div>
+  </section>
+
+
+
+
   <!-- INSTAGRAM FEED -->
   <section class="section cream" id="instagram">
     <div class="container">
@@ -157,6 +197,11 @@
       </div>
     </div>
   </section>
+
+
+
+
+
 
   <!-- QUIÉNES SOMOS PREÁMBULO -->
   <section class="section" id="quienes-somos">
@@ -721,6 +766,7 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/mapa-alebo.js"></script>
 
 </body>
 </html>
