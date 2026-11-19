@@ -1,0 +1,152 @@
+/* ==========================================================================
+   MAPA INTERACTIVO ALEBO
+   Estilos aislados para no alterar las demás secciones del sitio.
+   ========================================================================== */
+.map-section {
+  background: #f5f2e9;
+}
+.map-intro {
+  max-width: 760px;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+.map-switcher {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 auto 18px;
+}
+.map-switcher button {
+  border: 1px solid #c9d5c4;
+  border-radius: 999px;
+  padding: 11px 20px;
+  background: #fff;
+  color: #294b37;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.map-switcher button[aria-pressed="true"] {
+  background: #294b37;
+  border-color: #294b37;
+  color: #fff;
+}
+.map-switcher button:focus-visible,
+.alebo-map a:focus-visible {
+  outline: 3px solid #bd9144;
+  outline-offset: 3px;
+}
+.map-status {
+  min-height: 24px;
+  margin: 0 auto 12px;
+  text-align: center;
+  color: #667568;
+  font-size: .88rem;
+}
+.alebo-map {
+  width: 100%;
+  height: clamp(390px, 55vw, 620px);
+  border: 1px solid rgba(41, 75, 55, .18);
+  border-radius: 20px;
+  overflow: hidden;
+  background: #e7e8df;
+  box-shadow: 0 14px 34px rgba(29, 53, 38, .12);
+  z-index: 0;
+}
+.alebo-map .leaflet-popup-content-wrapper {
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(20, 35, 25, .18);
+}
+.alebo-map .leaflet-popup-content {
+  margin: 15px 16px;
+  min-width: 205px;
+}
+.alebo-popup-kicker {
+  display: block;
+  margin-bottom: 5px;
+  color: #9a783b;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.alebo-popup-title {
+  margin: 0 0 7px;
+  color: #234432;
+  font: 700 1.05rem/1.25 "Playfair Display", Georgia, serif;
+}
+.alebo-popup-description {
+  margin: 0 0 13px;
+  color: #58645a;
+  font-size: .82rem;
+  line-height: 1.45;
+}
+.alebo-popup-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.alebo-popup-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: #315b40;
+  color: #fff !important;
+  font-size: .76rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.alebo-popup-actions a:last-child {
+  background: #e9dfc9;
+  color: #294b37 !important;
+}
+.alebo-marker {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 3px solid #fff;
+  border-radius: 50% 50% 50% 8px;
+  background: #315b40;
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,.28);
+  font-size: 13px;
+  font-weight: 800;
+  transform: rotate(-45deg);
+}
+.alebo-marker span {
+  transform: rotate(45deg);
+}
+.alebo-map-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 13px 16px;
+  border-left: 3px solid #bd9144;
+  border-radius: 0 10px 10px 0;
+  background: rgba(255,255,255,.72);
+  color: #59675b;
+  font-size: .82rem;
+  line-height: 1.5;
+}
+.alebo-map-note strong {
+  color: #294b37;
+}
+@media (max-width: 600px) {
+  .alebo-map {
+    height: 460px;
+    border-radius: 14px;
+  }
+  .map-switcher button {
+    padding: 10px 15px;
+    font-size: .85rem;
+  }
+  .alebo-map .leaflet-popup-content {
+    min-width: 190px;
+  }
+}
