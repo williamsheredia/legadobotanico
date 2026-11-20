@@ -104,7 +104,22 @@
             <a href="${project.page}">Ir al proyecto</a>
           </div>
         </div>`;
-      return L.marker([project.lat, project.lng], { icon }).bindPopup(popup, { maxWidth: 290 });
+      const marker = L.marker([project.lat, project.lng], { icon });
+      marker.bindPopup(popup, {
+        maxWidth: 290,
+        autoPan: true,
+        autoPanPaddingTopLeft: [28, 72],
+        autoPanPaddingBottomRight: [28, 28],
+        keepInView: true
+      });
+
+      // En equipos con cursor, mostrar la ficha al pasar sobre el marcador.
+      // En pantallas táctiles se conserva la apertura mediante toque.
+      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        marker.on("mouseover", () => marker.openPopup());
+      }
+
+      return marker;
     };
 
     projects.forEach((project) => {
