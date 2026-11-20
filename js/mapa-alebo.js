@@ -83,6 +83,31 @@
 
     const allProjects = L.layerGroup();
     const workAreas = L.layerGroup();
+    let currentMode = "projects";
+    let hoverCloseTimer = null;
+
+    const clearHoverClose = () => {
+      if (hoverCloseTimer) {
+        window.clearTimeout(hoverCloseTimer);
+        hoverCloseTimer = null;
+      }
+    };
+
+    const restoreProjectsView = () => {
+      if (currentMode !== "projects") return;
+      map.fitBounds(L.latLngBounds(points).pad(0.16), {
+        padding: [22, 22],
+        animate: true
+      });
+    };
+
+    const schedulePopupClose = (marker) => {
+      clearHoverClose();
+      hoverCloseTimer = window.setTimeout(() => {
+        marker.closePopup();
+        hoverCloseTimer = null;
+      }, 180);
+    };
 
     const makeMarker = (project) => {
       const icon = L.divIcon({
@@ -116,7 +141,18 @@
       // En equipos con cursor, mostrar la ficha al pasar sobre el marcador.
       // En pantallas táctiles se conserva la apertura mediante toque.
       if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-        marker.on("mouseover", () => marker.openPopup());
+        marker.on("mouseover", () => {
+          clearHoverClose();
+          marker.openPopup();
+        });
+        marker.on("mouseout", () => schedulePopupClose(marker));
+
+        marker.on("popupopen", () => {
+          const popupElement = marker.getPopup().getElement();
+          if (!popupElement) return;
+          popupElement.addEventListener("mouseenter", clearHoverClose);
+          popupElement.addEventListener("mouseleave", () => schedulePopupClose(marker));
+        });
       }
 
       return marker;
@@ -132,11 +168,17 @@
     const points = projects.map((project) => [project.lat, project.lng]);
     map.fitBounds(L.latLngBounds(points).pad(0.16), { padding: [22, 22] });
 
+    // Al cerrar una ficha (por cursor o manualmente), recuperar el encuadre general.
+    map.on("popupclose", restoreProjectsView);
+
     const mapMode = document.getElementById("alebo-map-mode");
     const areasMode = document.getElementById("alebo-areas-mode");
     const status = document.getElementById("alebo-map-status");
 
     const setMode = (mode) => {
+      currentMode = mode;
+      clearHoverClose();
+      map.closePopup();
       const isAreas = mode === "areas";
       if (isAreas) {
         map.removeLayer(allProjects);
