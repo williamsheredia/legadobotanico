@@ -17,8 +17,8 @@
       name: "Proyecto Forestal Cerro La Milla",
       category: "Restauración ecológica",
       description: "Recuperación progresiva del ecosistema urbano mediante restauración forestal y participación comunitaria.",
-      lat: -12.017075315035395,
-      lng: -77.06906334601695,
+      lat: -12.017780116256922,
+      lng: -77.06914329553611,
       page: "proyectos/cerro-la-milla.html"
     },
     {
@@ -28,8 +28,8 @@
       category: "Recuperación hídrica y comunitaria",
       description: "Nodo piloto del eje Ríos de Vida. El punto indica una referencia del tramo de intervención de 405 metros.",
 
-      lat: -12.017780116256922,
-      lng: -77.06914329553611,
+      lat: -12.139021754667617,
+      lng: -77.00770241815576,
 
 
       page: "proyectos/rio-surco.html"
