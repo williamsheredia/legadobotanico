@@ -27,8 +27,11 @@
       name: "Proyecto Río Surco",
       category: "Recuperación hídrica y comunitaria",
       description: "Nodo piloto del eje Ríos de Vida. El punto indica una referencia del tramo de intervención de 405 metros.",
-      lat: -12.139051,
-      lng: -77.007705,
+
+      lat: -12.017780116256922,
+      lng: -77.06914329553611,
+
+
       page: "proyectos/rio-surco.html"
     },
     {
