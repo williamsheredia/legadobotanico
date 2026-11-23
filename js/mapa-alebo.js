@@ -14,6 +14,10 @@
     {
       id: "cerro",
       number: "1",
+      axis: "terrestre",
+      quechua: "Kawsay Ñan",
+      program: "Senderos de Vida",
+      axisLabel: "Eje Terrestre",
       name: "Proyecto Forestal Cerro La Milla",
       category: "Restauración ecológica",
       description: "Recuperación progresiva del ecosistema urbano mediante restauración forestal y participación comunitaria.",
@@ -25,6 +29,10 @@
     {
       id: "rio",
       number: "2",
+      axis: "hidrico",
+      quechua: "Kawsay Mayu",
+      program: "Ríos de Vida",
+      axisLabel: "Eje Hídrico",
       name: "Proyecto Río Surco",
       category: "Recuperación hídrica y comunitaria",
       description: "Nodo piloto del eje Ríos de Vida. El punto indica una referencia del tramo de intervención de 405 metros.",
@@ -38,6 +46,10 @@
     {
       id: "biohuerto",
       number: "3",
+      axis: "educativo",
+      quechua: "Kawsay Yachay",
+      program: "Escuelas de Vida",
+      axisLabel: "Eje Educativo",
       name: "Biohuerto Escolar I.E.I. Luis Enrique X",
       category: "Educación, cultivo y alimentación",
       description: "Espacio educativo para acercar a los niños a la tierra, las plantas y el cultivo de alimentos.",
@@ -48,6 +60,10 @@
     {
       id: "jardin",
       number: "4",
+      axis: "educativo",
+      quechua: "Kawsay Yachay",
+      program: "Escuelas de Vida",
+      axisLabel: "Eje Educativo",
       name: "Proyecto Jardín Botánico",
       category: "Biodiversidad y educación ambiental",
       description: "Espacio de vegetación y aprendizaje ambiental para promover la biodiversidad urbana.",
@@ -136,7 +152,7 @@
     const makeMarker = (project) => {
       const icon = L.divIcon({
         className: "",
-        html: '<div class="alebo-marker"><span>' + project.number + '</span></div>',
+        html: '<div class="alebo-marker alebo-marker--' + project.axis + '"><span>' + project.number + '</span></div>',
         iconSize: [34, 42],
         iconAnchor: [17, 38],
         popupAnchor: [0, -36]
@@ -149,8 +165,9 @@
           encodeURIComponent(project.lat + "," + project.lng);
       const mapsLabel = project.placeId ? "Ver ficha en Maps" : "Llegar";
       const popup = `
-        <div class="alebo-popup">
-          <span class="alebo-popup-kicker">${escapeHTML(project.category)}</span>
+        <div class="alebo-popup alebo-popup--${project.axis}">
+          <span class="alebo-popup-kicker">${escapeHTML(project.quechua)} · ${escapeHTML(project.program)}</span>
+          <span class="alebo-popup-axis">${escapeHTML(project.axisLabel)}</span>
           <h3 class="alebo-popup-title">${escapeHTML(project.name)}</h3>
           <p class="alebo-popup-description">${escapeHTML(project.description)}</p>
           <div class="alebo-popup-actions">
