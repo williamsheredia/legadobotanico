@@ -90,8 +90,9 @@
     let currentMode = "projects";
     let hoverCloseTimer = null;
     let hoverOpenTimer = null;
-    let cerroMarkerHovered = false;
-    let cerroBusy = false;
+    let cerroCountdownTimer = null;
+    let cerroExitTimer = null;
+    let cerroPointerInside = false;
 
     const clearHoverClose = () => {
       if (hoverCloseTimer) {
@@ -110,15 +111,26 @@
     const restoreProjectsView = () => {
       if (currentMode !== "projects") return;
       const bounds = L.latLngBounds(points).pad(0.16);
-      if (cerroBusy) return;
-      cerroBusy = true;
       map.flyToBounds(bounds, {
         padding: [22, 22],
         duration: 1
       });
-      map.once("moveend", () => {
-        cerroBusy = false;
-      });
+    };
+
+    const clearCerroCountdown = (marker) => {
+      if (cerroCountdownTimer) {
+        window.clearTimeout(cerroCountdownTimer);
+        cerroCountdownTimer = null;
+      }
+      const markerElement = marker?.getElement()?.querySelector(".alebo-marker");
+      markerElement?.classList.remove("alebo-countdown");
+    };
+
+    const clearCerroExit = () => {
+      if (cerroExitTimer) {
+        window.clearTimeout(cerroExitTimer);
+        cerroExitTimer = null;
+      }
     };
 
     const schedulePopupClose = (marker, delay = 180) => {
@@ -168,47 +180,66 @@
       // En pantallas táctiles se conserva la apertura mediante toque.
       if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
         if (project.id === "cerro") {
+          const pointerIsOverCerro = () => {
+            const markerElement = marker.getElement();
+            const popupElement = marker.getPopup().getElement();
+            return Boolean(
+              markerElement?.matches(":hover") ||
+              popupElement?.matches(":hover")
+            );
+          };
+
+          const leaveCerro = () => {
+            clearCerroExit();
+            cerroExitTimer = window.setTimeout(() => {
+              cerroExitTimer = null;
+              if (pointerIsOverCerro()) return;
+              cerroPointerInside = false;
+              clearCerroCountdown(marker);
+              marker.closePopup();
+              if (currentMode === "projects") restoreProjectsView();
+            }, 40);
+          };
+
           marker.on("mouseover", () => {
-            if (cerroBusy || cerroMarkerHovered) return;
-            cerroMarkerHovered = true;
+            if (currentMode !== "projects" || cerroPointerInside) return;
+            cerroPointerInside = true;
+            clearCerroExit();
+            clearCerroCountdown(marker);
             clearHoverClose();
-            clearHoverOpen();
-            hoverOpenTimer = window.setTimeout(() => {
-              hoverOpenTimer = null;
-              if (!cerroMarkerHovered || cerroBusy || currentMode !== "projects") return;
-              cerroBusy = true;
-              map.flyTo([project.lat, project.lng], 16, {
-                duration: 0.8
-              });
-              map.once("moveend", () => {
-                cerroBusy = false;
-                if (cerroMarkerHovered && currentMode === "projects") {
-                  marker.openPopup();
-                } else if (currentMode === "projects") {
-                  restoreProjectsView();
-                }
-              });
-            }, 250);
+            marker.openPopup();
+
+            const markerElement = marker.getElement()?.querySelector(".alebo-marker");
+            markerElement?.classList.add("alebo-countdown");
+
+            map.flyTo([project.lat, project.lng], 16, {
+              duration: 0.8
+            });
+
+            cerroCountdownTimer = window.setTimeout(() => {
+              cerroCountdownTimer = null;
+              cerroPointerInside = false;
+              marker.closePopup();
+              if (currentMode === "projects") restoreProjectsView();
+            }, 4000);
           });
 
-          marker.on("mouseout", () => {
-            cerroMarkerHovered = false;
-            clearHoverOpen();
-            if (marker.isPopupOpen()) schedulePopupClose(marker, 300);
-          });
+          marker.on("mouseout", leaveCerro);
 
           marker.on("popupopen", () => {
             const popupElement = marker.getPopup().getElement();
             if (!popupElement) return;
-            popupElement.addEventListener("mouseenter", clearHoverClose);
-            popupElement.addEventListener("mouseleave", () => {
-              schedulePopupClose(marker, 300);
+            popupElement.addEventListener("mouseenter", () => {
+              cerroPointerInside = true;
+              clearCerroExit();
             });
+            popupElement.addEventListener("mouseleave", leaveCerro);
           });
 
           marker.on("popupclose", () => {
-            clearHoverClose();
-            cerroMarkerHovered = false;
+            clearCerroExit();
+            clearCerroCountdown(marker);
+            cerroPointerInside = false;
           });
         } else {
           marker.on("mouseover", () => {
@@ -250,8 +281,9 @@
       currentMode = mode;
       clearHoverClose();
       clearHoverOpen();
-      cerroMarkerHovered = false;
-      cerroBusy = false;
+      cerroPointerInside = false;
+      clearCerroExit();
+      clearCerroCountdown();
       map.closePopup();
       const isAreas = mode === "areas";
       if (isAreas) {
