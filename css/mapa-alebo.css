@@ -203,7 +203,9 @@
     font-size: .85rem;
   }
   .alebo-map .leaflet-popup-content {
-    min-width: 190px;
+    min-width: 0;
+    max-width: calc(100vw - 112px);
+    box-sizing: border-box;
   }
 }
 
