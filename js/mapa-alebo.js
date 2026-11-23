@@ -91,7 +91,7 @@
     let hoverCloseTimer = null;
     let hoverOpenTimer = null;
     let cerroMarkerHovered = false;
-    let cerroSmoothReturn = false;
+    let cerroBusy = false;
 
     const clearHoverClose = () => {
       if (hoverCloseTimer) {
@@ -110,24 +110,20 @@
     const restoreProjectsView = () => {
       if (currentMode !== "projects") return;
       const bounds = L.latLngBounds(points).pad(0.16);
-      if (cerroSmoothReturn) {
-        cerroSmoothReturn = false;
-        map.flyToBounds(bounds, {
-          padding: [22, 22],
-          duration: 1
-        });
-      } else {
-        map.fitBounds(bounds, {
-          padding: [22, 22],
-          animate: true
-        });
-      }
+      if (cerroBusy) return;
+      cerroBusy = true;
+      map.flyToBounds(bounds, {
+        padding: [22, 22],
+        duration: 1
+      });
+      map.once("moveend", () => {
+        cerroBusy = false;
+      });
     };
 
     const schedulePopupClose = (marker, delay = 180) => {
       clearHoverClose();
       hoverCloseTimer = window.setTimeout(() => {
-        cerroSmoothReturn = marker.projectId === "cerro";
         marker.closePopup();
         hoverCloseTimer = null;
       }, delay);
@@ -162,10 +158,10 @@
       marker.projectId = project.id;
       marker.bindPopup(popup, {
         maxWidth: 290,
-        autoPan: true,
+        autoPan: project.id !== "cerro",
         autoPanPaddingTopLeft: [28, 72],
         autoPanPaddingBottomRight: [28, 28],
-        keepInView: true
+        keepInView: project.id !== "cerro"
       });
 
       // En equipos con cursor, mostrar la ficha al pasar sobre el marcador.
@@ -173,33 +169,46 @@
       if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
         if (project.id === "cerro") {
           marker.on("mouseover", () => {
+            if (cerroBusy || cerroMarkerHovered) return;
             cerroMarkerHovered = true;
             clearHoverClose();
             clearHoverOpen();
             hoverOpenTimer = window.setTimeout(() => {
               hoverOpenTimer = null;
-              map.flyTo([project.lat, project.lng], 17, {
+              if (!cerroMarkerHovered || cerroBusy || currentMode !== "projects") return;
+              cerroBusy = true;
+              map.flyTo([project.lat, project.lng], 16, {
                 duration: 0.8
               });
-              map.once("moveend", () => marker.openPopup());
-            }, 150);
+              map.once("moveend", () => {
+                cerroBusy = false;
+                if (cerroMarkerHovered && currentMode === "projects") {
+                  marker.openPopup();
+                } else if (currentMode === "projects") {
+                  restoreProjectsView();
+                }
+              });
+            }, 250);
           });
 
           marker.on("mouseout", () => {
             cerroMarkerHovered = false;
+            clearHoverOpen();
             if (marker.isPopupOpen()) schedulePopupClose(marker, 300);
           });
 
           marker.on("popupopen", () => {
             const popupElement = marker.getPopup().getElement();
             if (!popupElement) return;
-            popupElement.addEventListener("mouseenter", () => {
-              clearHoverClose();
-            });
+            popupElement.addEventListener("mouseenter", clearHoverClose);
             popupElement.addEventListener("mouseleave", () => {
               schedulePopupClose(marker, 300);
             });
-            if (!cerroMarkerHovered) schedulePopupClose(marker, 300);
+          });
+
+          marker.on("popupclose", () => {
+            clearHoverClose();
+            cerroMarkerHovered = false;
           });
         } else {
           marker.on("mouseover", () => {
@@ -242,7 +251,7 @@
       clearHoverClose();
       clearHoverOpen();
       cerroMarkerHovered = false;
-      cerroSmoothReturn = false;
+      cerroBusy = false;
       map.closePopup();
       const isAreas = mode === "areas";
       if (isAreas) {
