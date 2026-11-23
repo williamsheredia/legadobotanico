@@ -138,7 +138,7 @@
   background: #d9f99d;
   box-shadow: 0 0 4px rgba(217, 249, 157, .9);
   transform-origin: 50% 100%;
-  animation: alebo-clock-hand 6s linear forwards;
+  animation: alebo-clock-hand 8s linear forwards;
   pointer-events: none;
 }
 @keyframes alebo-clock-hand {
