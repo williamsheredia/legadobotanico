@@ -39,8 +39,7 @@
 
       lat: -12.139021754667617,
       lng: -77.00770241815576,
-
-
+      mapsUrl: "https://www.google.com/maps/place/Rios+de+vida+-+R%C3%ADo+Surco/@-12.1390453,-77.01028,17z/data=!3m1!4b1!4m6!3m5!1s0x9105b9006fbf162f:0x7b7068b47b47cab0!8m2!3d-12.1390506!4d-77.0077051!16s%2Fg%2F11_0d48_49",
       page: "proyectos/rio-surco.html"
     },
     {
@@ -157,13 +156,13 @@
         iconAnchor: [17, 38],
         popupAnchor: [0, -36]
       });
-      const mapsLink = project.placeId
+      const mapsLink = project.mapsUrl || (project.placeId
         ? "https://www.google.com/maps/search/?api=1&query=" +
           encodeURIComponent(project.name) +
           "&query_place_id=" + encodeURIComponent(project.placeId)
         : "https://www.google.com/maps/dir/?api=1&destination=" +
-          encodeURIComponent(project.lat + "," + project.lng);
-      const mapsLabel = project.placeId ? "Ver ficha en Maps" : "Llegar";
+          encodeURIComponent(project.lat + "," + project.lng));
+      const mapsLabel = (project.mapsUrl || project.placeId) ? "Ver ficha en Maps" : "Llegar";
       const popup = `
         <div class="alebo-popup alebo-popup--${project.axis}">
           <span class="alebo-popup-kicker">${escapeHTML(project.quechua)} · ${escapeHTML(project.program)}</span>
