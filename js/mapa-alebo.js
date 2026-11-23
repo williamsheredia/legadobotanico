@@ -219,7 +219,7 @@
               cerroCountdownTimer = null;
               cerroPointerInside = false;
               marker.closePopup();
-            }, 6000);
+            }, 8000);
           });
 
           marker.on("mouseout", leaveCerro);
