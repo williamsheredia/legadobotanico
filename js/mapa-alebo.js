@@ -197,7 +197,6 @@
               cerroPointerInside = false;
               clearCerroCountdown(marker);
               marker.closePopup();
-              if (currentMode === "projects") restoreProjectsView();
             }, 40);
           };
 
@@ -220,7 +219,6 @@
               cerroCountdownTimer = null;
               cerroPointerInside = false;
               marker.closePopup();
-              if (currentMode === "projects") restoreProjectsView();
             }, 4000);
           });
 
