@@ -19,6 +19,7 @@
       description: "Recuperación progresiva del ecosistema urbano mediante restauración forestal y participación comunitaria.",
       lat: -12.017780116256922,
       lng: -77.06914329553611,
+      placeId: "ChIJ5z0fPQDPBZERYccC9_AwvXE",
       page: "proyectos/cerro-la-milla.html"
     },
     {
@@ -121,7 +122,8 @@
         popupAnchor: [0, -36]
       });
       const destination = encodeURIComponent(project.lat + "," + project.lng);
-      const directions = "https://www.google.com/maps/dir/?api=1&destination=" + destination;
+      const directions = "https://www.google.com/maps/dir/?api=1&destination=" + destination +
+        (project.placeId ? "&destination_place_id=" + encodeURIComponent(project.placeId) : "");
       const popup = `
         <div class="alebo-popup">
           <span class="alebo-popup-kicker">${escapeHTML(project.category)}</span>
