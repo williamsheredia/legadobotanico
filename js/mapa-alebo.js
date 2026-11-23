@@ -184,44 +184,49 @@
         keepInView: false
       });
 
-      // En equipos con cursor, mostrar la ficha al pasar sobre el marcador.
-      // En pantallas táctiles se conserva la apertura mediante toque.
-      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-        // Un solo paso sobre el marcador inicia la ficha y su cuenta completa.
-        // El cursor puede permanecer quieto: salir del marcador no cierra la ficha.
-        marker.on("mouseover", () => {
-          if (currentMode !== "projects" || pointerInside) return;
-          pointerInside = true;
-          clearCountdown(marker);
-          clearHoverClose();
+      // Una sola secuencia para cursor y pantalla táctil:
+      // primero acerca el mapa y, al terminar, abre la ficha y su contador.
+      const startProjectExperience = () => {
+        if (currentMode !== "projects" || pointerInside) return;
+        pointerInside = true;
+        clearCountdown(marker);
+        clearHoverClose();
 
-          // Primero centra y acerca el mapa; después abre la ficha.
-          // Así Leaflet puede desplazarla dentro del área visible sin que
-          // el vuelo posterior vuelva a dejarla recortada.
-          const openProjectPopup = () => {
-            marker.openPopup();
+        const openProjectPopup = () => {
+          marker.openPopup();
 
-            const markerElement = marker.getElement()?.querySelector(".alebo-marker");
-            markerElement?.classList.add("alebo-countdown");
+          const markerElement = marker.getElement()?.querySelector(".alebo-marker");
+          markerElement?.classList.add("alebo-countdown");
 
-            countdownTimer = window.setTimeout(() => {
-              countdownTimer = null;
-              marker.closePopup();
-            }, 8000);
-          };
+          countdownTimer = window.setTimeout(() => {
+            countdownTimer = null;
+            marker.closePopup();
+          }, 8000);
+        };
 
-          map.flyTo([project.lat, project.lng], 16, {
-            duration: 0.8
-          });
-          map.once("moveend", openProjectPopup);
+        map.flyTo([project.lat, project.lng], 16, {
+          duration: 0.8
         });
+        map.once("moveend", openProjectPopup);
+      };
 
-        // La X del popup también dispara popupclose y cancela la cuenta.
-        marker.on("popupclose", () => {
-          clearCountdown(marker);
-          pointerInside = false;
-        });
+      const hasHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+      if (hasHover) {
+        // Computadora: iniciar al pasar el cursor sobre el marcador.
+        marker.on("mouseover", startProjectExperience);
+      } else {
+        // Móvil/tablet: Leaflet abre el popup automáticamente al tocar.
+        // Desactivamos esa apertura inmediata para ejecutar antes el zoom.
+        marker.off("click", marker._openPopup, marker);
+        marker.on("click", startProjectExperience);
       }
+
+      // La X del popup y el cierre automático cancelan el contador.
+      marker.on("popupclose", () => {
+        clearCountdown(marker);
+        pointerInside = false;
+      });
 
       return marker;
     };
