@@ -91,7 +91,6 @@
     let hoverCloseTimer = null;
     let hoverOpenTimer = null;
     let countdownTimer = null;
-    let exitTimer = null;
     let pointerInside = false;
 
     const clearHoverClose = () => {
@@ -124,13 +123,6 @@
       }
       const markerElement = marker?.getElement()?.querySelector(".alebo-marker");
       markerElement?.classList.remove("alebo-countdown");
-    };
-
-    const clearExit = () => {
-      if (exitTimer) {
-        window.clearTimeout(exitTimer);
-        exitTimer = null;
-      }
     };
 
     const schedulePopupClose = (marker, delay = 180) => {
@@ -179,30 +171,11 @@
       // En equipos con cursor, mostrar la ficha al pasar sobre el marcador.
       // En pantallas táctiles se conserva la apertura mediante toque.
       if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-        const pointerIsOverMarkerOrPopup = () => {
-          const markerElement = marker.getElement();
-          const popupElement = marker.getPopup().getElement();
-          return Boolean(
-            markerElement?.matches(":hover") ||
-            popupElement?.matches(":hover")
-          );
-        };
-
-        const leaveMarker = () => {
-          clearExit();
-          exitTimer = window.setTimeout(() => {
-            exitTimer = null;
-            if (pointerIsOverMarkerOrPopup()) return;
-            pointerInside = false;
-            clearCountdown(marker);
-            marker.closePopup();
-          }, 40);
-        };
-
+        // Un solo paso sobre el marcador inicia la ficha y su cuenta completa.
+        // El cursor puede permanecer quieto: salir del marcador no cierra la ficha.
         marker.on("mouseover", () => {
           if (currentMode !== "projects" || pointerInside) return;
           pointerInside = true;
-          clearExit();
           clearCountdown(marker);
           clearHoverClose();
           marker.openPopup();
@@ -216,25 +189,12 @@
 
           countdownTimer = window.setTimeout(() => {
             countdownTimer = null;
-            pointerInside = false;
             marker.closePopup();
           }, 8000);
         });
 
-        marker.on("mouseout", leaveMarker);
-
-        marker.on("popupopen", () => {
-          const popupElement = marker.getPopup().getElement();
-          if (!popupElement) return;
-          popupElement.addEventListener("mouseenter", () => {
-            pointerInside = true;
-            clearExit();
-          });
-          popupElement.addEventListener("mouseleave", leaveMarker);
-        });
-
+        // La X del popup también dispara popupclose y cancela la cuenta.
         marker.on("popupclose", () => {
-          clearExit();
           clearCountdown(marker);
           pointerInside = false;
         });
@@ -265,7 +225,6 @@
       clearHoverClose();
       clearHoverOpen();
       pointerInside = false;
-      clearExit();
       clearCountdown();
       map.closePopup();
       const isAreas = mode === "areas";
