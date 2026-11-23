@@ -121,7 +121,7 @@
 .alebo-marker span {
   transform: rotate(45deg);
 }
-/* Cuenta visual de seis segundos: una aguja luminosa recorre el marcador. */
+/* Cuenta visual de ocho segundos: una aguja luminosa recorre el marcador. */
 .alebo-marker.alebo-countdown {
   position: relative;
   background: #315b40;
