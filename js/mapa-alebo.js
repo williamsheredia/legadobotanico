@@ -90,9 +90,9 @@
     let currentMode = "projects";
     let hoverCloseTimer = null;
     let hoverOpenTimer = null;
-    let cerroCountdownTimer = null;
-    let cerroExitTimer = null;
-    let cerroPointerInside = false;
+    let countdownTimer = null;
+    let exitTimer = null;
+    let pointerInside = false;
 
     const clearHoverClose = () => {
       if (hoverCloseTimer) {
@@ -117,19 +117,19 @@
       });
     };
 
-    const clearCerroCountdown = (marker) => {
-      if (cerroCountdownTimer) {
-        window.clearTimeout(cerroCountdownTimer);
-        cerroCountdownTimer = null;
+    const clearCountdown = (marker) => {
+      if (countdownTimer) {
+        window.clearTimeout(countdownTimer);
+        countdownTimer = null;
       }
       const markerElement = marker?.getElement()?.querySelector(".alebo-marker");
       markerElement?.classList.remove("alebo-countdown");
     };
 
-    const clearCerroExit = () => {
-      if (cerroExitTimer) {
-        window.clearTimeout(cerroExitTimer);
-        cerroExitTimer = null;
+    const clearExit = () => {
+      if (exitTimer) {
+        window.clearTimeout(exitTimer);
+        exitTimer = null;
       }
     };
 
@@ -179,80 +179,65 @@
       // En equipos con cursor, mostrar la ficha al pasar sobre el marcador.
       // En pantallas táctiles se conserva la apertura mediante toque.
       if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-        if (project.id === "cerro") {
-          const pointerIsOverCerro = () => {
-            const markerElement = marker.getElement();
-            const popupElement = marker.getPopup().getElement();
-            return Boolean(
-              markerElement?.matches(":hover") ||
-              popupElement?.matches(":hover")
-            );
-          };
+        const pointerIsOverMarkerOrPopup = () => {
+          const markerElement = marker.getElement();
+          const popupElement = marker.getPopup().getElement();
+          return Boolean(
+            markerElement?.matches(":hover") ||
+            popupElement?.matches(":hover")
+          );
+        };
 
-          const leaveCerro = () => {
-            clearCerroExit();
-            cerroExitTimer = window.setTimeout(() => {
-              cerroExitTimer = null;
-              if (pointerIsOverCerro()) return;
-              cerroPointerInside = false;
-              clearCerroCountdown(marker);
-              marker.closePopup();
-            }, 40);
-          };
+        const leaveMarker = () => {
+          clearExit();
+          exitTimer = window.setTimeout(() => {
+            exitTimer = null;
+            if (pointerIsOverMarkerOrPopup()) return;
+            pointerInside = false;
+            clearCountdown(marker);
+            marker.closePopup();
+          }, 40);
+        };
 
-          marker.on("mouseover", () => {
-            if (currentMode !== "projects" || cerroPointerInside) return;
-            cerroPointerInside = true;
-            clearCerroExit();
-            clearCerroCountdown(marker);
-            clearHoverClose();
-            marker.openPopup();
+        marker.on("mouseover", () => {
+          if (currentMode !== "projects" || pointerInside) return;
+          pointerInside = true;
+          clearExit();
+          clearCountdown(marker);
+          clearHoverClose();
+          marker.openPopup();
 
-            const markerElement = marker.getElement()?.querySelector(".alebo-marker");
-            markerElement?.classList.add("alebo-countdown");
+          const markerElement = marker.getElement()?.querySelector(".alebo-marker");
+          markerElement?.classList.add("alebo-countdown");
 
-            map.flyTo([project.lat, project.lng], 16, {
-              duration: 0.8
-            });
-
-            cerroCountdownTimer = window.setTimeout(() => {
-              cerroCountdownTimer = null;
-              cerroPointerInside = false;
-              marker.closePopup();
-            }, 8000);
+          map.flyTo([project.lat, project.lng], 16, {
+            duration: 0.8
           });
 
-          marker.on("mouseout", leaveCerro);
+          countdownTimer = window.setTimeout(() => {
+            countdownTimer = null;
+            pointerInside = false;
+            marker.closePopup();
+          }, 8000);
+        });
 
-          marker.on("popupopen", () => {
-            const popupElement = marker.getPopup().getElement();
-            if (!popupElement) return;
-            popupElement.addEventListener("mouseenter", () => {
-              cerroPointerInside = true;
-              clearCerroExit();
-            });
-            popupElement.addEventListener("mouseleave", leaveCerro);
-          });
+        marker.on("mouseout", leaveMarker);
 
-          marker.on("popupclose", () => {
-            clearCerroExit();
-            clearCerroCountdown(marker);
-            cerroPointerInside = false;
+        marker.on("popupopen", () => {
+          const popupElement = marker.getPopup().getElement();
+          if (!popupElement) return;
+          popupElement.addEventListener("mouseenter", () => {
+            pointerInside = true;
+            clearExit();
           });
-        } else {
-          marker.on("mouseover", () => {
-            clearHoverClose();
-            marker.openPopup();
-          });
-          marker.on("mouseout", () => schedulePopupClose(marker));
+          popupElement.addEventListener("mouseleave", leaveMarker);
+        });
 
-          marker.on("popupopen", () => {
-            const popupElement = marker.getPopup().getElement();
-            if (!popupElement) return;
-            popupElement.addEventListener("mouseenter", clearHoverClose);
-            popupElement.addEventListener("mouseleave", () => schedulePopupClose(marker));
-          });
-        }
+        marker.on("popupclose", () => {
+          clearExit();
+          clearCountdown(marker);
+          pointerInside = false;
+        });
       }
 
       return marker;
@@ -279,9 +264,9 @@
       currentMode = mode;
       clearHoverClose();
       clearHoverOpen();
-      cerroPointerInside = false;
-      clearCerroExit();
-      clearCerroCountdown();
+      pointerInside = false;
+      clearExit();
+      clearCountdown();
       map.closePopup();
       const isAreas = mode === "areas";
       if (isAreas) {
