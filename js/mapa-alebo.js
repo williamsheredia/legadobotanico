@@ -121,17 +121,21 @@
         iconAnchor: [17, 38],
         popupAnchor: [0, -36]
       });
-      const destination = encodeURIComponent(project.lat + "," + project.lng);
-      const directions = "https://www.google.com/maps/dir/?api=1&destination=" + destination +
-        (project.placeId ? "&destination_place_id=" + encodeURIComponent(project.placeId) : "");
+      const mapsLink = project.placeId
+        ? "https://www.google.com/maps/search/?api=1&query=" +
+          encodeURIComponent(project.name) +
+          "&query_place_id=" + encodeURIComponent(project.placeId)
+        : "https://www.google.com/maps/dir/?api=1&destination=" +
+          encodeURIComponent(project.lat + "," + project.lng);
+      const mapsLabel = project.placeId ? "Ver ficha en Maps" : "Llegar";
       const popup = `
         <div class="alebo-popup">
           <span class="alebo-popup-kicker">${escapeHTML(project.category)}</span>
           <h3 class="alebo-popup-title">${escapeHTML(project.name)}</h3>
           <p class="alebo-popup-description">${escapeHTML(project.description)}</p>
           <div class="alebo-popup-actions">
-            <a href="${directions}" target="_blank" rel="noopener noreferrer">Llegar</a>
-            <a href="${project.page}">Ir al proyecto</a>
+            <a href="${mapsLink}" target="_blank" rel="noopener noreferrer">${mapsLabel}</a>
+            <a href="${project.page}">Ver proyecto en ALEBO</a>
           </div>
         </div>`;
       const marker = L.marker([project.lat, project.lng], { icon });
