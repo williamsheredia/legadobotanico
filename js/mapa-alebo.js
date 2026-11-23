@@ -179,9 +179,9 @@
       marker.projectId = project.id;
       marker.bindPopup(popup, {
         maxWidth: 290,
-        autoPan: false,
-        autoPanPaddingTopLeft: [28, 72],
-        autoPanPaddingBottomRight: [28, 28],
+        autoPan: true,
+        autoPanPaddingTopLeft: [36, 88],
+        autoPanPaddingBottomRight: [36, 36],
         keepInView: false
       });
 
@@ -195,19 +195,26 @@
           pointerInside = true;
           clearCountdown(marker);
           clearHoverClose();
-          marker.openPopup();
 
-          const markerElement = marker.getElement()?.querySelector(".alebo-marker");
-          markerElement?.classList.add("alebo-countdown");
+          // Primero centra y acerca el mapa; después abre la ficha.
+          // Así Leaflet puede desplazarla dentro del área visible sin que
+          // el vuelo posterior vuelva a dejarla recortada.
+          const openProjectPopup = () => {
+            marker.openPopup();
+
+            const markerElement = marker.getElement()?.querySelector(".alebo-marker");
+            markerElement?.classList.add("alebo-countdown");
+
+            countdownTimer = window.setTimeout(() => {
+              countdownTimer = null;
+              marker.closePopup();
+            }, 8000);
+          };
 
           map.flyTo([project.lat, project.lng], 16, {
             duration: 0.8
           });
-
-          countdownTimer = window.setTimeout(() => {
-            countdownTimer = null;
-            marker.closePopup();
-          }, 8000);
+          map.once("moveend", openProjectPopup);
         });
 
         // La X del popup también dispara popupclose y cancela la cuenta.
