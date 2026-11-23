@@ -234,7 +234,7 @@
     margin-bottom: 8px;
   }
   .alebo-map {
-    height: clamp(280px, calc(100vh - 470px), 420px);
+    height: clamp(480px, calc(200vh - 940px), 600px);
   }
   .alebo-map-note {
     margin-top: 10px;
