@@ -206,3 +206,39 @@
     min-width: 190px;
   }
 }
+
+/* Ajuste de la sección para laptops: compensa el encabezado fijo
+   y mantiene visible el conjunto sin recortar el mapa. */
+#mapa-proyectos {
+  scroll-margin-top: 96px;
+}
+@media (min-width: 900px) and (max-height: 900px) {
+  .map-section {
+    padding: 62px 0 56px;
+  }
+  .map-intro {
+    margin-bottom: 16px;
+  }
+  .map-intro h2 {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    margin-bottom: 10px;
+  }
+  .map-intro p {
+    margin-bottom: 0;
+  }
+  .map-switcher {
+    margin-bottom: 10px;
+  }
+  .map-status {
+    min-height: 18px;
+    margin-bottom: 8px;
+  }
+  .alebo-map {
+    height: clamp(280px, calc(100vh - 470px), 420px);
+  }
+  .alebo-map-note {
+    margin-top: 10px;
+    padding: 10px 14px;
+    font-size: .78rem;
+  }
+}
