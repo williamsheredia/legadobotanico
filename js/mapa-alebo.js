@@ -17,7 +17,8 @@
       name: "Proyecto Forestal Cerro La Milla",
       category: "Restauración ecológica",
       description: "Recuperación progresiva del ecosistema urbano mediante restauración forestal y participación comunitaria.",
-      
+      lat: -12.017780116256922,
+      lng: -77.06914329553611,
       placeId: "ChIJ5z0fPQDPBZERYccC9_AwvXE",
       page: "proyectos/cerro-la-milla.html"
     },
