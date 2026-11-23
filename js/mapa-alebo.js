@@ -170,10 +170,10 @@
       marker.projectId = project.id;
       marker.bindPopup(popup, {
         maxWidth: 290,
-        autoPan: project.id !== "cerro",
+        autoPan: false,
         autoPanPaddingTopLeft: [28, 72],
         autoPanPaddingBottomRight: [28, 28],
-        keepInView: project.id !== "cerro"
+        keepInView: false
       });
 
       // En equipos con cursor, mostrar la ficha al pasar sobre el marcador.
