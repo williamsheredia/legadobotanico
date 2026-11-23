@@ -121,13 +121,29 @@
 .alebo-marker span {
   transform: rotate(45deg);
 }
-/* Cuenta visual de cuatro segundos para la ficha de Cerro La Milla. */
+/* Cuenta visual de seis segundos: una aguja luminosa recorre el marcador. */
 .alebo-marker.alebo-countdown {
-  animation: alebo-marker-countdown 4s linear forwards;
+  position: relative;
+  background: #315b40;
 }
-@keyframes alebo-marker-countdown {
-  from { background-color: #b8d2ae; }
-  to { background-color: #315b40; }
+.alebo-marker.alebo-countdown::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 13px;
+  border-radius: 999px;
+  background: #d9f99d;
+  box-shadow: 0 0 4px rgba(217, 249, 157, .9);
+  transform-origin: 50% 100%;
+  animation: alebo-clock-hand 6s linear forwards;
+  pointer-events: none;
+}
+@keyframes alebo-clock-hand {
+  from { transform: translate(-50%, -100%) rotate(0deg); }
+  to { transform: translate(-50%, -100%) rotate(360deg); }
 }
 .alebo-map-note {
   display: flex;
