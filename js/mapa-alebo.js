@@ -176,11 +176,14 @@
         </div>`;
       const marker = L.marker([project.lat, project.lng], { icon });
       marker.projectId = project.id;
+      const isNarrowMap = mapElement.clientWidth <= 600;
+      const popupMaxWidth = Math.max(220, Math.min(290, mapElement.clientWidth - 64));
+
       marker.bindPopup(popup, {
-        maxWidth: 290,
+        maxWidth: popupMaxWidth,
         autoPan: true,
-        autoPanPaddingTopLeft: [36, 88],
-        autoPanPaddingBottomRight: [36, 36],
+        autoPanPaddingTopLeft: isNarrowMap ? [16, 16] : [36, 88],
+        autoPanPaddingBottomRight: isNarrowMap ? [16, 16] : [36, 36],
         keepInView: false
       });
 
