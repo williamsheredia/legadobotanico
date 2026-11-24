@@ -248,3 +248,33 @@
     font-size: .78rem;
   }
 }
+
+/* Separación visual de los marcadores educativos en la vista general móvil.
+   Las líneas finas apuntan a la ubicación geográfica exacta de cada proyecto. */
+@media (max-width: 600px) {
+  .alebo-marker-offset-icon {
+    background: transparent;
+    border: 0;
+  }
+  .alebo-marker-offset-icon .alebo-marker {
+    position: absolute;
+    top: 0;
+  }
+  .alebo-marker-offset-icon .alebo-marker--offset-right {
+    left: 30px;
+  }
+  .alebo-marker-offset-icon .alebo-marker-leader {
+    position: absolute;
+    top: 36px;
+    width: 15px;
+    height: 2px;
+    background: #304332;
+    opacity: .9;
+  }
+  .alebo-marker-offset-icon .alebo-marker-leader--left {
+    left: 17px;
+  }
+  .alebo-marker-offset-icon .alebo-marker-leader--right {
+    left: 32px;
+  }
+}
