@@ -179,7 +179,7 @@
         className: "alebo-marker-offset-icon",
         html: project.id === "biohuerto"
           ? '<span class="alebo-marker-leader alebo-marker-leader--left"></span><div class="alebo-marker alebo-marker--educativo"><span>3</span></div>'
-          : '<span class="alebo-marker-leader alebo-marker-leader--right"></span><div class="alebo-marker alebo-marker--educativo nebo-marker--offset-right"><span>4</span></div>',
+          : '<span class="alebo-marker-leader alebo-marker-leader--right"></span><div class="alebo-marker alebo-marker--educativo alebo-marker--offset-right"><span>4</span></div>',
         iconSize: [64, 42],
         iconAnchor: [32, 38],
         popupAnchor: [0, -36]
