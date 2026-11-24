@@ -135,9 +135,10 @@
 
     const restoreProjectsView = () => {
       if (currentMode !== "projects") return;
-      const bounds = L.latLngBounds(points).pad(0.16);
+      const bounds = L.latLngBounds(points).pad(0.08);
       map.flyToBounds(bounds, {
-        padding: [22, 22],
+        paddingTopLeft: [22, 22],
+        paddingBottomRight: [72, 22],
         duration: 1
       }).once("moveend", showZoomControl);
     };
@@ -254,7 +255,10 @@
 
     allProjects.addTo(map);
     const points = projects.map((project) => [project.lat, project.lng]);
-    map.fitBounds(L.latLngBounds(points).pad(0.16), { padding: [22, 22] });
+    map.fitBounds(L.latLngBounds(points).pad(0.08), {
+      paddingTopLeft: [22, 22],
+      paddingBottomRight: [72, 22]
+    });
 
     // Al cerrar una ficha (por cursor o manualmente), recuperar el encuadre general.
     map.on("popupclose", restoreProjectsView);
@@ -283,7 +287,10 @@
       } else {
         map.removeLayer(workAreas);
         allProjects.addTo(map);
-        map.fitBounds(L.latLngBounds(points).pad(0.16), { padding: [22, 22] });
+        map.fitBounds(L.latLngBounds(points).pad(0.08), {
+      paddingTopLeft: [22, 22],
+      paddingBottomRight: [72, 22]
+    });
         status.textContent = "Explora los cuatro proyectos de ALEBO. Selecciona un marcador para consultar su información.";
       }
       mapMode.setAttribute("aria-pressed", String(!isAreas));
