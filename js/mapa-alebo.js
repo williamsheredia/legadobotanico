@@ -288,9 +288,9 @@
         map.removeLayer(workAreas);
         allProjects.addTo(map);
         map.fitBounds(L.latLngBounds(points).pad(0.08), {
-      paddingTopLeft: [22, 22],
-      paddingBottomRight: [72, 22]
-    });
+          paddingTopLeft: [22, 22],
+          paddingBottomRight: [72, 22]
+        });
         status.textContent = "Explora los cuatro proyectos de ALEBO. Selecciona un marcador para consultar su información.";
       }
       mapMode.setAttribute("aria-pressed", String(!isAreas));
