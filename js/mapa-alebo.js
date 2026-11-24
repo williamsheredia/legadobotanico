@@ -143,7 +143,7 @@
     const getProjectsFitOptions = () => {
       const bounds = getProjectsBounds();
       // En móvil, iniciar un nivel más alejado: equivale al primer toque en «−».
-      const overviewZoom = map.getBoundsZoom(bounds) - (isNarrowMap ? 1 : 0);
+      const overviewZoom = map.getBoundsZoom(bounds, false, L.point(8, 8)) - (isNarrowMap ? 1 : 0);
       return {
         ...projectsFitOptions,
         ...(isNarrowMap ? { maxZoom: overviewZoom } : {})
