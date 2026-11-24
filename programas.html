@@ -430,6 +430,44 @@
 }
 
 
+.banner-panoramico {
+  width: 100%;
+  margin-top: 50px;
+  border-radius: 12px; /* Opcional: para mantener la estética de tus tarjetas */
+  overflow: hidden;
+  aspect-ratio: 16 / 9; /* Formato panorámico para PC */
+}
+
+.banner-panoramico img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Evita que la imagen se estire o deforme */
+  display: block; /* Elimina el espacio fantasma inferior de las imágenes */
+}
+
+.banner-panoramico.banner-escuelas {
+  max-width: 1140px; /* O el mismo max-width que tenga tu clase .container */
+  width: calc(100% - 40px); /* Crea los márgenes laterales en móvil y PC si no hay container */
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+
+.banner-panoramico.banner-escuelas img {
+  border-radius: 12px !important;
+}
+
+
+/* Ajuste para pantallas de celular (menos de 768px) */
+@media (max-width: 768px) {
+  .banner-panoramico {
+    aspect-ratio: 3 / 4; /* Formato vertical para móvil */
+  }
+}
+
+
+
 
 
 
@@ -829,10 +867,19 @@
             <h3>Empresas y Sponsors</h3>
             <p>Financia hectáreas de corredores verdes e impulsa de forma activa el voluntariado corporativo de tu organización.</p>
           </div>
+
         </div>
+
       </div>
 
+
+	<div class="banner-panoramico">
+        <img src="assets/programa-senderos-de-vida.jpg" alt="Corredores ecológicos Senderos de Vida Lima">
+      	</div>
+
+
     </div>
+
   </section>
 
 
@@ -971,7 +1018,16 @@
               <p>Participa en las jornadas de limpieza, siembra ribereña y talleres de ciencia ciudadana.</p>
             </div>
           </div>
+
+
+
+
         </div>
+
+
+	<div class="banner-panoramico">
+        <img src="assets/programa-rios-de-vida.jpg" alt="Conservación, Regeneración y Gobernanza Comunitaria">
+      	</div>
 
     </div>
   </section>
@@ -1103,8 +1159,12 @@
           </div>
 
          
+		<div class="banner-panoramico banner-escuelas">
+  		  <img src="assets/programa-escuelas-de-vida.jpg" alt="Red de Viveros, Biohuertos, Jardín de Polinizadores y Centros de Economía Circular Escolar">
+		</div>
 
         </div>
+
       </div>
 
   </section>
