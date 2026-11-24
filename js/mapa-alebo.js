@@ -102,6 +102,7 @@
       map.touchZoom.disable();
     }
 
+    map.zoomControl.setPosition("bottomleft");
     const zoomControl = map.zoomControl.getContainer();
     const hideZoomControl = () => zoomControl?.classList.add("alebo-zoom-hidden");
     const showZoomControl = () => zoomControl?.classList.remove("alebo-zoom-hidden");
@@ -138,11 +139,22 @@
       }
     };
 
+    const getProjectsBounds = () => L.latLngBounds(points).pad(projectsBoundsPadding);
+    const getProjectsFitOptions = () => {
+      const bounds = getProjectsBounds();
+      // En móvil, iniciar un nivel más alejado: equivale al primer toque en «−».
+      const overviewZoom = map.getBoundsZoom(bounds) - (isNarrowMap ? 1 : 0);
+      return {
+        ...projectsFitOptions,
+        ...(isNarrowMap ? { maxZoom: overviewZoom } : {})
+      };
+    };
+
     const restoreProjectsView = () => {
       if (currentMode !== "projects") return;
-      const bounds = L.latLngBounds(points).pad(projectsBoundsPadding);
+      const bounds = getProjectsBounds();
       map.flyToBounds(bounds, {
-        ...projectsFitOptions,
+        ...getProjectsFitOptions(),
         duration: 1
       }).once("moveend", showZoomControl);
     };
@@ -273,7 +285,7 @@
 
     allProjects.addTo(map);
     const points = projects.map((project) => [project.lat, project.lng]);
-    map.fitBounds(L.latLngBounds(points).pad(projectsBoundsPadding), projectsFitOptions);
+    map.fitBounds(getProjectsBounds(), getProjectsFitOptions());
 
     // Al cerrar una ficha (por cursor o manualmente), recuperar el encuadre general.
     map.on("popupclose", restoreProjectsView);
@@ -302,7 +314,7 @@
       } else {
         map.removeLayer(workAreas);
         allProjects.addTo(map);
-        map.fitBounds(L.latLngBounds(points).pad(projectsBoundsPadding), projectsFitOptions);
+        map.fitBounds(getProjectsBounds(), getProjectsFitOptions());
         status.textContent = "Explora los cuatro proyectos de ALEBO. Selecciona un marcador para consultar su información.";
       }
       mapMode.setAttribute("aria-pressed", String(!isAreas));
