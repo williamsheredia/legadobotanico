@@ -95,6 +95,17 @@
       maxBoundsViscosity: 0.82
     });
 
+    // En pantallas táctiles, el mapa no captura los gestos de desplazamiento.
+    // Los marcadores siguen siendo interactivos mediante toque.
+    if (L.Browser.touch) {
+      map.dragging.disable();
+      map.touchZoom.disable();
+    }
+
+    const zoomControl = map.zoomControl.getContainer();
+    const hideZoomControl = () => zoomControl?.classList.add("alebo-zoom-hidden");
+    const showZoomControl = () => zoomControl?.classList.remove("alebo-zoom-hidden");
+
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>'
@@ -128,7 +139,7 @@
       map.flyToBounds(bounds, {
         padding: [22, 22],
         duration: 1
-      });
+      }).once("moveend", showZoomControl);
     };
 
     const clearCountdown = (marker) => {
@@ -194,6 +205,7 @@
         pointerInside = true;
         clearCountdown(marker);
         clearHoverClose();
+        hideZoomControl();
 
         const openProjectPopup = () => {
           marker.openPopup();
@@ -257,6 +269,7 @@
       clearHoverOpen();
       pointerInside = false;
       clearCountdown();
+      showZoomControl();
       map.closePopup();
       const isAreas = mode === "areas";
       if (isAreas) {
