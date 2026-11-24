@@ -105,6 +105,11 @@
     const zoomControl = map.zoomControl.getContainer();
     const hideZoomControl = () => zoomControl?.classList.add("alebo-zoom-hidden");
     const showZoomControl = () => zoomControl?.classList.remove("alebo-zoom-hidden");
+    const isNarrowMap = mapElement.clientWidth <= 600;
+    const projectsBoundsPadding = isNarrowMap ? 0.02 : 0.08;
+    const projectsFitOptions = isNarrowMap
+      ? { paddingTopLeft: [8, 8], paddingBottomRight: [8, 8] }
+      : { paddingTopLeft: [22, 22], paddingBottomRight: [72, 22] };
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
@@ -135,10 +140,9 @@
 
     const restoreProjectsView = () => {
       if (currentMode !== "projects") return;
-      const bounds = L.latLngBounds(points).pad(0.08);
+      const bounds = L.latLngBounds(points).pad(projectsBoundsPadding);
       map.flyToBounds(bounds, {
-        paddingTopLeft: [22, 22],
-        paddingBottomRight: [72, 22],
+        ...projectsFitOptions,
         duration: 1
       }).once("moveend", showZoomControl);
     };
@@ -168,6 +172,18 @@
         iconAnchor: [17, 38],
         popupAnchor: [0, -36]
       });
+      // En móvil, los marcadores 3 y 4 se separan solo en la vista general.
+      // El pequeño conector señala la coordenada geográfica original.
+      const overviewOffset = isNarrowMap && (project.id === "biohuerto" || project.id === "jardin");
+      const overviewIcon = overviewOffset ? L.divIcon({
+        className: "alebo-marker-offset-icon",
+        html: project.id === "biohuerto"
+          ? '<span class="alebo-marker-leader alebo-marker-leader--left"></span><div class="alebo-marker alebo-marker--educativo"><span>3</span></div>'
+          : '<span class="alebo-marker-leader alebo-marker-leader--right"></span><div class="alebo-marker alebo-marker--educativo nebo-marker--offset-right"><span>4</span></div>',
+        iconSize: [64, 42],
+        iconAnchor: [32, 38],
+        popupAnchor: [0, -36]
+      }) : icon;
       const mapsLink = project.mapsUrl || (project.placeId
         ? "https://www.google.com/maps/search/?api=1&query=" +
           encodeURIComponent(project.name) +
@@ -186,9 +202,8 @@
             <a href="${project.page}">Ver proyecto en ALEBO</a>
           </div>
         </div>`;
-      const marker = L.marker([project.lat, project.lng], { icon });
+      const marker = L.marker([project.lat, project.lng], { icon: overviewIcon });
       marker.projectId = project.id;
-      const isNarrowMap = mapElement.clientWidth <= 600;
       const popupMaxWidth = Math.max(220, Math.min(290, mapElement.clientWidth - 64));
 
       marker.bindPopup(popup, {
@@ -207,6 +222,8 @@
         clearCountdown(marker);
         clearHoverClose();
         hideZoomControl();
+        // Al seleccionar, el marcador vuelve a su coordenada visual exacta.
+        if (overviewOffset) marker.setIcon(icon);
 
         const openProjectPopup = () => {
           marker.openPopup();
@@ -242,6 +259,7 @@
       marker.on("popupclose", () => {
         clearCountdown(marker);
         pointerInside = false;
+        if (overviewOffset && currentMode === "projects") marker.setIcon(overviewIcon);
       });
 
       return marker;
@@ -255,10 +273,7 @@
 
     allProjects.addTo(map);
     const points = projects.map((project) => [project.lat, project.lng]);
-    map.fitBounds(L.latLngBounds(points).pad(0.08), {
-      paddingTopLeft: [22, 22],
-      paddingBottomRight: [72, 22]
-    });
+    map.fitBounds(L.latLngBounds(points).pad(projectsBoundsPadding), projectsFitOptions);
 
     // Al cerrar una ficha (por cursor o manualmente), recuperar el encuadre general.
     map.on("popupclose", restoreProjectsView);
@@ -287,10 +302,7 @@
       } else {
         map.removeLayer(workAreas);
         allProjects.addTo(map);
-        map.fitBounds(L.latLngBounds(points).pad(0.08), {
-          paddingTopLeft: [22, 22],
-          paddingBottomRight: [72, 22]
-        });
+        map.fitBounds(L.latLngBounds(points).pad(projectsBoundsPadding), projectsFitOptions);
         status.textContent = "Explora los cuatro proyectos de ALEBO. Selecciona un marcador para consultar su información.";
       }
       mapMode.setAttribute("aria-pressed", String(!isAreas));
