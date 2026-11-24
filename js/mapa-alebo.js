@@ -106,7 +106,7 @@
     const hideZoomControl = () => zoomControl?.classList.add("alebo-zoom-hidden");
     const showZoomControl = () => zoomControl?.classList.remove("alebo-zoom-hidden");
     const isNarrowMap = mapElement.clientWidth <= 600;
-    const projectsBoundsPadding = isNarrowMap ? 0.02 : 0.08;
+    const projectsBoundsPadding = isNarrowMap ? 0.08 : 0.08;
     const projectsFitOptions = isNarrowMap
       ? { paddingTopLeft: [8, 8], paddingBottomRight: [8, 8] }
       : { paddingTopLeft: [22, 22], paddingBottomRight: [72, 22] };
