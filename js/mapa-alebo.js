@@ -254,7 +254,6 @@
       cerroTerritoryLayer.removeFrom(map);
       satelliteLayer.removeFrom(map);
       if (!map.hasLayer(streetLayer)) streetLayer.addTo(map);
-      if (cerroPresentationOpen) closeCerroPresentation();
       if (activeMarker) clearCountdown(activeMarker);
       activeMarker = null;
       map.flyToBounds(getProjectsBounds(), {
@@ -414,6 +413,7 @@
       currentMode = mode;
       clearHoverClose();
       clearHoverOpen();
+      if (cerroPresentationOpen) closeCerroPresentation();
       if (activeMarker) clearCountdown(activeMarker);
       activeMarker = null;
       clearCountdown();
@@ -427,7 +427,7 @@
           [-12.017075315035395, -77.06906334601695],
           [-12.139051, -77.007705]
         ]).pad(0.28), { padding: [24, 24] });
-        status.textContent = "Vista territorial: se muestran los puntos de referencia de Cerro La Milla y Río Surco. Los perímetros se incorporarán cuando sus trazados estén georreferenciados y validados.";
+        status.textContent = "Vista territorial: se muestran los puntos de referencia de Cerro La Milla y Río Surco.";
       } else {
         map.removeLayer(workAreas);
         allProjects.addTo(map);
