@@ -112,10 +112,20 @@
       ? { paddingTopLeft: [8, 8], paddingBottomRight: [8, 8] }
       : { paddingTopLeft: [22, 22], paddingBottomRight: [72, 22] };
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    const streetLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>'
     }).addTo(map);
+    const satelliteLayer = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+      maxZoom: 19,
+      attribution: 'Tiles &copy; Esri, Maxar, Earthstar Geographics, and the GIS User Community'
+    });
+
+
+    // Geometrías territoriales del Cerro La Milla, validadas visualmente.
+    const cerroAridCoordinates = [[-12.013900864911662,-77.06569558228065],[-12.013705019485931,-77.0657426166612],[-12.012781558998471,-77.06527054788586],[-12.012235876312658,-77.06593573570565],[-12.01332724057842,-77.06666529654025],[-12.012109949381957,-77.06713736531559],[-12.012555743611461,-77.06741585740855],[-12.013332290793583,-77.06808104522833],[-12.014297724707687,-77.068317079616],[-12.015410068185961,-77.0690037251074],[-12.014486613546827,-77.07020535471732],[-12.015032291671,-77.07065596582105],[-12.015494018450624,-77.07059159280622],[-12.0162075946432,-77.07127823829762],[-12.016774256742716,-77.07104220390995],[-12.01746684213318,-77.07170739172975],[-12.018117451028061,-77.07119240761119],[-12.018579172515455,-77.07149281501367],[-12.020426050621653,-77.07144989969711],[-12.019817421762736,-77.07185759545764],[-12.01925096274674,-77.07346737864717],[-12.019922554571846,-77.0733708190631],[-12.020762041965016,-77.07329571721249],[-12.020940432698643,-77.07495868676195],[-12.0220422552266,-77.07337081907055],[-12.022650879052934,-77.07316697119029],[-12.023007657897198,-77.07233012199764],[-12.02410947196268,-77.07205117226704],[-12.025169307868516,-77.07051694874721],[-12.02602976567961,-77.07078516961583],[-12.027047620715237,-77.07031846525405],[-12.027866099276308,-77.07028627874662],[-12.027661220699509,-77.0694174244896],[-12.0277784227,-77.06938978788787],[-12.026382809822106,-77.06959363575889],[-12.024661893802477,-77.06977602596754],[-12.023108862522934,-77.07070943466802],[-12.02218543430089,-77.07073089233961],[-12.020873740994428,-77.06847783679737],[-12.019971292315814,-77.0682203447381],[-12.019152789679206,-77.06861731165922],[-12.018281816249425,-77.0692395841358],[-12.017715157323797,-77.06935760132963],[-12.01646640473927,-77.06808086986906],[-12.01586826065003,-77.06793066613983],[-12.01521764631863,-77.06728693599166],[-12.015228140110636,-77.06725474947125],[-12.013958388307133,-77.06593510268566],[-12.013900864911662,-77.06569558228065]];
+    const cerroInterventionCoordinates = [[-12.01759427504744,-77.06925228714537],[-12.017449986635407,-77.06905916810038],[-12.01722699530767,-77.0689009177723],[-12.016788882396323,-77.06912354111519],[-12.016767894933567,-77.0693622577118],[-12.01699613350314,-77.06942931293558],[-12.017122058148349,-77.06939444421921],[-12.017192890735389,-77.06931129574176],[-12.017305698150324,-77.06933275341335],[-12.017428999224201,-77.06950173257725],[-12.017573287643183,-77.06927642702539]];
+    const cerroCrestCoordinates = [[-12.013958388307133,-77.06593510268566],[-12.015228140110636,-77.06725474947125],[-12.01521764631863,-77.06728693599166],[-12.01586826065003,-77.06793066613983],[-12.01646640473927,-77.06808086986906],[-12.017715157323797,-77.06935760132963],[-12.018281816249425,-77.0692395841358],[-12.019152789679206,-77.06861731165922],[-12.019971292315814,-77.0682203447381],[-12.020873740994428,-77.06847783679737],[-12.02218543430089,-77.07073089233961],[-12.023108862522934,-77.07070943466802],[-12.024661893802477,-77.06977602596754],[-12.026382809822106,-77.06959363575889],[-12.0277784227,-77.06938978788787]];
 
     const allProjects = L.layerGroup();
     const workAreas = L.layerGroup();
@@ -125,6 +135,62 @@
     let countdownTimer = null;
     // Solo un proyecto puede estar activo durante cada experiencia.
     let activeMarker = null;
+    let cerroPresentationTimer = null;
+    let cerroPresentationOpen = false;
+    const cerroTerritoryLayer = L.layerGroup();
+    const cerroAridArea = L.polygon(cerroAridCoordinates, {
+      color: "#7778C5", weight: 2.5, opacity: 0.95,
+      fillColor: "#4B4D9A", fillOpacity: 0.36, lineJoin: "round"
+    });
+    const cerroIntervention = L.polygon(cerroInterventionCoordinates, {
+      color: "#F2D22E", weight: 3, opacity: 1,
+      fillColor: "#F2D22E", fillOpacity: 0.78, lineJoin: "round"
+    });
+    const cerroCrest = L.polyline(cerroCrestCoordinates, {
+      color: "#F8F5E9", weight: 3, opacity: 0.98, lineCap: "round", lineJoin: "round"
+    });
+    const cerroFocus = L.latLngBounds(cerroAridCoordinates);
+    const interventionAnchor = L.latLng(-12.01718, -77.06922);
+    const interventionLabel = L.latLng(-12.01595, -77.06755);
+    const interventionLeader = L.polyline([interventionAnchor, interventionLabel], {
+      color: "#F2D22E", weight: 2.5, opacity: 1, lineCap: "round"
+    });
+    const interventionDot = L.circleMarker(interventionAnchor, {
+      radius: 5, color: "#5A4B13", weight: 2, fillColor: "#F2D22E", fillOpacity: 1
+    });
+    const interventionTag = L.marker(interventionLabel, {
+      interactive: false,
+      icon: L.divIcon({
+        className: "alebo-cerro-callout",
+        html: '<span>Área de intervención ALEBO</span><strong>3.472 m²</strong>',
+        iconSize: [170, 42],
+        iconAnchor: [0, 21]
+      })
+    });
+    cerroTerritoryLayer.addLayer(cerroAridArea);
+    cerroTerritoryLayer.addLayer(cerroCrest);
+    cerroTerritoryLayer.addLayer(cerroIntervention);
+    cerroTerritoryLayer.addLayer(interventionLeader);
+    cerroTerritoryLayer.addLayer(interventionDot);
+    cerroTerritoryLayer.addLayer(interventionTag);
+
+    const cerroPanel = L.DomUtil.create("div", "alebo-cerro-panel");
+    cerroPanel.setAttribute("aria-label", "Información del Proyecto Forestal Cerro La Milla");
+    cerroPanel.innerHTML = `
+      <button type="button" class="alebo-cerro-panel-close" aria-label="Cerrar presentación">&times;</button>
+      <span class="alebo-cerro-kicker">Kawsay Ñan · Senderos de Vida</span>
+      <span class="alebo-cerro-axis">Eje Terrestre</span>
+      <h3>Proyecto Forestal Cerro La Milla</h3>
+      <p>Recuperación progresiva del ecosistema urbano mediante restauración forestal y participación comunitaria.</p>
+      <div class="alebo-cerro-actions">
+        <a href="https://www.google.com/maps/search/?api=1&query=Proyecto%20Forestal%20Cerro%20La%20Milla&query_place_id=ChIJ5z0fPQDPBZERYccC9_AwvXE" target="_blank" rel="noopener noreferrer">Ver ficha en Maps</a>
+        <a href="proyectos/cerro-la-milla.html">Ver proyecto en ALEBO</a>
+      </div>`;
+    mapElement.appendChild(cerroPanel);
+    L.DomEvent.disableClickPropagation(cerroPanel);
+    L.DomEvent.disableScrollPropagation(cerroPanel);
+    cerroPanel.querySelector(".alebo-cerro-panel-close").addEventListener("click", () => closeCerroPresentation());
+
 
     const clearHoverClose = () => {
       if (hoverCloseTimer) {
@@ -175,6 +241,43 @@
         marker.closePopup();
         hoverCloseTimer = null;
       }, delay);
+    };
+
+    const closeCerroPresentation = () => {
+      if (!cerroPresentationOpen) return;
+      cerroPresentationOpen = false;
+      if (cerroPresentationTimer) {
+        window.clearTimeout(cerroPresentationTimer);
+        cerroPresentationTimer = null;
+      }
+      cerroPanel.classList.remove("is-visible");
+      cerroTerritoryLayer.removeFrom(map);
+      satelliteLayer.removeFrom(map);
+      if (!map.hasLayer(streetLayer)) streetLayer.addTo(map);
+      if (cerroPresentationOpen) closeCerroPresentation();
+      if (activeMarker) clearCountdown(activeMarker);
+      activeMarker = null;
+      map.flyToBounds(getProjectsBounds(), {
+        ...getProjectsFitOptions(), duration: 1
+      }).once("moveend", showZoomControl);
+    };
+
+    const openCerroPresentation = (marker) => {
+      cerroPresentationOpen = true;
+      const mobile = mapElement.clientWidth <= 600;
+      if (map.hasLayer(streetLayer)) map.removeLayer(streetLayer);
+      satelliteLayer.addTo(map);
+      cerroTerritoryLayer.addTo(map);
+      cerroPanel.classList.add("is-visible");
+      const padding = mobile
+        ? { paddingTopLeft: [12, 174], paddingBottomRight: [12, 14] }
+        : { paddingTopLeft: [24, 24], paddingBottomRight: [365, 24] };
+      map.flyToBounds(cerroFocus, {
+        ...padding, maxZoom: mobile ? 15 : 16, duration: 1.15
+      });
+      const markerElement = marker.getElement()?.querySelector(".alebo-marker");
+      markerElement?.classList.add("alebo-countdown");
+      cerroPresentationTimer = window.setTimeout(closeCerroPresentation, 8000);
     };
 
     const makeMarker = (project) => {
@@ -243,6 +346,10 @@
         const openProjectPopup = () => {
           // Evita que una animación pendiente abra una ficha que ya no está activa.
           if (activeMarker !== marker || currentMode !== "projects") return;
+          if (project.id === "cerro") {
+            openCerroPresentation(marker);
+            return;
+          }
           marker.openPopup();
 
           const markerElement = marker.getElement()?.querySelector(".alebo-marker");
