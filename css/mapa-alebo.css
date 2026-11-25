@@ -285,10 +285,11 @@
   z-index: 850;
   top: 18px;
   right: 18px;
-  bottom: 18px;
+  bottom: auto;
   width: min(320px, 31%);
+  max-height: calc(100% - 36px);
   box-sizing: border-box;
-  padding: 28px 23px 22px;
+  padding: 25px 23px 20px;
   overflow-y: auto;
   border: 1px solid rgba(41,75,55,.15);
   border-radius: 17px;
@@ -397,8 +398,8 @@
     right: 10px;
     bottom: auto;
     width: auto;
-    max-height: 150px;
-    padding: 13px 15px 12px;
+    max-height: none;
+    padding: 13px 15px 14px;
     border-radius: 13px;
     transform: translateY(-8px);
   }
@@ -410,4 +411,15 @@
   .alebo-cerro-actions { flex-direction: row; gap: 6px; }
   .alebo-cerro-actions a { flex: 1; padding: 8px 6px; font-size: .66rem; }
   .alebo-cerro-callout span { font-size: 9px; }
+}
+
+
+/* Desplaza el contador del marcador 1 para despejar el polígono amarillo. */
+.alebo-cerro-marker-offset {
+  transform: translate(-42px, 34px);
+}
+@media (max-width: 600px) {
+  .alebo-cerro-marker-offset {
+    transform: translate(-34px, 30px);
+  }
 }
