@@ -348,6 +348,91 @@
 }
 
 
+
+
+
+
+.axis-image {
+  flex-shrink: 0;
+  width: 110px;
+  height: 110px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.axis-image-animated {
+  position: relative;
+}
+
+.axis-image-animated img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.axis-image-animated .axis-green {
+  opacity: 1;
+  animation: alebo-verde 8s infinite ease-in-out;
+}
+
+.axis-image-animated .axis-original {
+  opacity: 0;
+  animation: alebo-original 8s infinite ease-in-out;
+}
+
+@keyframes alebo-verde {
+  0%, 37.5% {
+    opacity: 1;
+  }
+  50%, 87.5% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes alebo-original {
+  0%, 37.5% {
+    opacity: 0;
+  }
+  50%, 87.5% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .axis-image {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .axis-image-animated .axis-green,
+  .axis-image-animated .axis-original {
+    animation: none;
+  }
+
+  .axis-image-animated .axis-green {
+    opacity: 1;
+  }
+
+  .axis-image-animated .axis-original {
+    opacity: 0;
+  }
+}
+
+
+
+
+
 .program-intro {
   margin-top: 70px;
 }
@@ -658,13 +743,22 @@
     <div class="axis-heading">
       <span class="axis-tag">Kawsay Ñan</span>
       <h3>Senderos de Vida</h3>
-	
-    </div>
+  </div>
 
-    <div class="axis-image">
-      <img src="assets/eje-terrestre.png"
-           alt="Restauración ecológica y plantación de flora nativa">
-    </div>
+
+  <div class="axis-image axis-image-animated">
+  <img class="axis-green"
+       src="assets/senderos-de-vida-verde.png"
+       alt="Senderos de Vida">
+
+  <img class="axis-original"
+       src="assets/senderos-de-vida-original.png"
+       alt=""
+       aria-hidden="true">
+  </div>
+
+
+
   </div>
 
 
@@ -702,16 +796,30 @@
 
 <div class="axis-card">
 
-  <div class="axis-header">
+    <div class="axis-header">
     <div class="axis-heading">
       <span class="axis-tag">Kawsay Mayuo</span>
       <h3>Ríos de Vida</h3>
     </div>
 
-    <div class="axis-image">
-      <img src="assets/eje-hidrico.png"
-           alt="Recuperación de áreas fluviales">
-    </div>
+
+
+
+
+    <div class="axis-image axis-image-animated">
+  <img class="axis-green"
+       src="assets/rios-de-vida-verde.png"
+       alt="Ríos de Vida">
+
+  <img class="axis-original"
+       src="assets/rios-de-vida-original.png"
+       alt=""
+       aria-hidden="true">
+  </div>
+
+
+
+
   </div>
 	<p>(Eje Hídrico — El flujo de la regeneración de cuencas)</p>
   <div class="axis-description">
@@ -742,16 +850,27 @@
 
          <div class="axis-card">
 
-  <div class="axis-header">
+  	<div class="axis-header">
     <div class="axis-heading">
       <span class="axis-tag">Kawsay Yachay</span>
       <h3>Escuelas de Vida</h3>
-    </div>
+    	</div>
 
-    <div class="axis-image">
-      <img src="assets/eje-educativo.png"
-           alt="Biohuertos y Jardínes Bótanicos">
-    </div>
+
+
+    	<div class="axis-image axis-image-animated">
+  <img class="axis-green"
+       src="assets/escuelas-de-vida-verde.png"
+       alt="Escuelas de Vida">
+
+  <img class="axis-original"
+       src="assets/escuelas-de-vida-original.png"
+       alt=""
+       aria-hidden="true">
+	</div>
+
+
+
   </div>
 	<p>(Eje Educativo y Circular — El saber vivo en comunidad)</p>
   	<div class="axis-description">
