@@ -151,7 +151,7 @@
     });
     const cerroFocus = L.latLngBounds(cerroAridCoordinates);
     const interventionAnchor = L.latLng(-12.01718, -77.06922);
-    const interventionLabel = L.latLng(-12.01595, -77.06755);
+    const interventionLabel = L.latLng(-12.01555, -77.06795);
     const interventionLeader = L.polyline([interventionAnchor, interventionLabel], {
       color: "#F2D22E", weight: 2.5, opacity: 1, lineCap: "round"
     });
@@ -232,7 +232,7 @@
         countdownTimer = null;
       }
       const markerElement = marker?.getElement()?.querySelector(".alebo-marker");
-      markerElement?.classList.remove("alebo-countdown");
+      markerElement?.classList.remove("alebo-countdown", "alebo-cerro-marker-offset");
     };
 
     const schedulePopupClose = (marker, delay = 180) => {
@@ -269,13 +269,13 @@
       cerroTerritoryLayer.addTo(map);
       cerroPanel.classList.add("is-visible");
       const padding = mobile
-        ? { paddingTopLeft: [12, 174], paddingBottomRight: [12, 14] }
+        ? { paddingTopLeft: [12, 218], paddingBottomRight: [12, 14] }
         : { paddingTopLeft: [24, 24], paddingBottomRight: [365, 24] };
       map.flyToBounds(cerroFocus, {
         ...padding, maxZoom: mobile ? 15 : 16, duration: 1.15
       });
       const markerElement = marker.getElement()?.querySelector(".alebo-marker");
-      markerElement?.classList.add("alebo-countdown");
+      markerElement?.classList.add("alebo-countdown", "alebo-cerro-marker-offset");
       cerroPresentationTimer = window.setTimeout(closeCerroPresentation, 8000);
     };
 
