@@ -421,6 +421,6 @@
 }
 @media (max-width: 600px) {
   .alebo-cerro-marker-offset {
-    transform: translate(-34px, 30px) rotate(-45deg);
+    transform: translate(-56px, 10px) rotate(-45deg);
   }
 }
