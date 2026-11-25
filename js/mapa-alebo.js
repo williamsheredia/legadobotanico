@@ -155,9 +155,6 @@
     const interventionLeader = L.polyline([interventionAnchor, interventionLabel], {
       color: "#F2D22E", weight: 2.5, opacity: 1, lineCap: "round"
     });
-    const interventionDot = L.circleMarker(interventionAnchor, {
-      radius: 5, color: "#5A4B13", weight: 2, fillColor: "#F2D22E", fillOpacity: 1
-    });
     const interventionTag = L.marker(interventionLabel, {
       interactive: false,
       icon: L.divIcon({
@@ -171,7 +168,6 @@
     cerroTerritoryLayer.addLayer(cerroCrest);
     cerroTerritoryLayer.addLayer(cerroIntervention);
     cerroTerritoryLayer.addLayer(interventionLeader);
-    cerroTerritoryLayer.addLayer(interventionDot);
     cerroTerritoryLayer.addLayer(interventionTag);
 
     const cerroPanel = L.DomUtil.create("div", "alebo-cerro-panel");
@@ -276,8 +272,12 @@
       });
       const markerElement = marker.getElement()?.querySelector(".alebo-marker");
       markerElement?.classList.add("alebo-countdown", "alebo-cerro-marker-offset");
-      cerroPresentationTimer = window.setTimeout(closeCerroPresentation, 8000);
+      cerroPresentationTimer = window.setTimeout(closeCerroPresentation, 12000);
     };
+
+    map.on("click", () => {
+      if (cerroPresentationOpen) closeCerroPresentation();
+    });
 
     const makeMarker = (project) => {
       const icon = L.divIcon({
