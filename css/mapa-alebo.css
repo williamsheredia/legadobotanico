@@ -277,3 +277,137 @@
     left: -5px;
   }
 }
+
+
+/* Presentación territorial especial del Cerro La Milla */
+.alebo-cerro-panel {
+  position: absolute;
+  z-index: 850;
+  top: 18px;
+  right: 18px;
+  bottom: 18px;
+  width: min(320px, 31%);
+  box-sizing: border-box;
+  padding: 28px 23px 22px;
+  overflow-y: auto;
+  border: 1px solid rgba(41,75,55,.15);
+  border-radius: 17px;
+  background: rgba(250,249,244,.97);
+  box-shadow: 0 12px 34px rgba(18,35,23,.25);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(14px);
+  transition: opacity .28s ease, transform .28s ease, visibility .28s;
+}
+.alebo-cerro-panel.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+.alebo-cerro-panel-close {
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  background: #e9eee6;
+  color: #34483a;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+.alebo-cerro-kicker {
+  display: block;
+  margin: 9px 28px 5px 0;
+  color: #493A36;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.alebo-cerro-axis {
+  display: block;
+  margin-bottom: 14px;
+  color: #77736c;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.alebo-cerro-panel h3 {
+  margin: 0 0 11px;
+  color: #234432;
+  font: 700 1.35rem/1.2 "Playfair Display", Georgia, serif;
+}
+.alebo-cerro-panel p {
+  margin: 0 0 19px;
+  color: #58645a;
+  font-size: .88rem;
+  line-height: 1.55;
+}
+.alebo-cerro-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 9px;
+}
+.alebo-cerro-actions a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: #493A36;
+  color: #fff !important;
+  font-size: .78rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+.alebo-cerro-actions a:last-child {
+  background: #EAD2CC;
+  color: #493A36 !important;
+}
+.alebo-cerro-callout {
+  background: transparent;
+  border: 0;
+}
+.alebo-cerro-callout span,
+.alebo-cerro-callout strong {
+  display: block;
+  width: max-content;
+  max-width: 170px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  background: rgba(250,249,244,.96);
+  box-shadow: 0 1px 6px rgba(0,0,0,.25);
+  color: #493A20;
+  font-size: 10px;
+  line-height: 1.2;
+}
+.alebo-cerro-callout strong {
+  margin-top: 2px;
+  color: #6A5410;
+  font-size: 12px;
+}
+@media (max-width: 600px) {
+  .alebo-cerro-panel {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: auto;
+    width: auto;
+    max-height: 150px;
+    padding: 13px 15px 12px;
+    border-radius: 13px;
+    transform: translateY(-8px);
+  }
+  .alebo-cerro-panel.is-visible { transform: translateY(0); }
+  .alebo-cerro-kicker { margin-top: 4px; margin-bottom: 3px; font-size: .64rem; }
+  .alebo-cerro-axis { margin-bottom: 5px; font-size: .61rem; }
+  .alebo-cerro-panel h3 { margin-bottom: 5px; font-size: 1.05rem; }
+  .alebo-cerro-panel p { margin-bottom: 8px; font-size: .72rem; line-height: 1.35; }
+  .alebo-cerro-actions { flex-direction: row; gap: 6px; }
+  .alebo-cerro-actions a { flex: 1; padding: 8px 6px; font-size: .66rem; }
+  .alebo-cerro-callout span { font-size: 9px; }
+}
