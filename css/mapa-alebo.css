@@ -259,22 +259,21 @@
   .alebo-marker-offset-icon .alebo-marker {
     position: absolute;
     top: 0;
-  }
-  .alebo-marker-offset-icon .alebo-marker--offset-right {
-    left: 30px;
+    left: 0;
   }
   .alebo-marker-offset-icon .alebo-marker-leader {
     position: absolute;
     top: 36px;
-    width: 15px;
+    width: 5px;
     height: 2px;
     background: #304332;
     opacity: .9;
   }
+  /* El 3 queda a la izquierda de su coordenada; el 4, a la derecha. */
   .alebo-marker-offset-icon .alebo-marker-leader--left {
-    left: 17px;
+    left: 34px;
   }
   .alebo-marker-offset-icon .alebo-marker-leader--right {
-    left: 32px;
+    left: -5px;
   }
 }
