@@ -158,7 +158,7 @@
 .alebo-marker span {
   transform: rotate(45deg);
 }
-/* Cuenta visual de ocho segundos: una aguja luminosa recorre el marcador. */
+/* Cuenta visual de doce segundos: una aguja luminosa recorre el marcador. */
 .alebo-marker.alebo-countdown {
   position: relative;
 }
@@ -174,12 +174,12 @@
   background: #d9f99d;
   box-shadow: 0 0 4px rgba(217, 249, 157, .9);
   transform-origin: 50% 100%;
-  animation: alebo-clock-hand 8s linear forwards;
+  animation: alebo-clock-hand 12s linear forwards;
   pointer-events: none;
 }
 @keyframes alebo-clock-hand {
-  from { transform: translate(-50%, -100%) rotate(0deg); }
-  to { transform: translate(-50%, -100%) rotate(360deg); }
+  from { transform: translate(-50%, -100%) rotate(45deg); }
+  to { transform: translate(-50%, -100%) rotate(405deg); }
 }
 .alebo-map-note {
   display: flex;
@@ -383,13 +383,13 @@
   background: rgba(250,249,244,.96);
   box-shadow: 0 1px 6px rgba(0,0,0,.25);
   color: #493A20;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.2;
 }
 .alebo-cerro-callout strong {
   margin-top: 2px;
   color: #6A5410;
-  font-size: 12px;
+  font-size: 13px;
 }
 @media (max-width: 600px) {
   .alebo-cerro-panel {
@@ -410,16 +410,17 @@
   .alebo-cerro-panel p { margin-bottom: 8px; font-size: .72rem; line-height: 1.35; }
   .alebo-cerro-actions { flex-direction: row; gap: 6px; }
   .alebo-cerro-actions a { flex: 1; padding: 8px 6px; font-size: .66rem; }
-  .alebo-cerro-callout span { font-size: 9px; }
+  .alebo-cerro-callout span { font-size: 10px; }
+  .alebo-cerro-callout strong { font-size: 12px; }
 }
 
 
 /* Desplaza el contador del marcador 1 para despejar el polígono amarillo. */
 .alebo-cerro-marker-offset {
-  transform: translate(-42px, 34px);
+  transform: translate(-42px, 34px) rotate(-45deg);
 }
 @media (max-width: 600px) {
   .alebo-cerro-marker-offset {
-    transform: translate(-34px, 30px);
+    transform: translate(-34px, 30px) rotate(-45deg);
   }
 }
