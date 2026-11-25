@@ -123,7 +123,8 @@
     let hoverCloseTimer = null;
     let hoverOpenTimer = null;
     let countdownTimer = null;
-    let pointerInside = false;
+    // Solo un proyecto puede estar activo durante cada experiencia.
+    let activeMarker = null;
 
     const clearHoverClose = () => {
       if (hoverCloseTimer) {
@@ -229,8 +230,9 @@
       // Una sola secuencia para cursor y pantalla táctil:
       // primero acerca el mapa y, al terminar, abre la ficha y su contador.
       const startProjectExperience = () => {
-        if (currentMode !== "projects" || pointerInside) return;
-        pointerInside = true;
+        // Bloquea los demás marcadores hasta cerrar la ficha activa.
+        if (currentMode !== "projects" || activeMarker) return;
+        activeMarker = marker;
         clearCountdown(marker);
         clearHoverClose();
         hideZoomControl();
@@ -270,7 +272,9 @@
       // La X del popup y el cierre automático cancelan el contador.
       marker.on("popupclose", () => {
         clearCountdown(marker);
-        pointerInside = false;
+        // Solo la ficha que inició la secuencia puede liberar el bloqueo.
+        if (activeMarker !== marker) return;
+        activeMarker = null;
         if (overviewOffset && currentMode === "projects") marker.setIcon(overviewIcon);
       });
 
@@ -298,7 +302,8 @@
       currentMode = mode;
       clearHoverClose();
       clearHoverOpen();
-      pointerInside = false;
+      if (activeMarker) clearCountdown(activeMarker);
+      activeMarker = null;
       clearCountdown();
       showZoomControl();
       map.closePopup();
