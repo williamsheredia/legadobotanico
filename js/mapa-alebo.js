@@ -191,10 +191,11 @@
       const overviewIcon = overviewOffset ? L.divIcon({
         className: "alebo-marker-offset-icon",
         html: project.id === "biohuerto"
-          ? '<span class="alebo-marker-leader alebo-marker-leader--left"></span><div class="alebo-marker alebo-marker--educativo"><span>3</span></div>'
-          : '<span class="alebo-marker-leader alebo-marker-leader--right"></span><div class="alebo-marker alebo-marker--educativo alebo-marker--offset-right"><span>4</span></div>',
-        iconSize: [64, 42],
-        iconAnchor: [32, 38],
+          ? '<span class="alebo-marker-leader alebo-marker-leader--left"></span><div class="alebo-marker nebo-marker--educativo"><span>3</span></div>'
+          : '<span class="alebo-marker-leader nebo-marker-leader--right"></span><div class="alebo-marker nebo-marker--educativo"><span>4</span></div>',
+        // Cada marcador conserva un área de toque de 34 px, sin invadir al vecino.
+        iconSize: [34, 42],
+        iconAnchor: project.id === "biohuerto" ? [39, 38] : [-5, 38],
         popupAnchor: [0, -36]
       }) : icon;
       const mapsLink = project.mapsUrl || (project.placeId
@@ -240,6 +241,8 @@
         if (overviewOffset) marker.setIcon(icon);
 
         const openProjectPopup = () => {
+          // Evita que una animación pendiente abra una ficha que ya no está activa.
+          if (activeMarker !== marker || currentMode !== "projects") return;
           marker.openPopup();
 
           const markerElement = marker.getElement()?.querySelector(".alebo-marker");
@@ -259,13 +262,15 @@
 
       const hasHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
+      // Desactivar siempre la apertura automática de Leaflet: en PC también
+      // permitiría abrir una segunda ficha por clic, saltándose el bloqueo.
+      marker.off("click", marker._openPopup, marker);
+
       if (hasHover) {
         // Computadora: iniciar al pasar el cursor sobre el marcador.
         marker.on("mouseover", startProjectExperience);
       } else {
-        // Móvil/tablet: Leaflet abre el popup automáticamente al tocar.
-        // Desactivamos esa apertura inmediata para ejecutar antes el zoom.
-        marker.off("click", marker._openPopup, marker);
+        // Móvil/tablet: abrir solo mediante la secuencia personalizada de toque.
         marker.on("click", startProjectExperience);
       }
 
